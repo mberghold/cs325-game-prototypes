@@ -1,26 +1,17 @@
 window.onload = function() {
-    // You might want to start with a template that uses GameStates:
-    //     https://github.com/photonstorm/phaser/tree/v2.6.2/resources/Project%20Templates/Basic
-    
-    // You can copy-and-paste the code from any of the examples at http://examples.phaser.io here.
-    // You will need to change the fourth parameter to "new Phaser.Game()" from
-    // 'phaser-example' to 'game', which is the id of the HTML element where we
-    // want the game to go.
-    // The assets (and code) can be found at: https://github.com/photonstorm/phaser/tree/master/examples/assets
-    // You will need to change the paths you pass to "game.load.image()" or any other
-    // loading functions to reflect where you are putting the assets.
-    // All loading functions will typically all be found inside "preload()".
     
     "use strict";
     
     var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
     
-    var timer = 0;
+
     var total = 0;
     var speed = 1;
+    var killcount = 0;
 
     function preload() {
-        // Load an image and call it 'logo'.
+        // I used the code from loading images and writing text in the minimal game design
+        // as a basis for getting images and text in this game.
         game.load.image( 'background', 'assets/Galaxy.png' );
         game.load.image( 'asteroid', 'assets/Cowboy-Asteroid2.png' );
         game.load.image( 'reticle', 'assets/Cannon-Reticle2.png' );
@@ -34,9 +25,12 @@ window.onload = function() {
     var background
     var asteroid
     var speed
+    var style
+    var style2
+    var text
+    var victory
 
     function create() {
-        // Create a sprite at the center of the screen using the 'logo' image.
         background = game.add.image( 0, 0, 'background');
         cannon = game.add.sprite( 750, 550, 'cannon');
         reticle = game.add.sprite( 375, 275, 'reticle');
@@ -44,19 +38,17 @@ window.onload = function() {
         cannon.anchor.setTo(0.5, 0.8);
         game.physics.enable(reticle, Phaser.Physics.ARCADE);
         game.physics.enable(cannon, Phaser.Physics.ARCADE);
-        // releaseAsteroid();
-        // Anchor the sprite at its center, as opposed to its top-left corner.
-        // so it will be truly centered.
-        //screen.anchor.setTo( 0.5, 0.5 );
-        
-        // Turn on the arcade physics engine for this sprite.
-        // game.physics.enable( bouncy, Phaser.Physics.ARCADE );
-        // Make it bounce off of the world bounds.
-        // bouncy.body.collideWorldBounds = true;
+        style = {font: "25px Arial", fill: "#9999ff", align: "right"};
+        style2 = {font: "35px Arial", fill: "#9999ff", align: "right"};
+        text = game.add.text(game.world.centerX, 15, "Kill count: " + killcount, style);
+        victory = game.add.text(game.world.centerX, 300, "", style2);
+        text.anchor.setTo(0.5, 0.0);
+        victory.anchor.setTo(0.5, 0.5);
         
     }
 
     function releaseAsteroid() {
+        // Phaser had a command called add several sprites which I used to help make this function.
         asteroid = game.add.sprite(-(Math.random() * 800), (game.world.randomY%400 + 150), 'asteroid');
         asteroid.anchor.setTo(0.5, 0.5);
         asteroid.inputEnabled = true;
@@ -64,27 +56,33 @@ window.onload = function() {
         asteroid.events.onInputDown.add(destroyAsteroid, this);
         game.add.tween(asteroid).to({ x: game.width + (1600 + asteroid.x) }, (30000/speed), Phaser.Easing.Linear.None, true);
         total++;
-        timer = game.time.now + 50;
     }
 
     function destroyAsteroid (sprite) {
+        // Phaser had a command called destroy sprite which I used to help make this function.
         sprite.destroy();
         total--;
+        killcount++;
         speed = speed + .2;
     }
     
     function update() {
-
-        if (total < 5 && game.time.now > timer)
+        text.text = "Kill count: " + killcount;
+        if(total < 15)
         {
            releaseAsteroid();
         }
-        // Accelerate the 'logo' sprite towards the cursor,
-        // accelerating at 500 pixels/second and moving no faster than 500 pixels/second
-        // in X or Y.
-        // This function returns the rotation angle that makes it visually match its
-        // new trajectory.
+
+        // I looked up Phaser physics and found the pointer manipulation commands.
         game.physics.arcade.moveToPointer(reticle, 300, this.game.input.activePointer, 60);
         cannon.rotation = game.physics.arcade.angleToPointer(cannon, this.game.input.activePointer) + 1.6;
+
+        if(killcount === 50)
+        {
+            total = 100
+            victory.text = "You killed 50! You fought for " + Math.round(game.time.now) / 1000 + " seconds.";
+            text.anchor.setTo( 0.5, 0.0 );
+        }
+
     }
 };
