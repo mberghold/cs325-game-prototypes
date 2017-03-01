@@ -31,7 +31,7 @@ GameStates.makeMainMenu = function( game, shared ) {
             playButton = game.add.button( 450, 450, 'playButton', startGame);
 
             var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-            var text = game.add.text( 520, 300, "High score: " + shared[0], style);
+            var text = game.add.text( 450, 400, "High score: " + shared[0], style);
     
         },
     
