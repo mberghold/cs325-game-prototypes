@@ -28,7 +28,7 @@ GameStates.makeMainMenu = function( game, shared ) {
     
             game.add.sprite(0, 0, 'menuBack');
     
-            playButton = game.add.button( 303, 400, 'playButton', startGame);
+            playButton = game.add.button( 450, 450, 'playButton', startGame);
 
             var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
             var text = game.add.text( 520, 300, "High score: " + shared[0], style);
