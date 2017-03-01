@@ -24,7 +24,7 @@ GameStates.makePreloader = function( game ) {
             //	Here we load the rest of the assets our game needs.
             //	As this is just a Project Template I've not provided these assets, swap them for your own.
             game.load.image('menuBack', 'assets/MenuBack.png');
-            game.load.atlas('playButton', 'assets/MenuPlay.png');
+            game.load.image('playButton', 'assets/MenuPlay.png');
             game.load.audio('menuMusic', ['assets/Undertale OST - Spider Dance Menu Music.mp3']);
             //	+ lots of other required assets here
             game.load.image( 'logo', 'assets/phaser.png' );
