@@ -15,7 +15,7 @@ GameStates.makeGame = function( game, shared ) {
         }
         game.state.start('MainMenu');
 
-    },
+    }
 
     function quitLostGame() {
 
