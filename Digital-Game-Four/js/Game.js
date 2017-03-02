@@ -17,6 +17,22 @@ GameStates.makeGame = function( game, shared ) {
 
     }
 
+    function spawnPoacher() {
+        poacher = game.add.sprite(700, (game.world.randomY%250 + 300), 'poacher');
+        poacher.anchor.setTo(0.5, 0.5);
+        game.add.tween(poacher).to({x: 100, y: 500}, 1500, Phaser.Easing.Linear.None, true);
+    }
+
+    function gameWin () {
+        bullet.destroy();
+        var button1 = game.add.button(game.world.centerX, game.world.centerY, 'winButt', quitWonGame);
+    }
+
+    function gameFail () {
+        bullet.destroy();
+        var button = game.add.button(game.world.centerX, game.world.centerY, 'loseButt', quitLostGame);
+    }
+
     function quitLostGame() {
 
         //  Here you should destroy anything you no longer need.
@@ -33,6 +49,7 @@ GameStates.makeGame = function( game, shared ) {
     var trigger;
     var bullCount = 0;
     var gameBack
+    var elephant
     var poacher;
 
     return {
@@ -44,9 +61,11 @@ GameStates.makeGame = function( game, shared ) {
             // When you click on the sprite, you go back to the MainMenu.
             // bouncy.inputEnabled = true;
             // bouncy.events.onInputDown.add( function() { quitGame(); }, this );
+            game.physics.startSystem(Phaser.Physics.ARCADE);
+            game.physics.enable( [ bullet, elephant, poacher ], Phaser.Physics.ARCADE);
             gameBack = game.add.image(0, 0, 'gameBack');
 
-            var elephant = game.add.sprite(26, 483, 'elephSheet');
+            elephant = game.add.sprite(26, 483, 'elephSheet');
             var drink = elephant.animations.add('drink');
             elephant.animations.play('drink', 6, true);
 
@@ -75,23 +94,6 @@ GameStates.makeGame = function( game, shared ) {
             spawnPoacher();
 
         },
-
-
-        spawnPoacher: function () {
-            poacher = game.add.sprite(700, (game.world.randomY%250 + 300), 'poacher');
-            poacher.anchor.setTo(0.5, 0.5);
-            // game.add.tween(poacher).to({ x: 40 }, 1000, Phaser.Easing.Linear.None, true);
-        },
-
-        gameFail: function () {
-            bullet.destroy();
-            var button = game.add.button(game.world.centerX, game.world.centerY, 'loseButt', quitLostGame);
-        },
-
-        gameWin: function () {
-            bullet.destroy();
-            var button1 = game.add.button(game.world.centerX, game.world.centerY, 'winButt', quitWonGame);
-        },
     
         update: function () {
     
@@ -110,7 +112,10 @@ GameStates.makeGame = function( game, shared ) {
                 bullet.fire();
                 bullCount += 1;
             }
-
+            if ( checkOverlap(elephant, poacher) ) {
+                gameFail();
+            }
+            game.physics.arcade.collide(elephant, poacher, gameFail, null, this);
             // game.physics.arcade.overlap(bullet, poacher, killPoacher, null, this);
             // game.physics.arcade.overlap(elephant, poacher, gameFail, null, this);
         }
