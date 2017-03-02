@@ -70,15 +70,15 @@ GameStates.makeGame = function( game, shared ) {
             cursors = game.input.keyboard.createCursorKeys();
             trigger = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
 
-            //spawnPoacher();
+            spawnPoacher();
 
         },
 
 
         spawnPoacher: function () {
-            poacher = game.add.sprite.(700, game.world.randomY%300 + 300, 'poacher');
-            //poacher.anchor.setTo(0.5, 0.5);
-            // game.add.tween(poacher).to({ x: 40 }, { y: 490}, 100, Phaser.Easing.Linear.None, true);
+            poacher = game.add.sprite(900, (game.world.randomY%300 + 300), 'poacher');
+            poacher.anchor.setTo(0.5, 0.5);
+            game.add.tween(poacher).to({ x: 40 }, { y: 490}, 100, Phaser.Easing.Linear.None, true);
         },
 
         gameFail: function () {
