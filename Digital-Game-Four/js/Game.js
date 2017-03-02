@@ -60,6 +60,7 @@ GameStates.makeGame = function( game, shared ) {
     var poacher;
     var kills = 0;
     var speed = 3000;
+    var music;
 
     return {
     
@@ -106,8 +107,8 @@ GameStates.makeGame = function( game, shared ) {
 
             cursors = game.input.keyboard.createCursorKeys();
             trigger = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
-
-            game.time.events.loop(4000, spawnPoacher);
+            kills = 0;
+            game.time.events.loop(3000, spawnPoacher);
 
         },
     
@@ -126,6 +127,9 @@ GameStates.makeGame = function( game, shared ) {
             }
             if (trigger.isDown) {
                 weapon.fire();
+            }
+            if (kills <= 5) {
+                speed = 3000;
             }
             if (kills > 5 && kills <= 10) {
                 speed = 2500;
