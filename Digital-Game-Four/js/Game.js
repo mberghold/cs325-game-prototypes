@@ -23,53 +23,43 @@ GameStates.makeGame = function( game, shared ) {
         //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
 
         //  Then let's go back to the main menu.
-        player.destroy();
-        gunArm.destroy();
-        gameBack.destroy();
-        elephant.destroy();
-        poacher.destroy();
-        jaguar.destroy();
-
         game.state.start('MainMenu');
 
     } 
 
     function spawnPoacher() {
-        poacher = game.add.sprite(700, (game.world.randomY%250 + 300), 'poacher');
+        poacher = game.add.sprite(900, (game.world.randomY%250 + 300), 'poacher');
         poacher.anchor.setTo(0.5, 0.5);
         game.add.tween(poacher).to({x: 100, y: 500}, 3000, Phaser.Easing.Linear.None, true);
         game.physics.arcade.enable(poacher);
         poacher.enableBody = true;
         poacher.physicsBodyType = Phaser.Physics.ARCADE;
     }
-
-    function killPoacher() {
-        poacher.destroy();
+    
+    var poacher;
+    
+    function killPoacher(poachers, bullets) {
+        spawnPoacher();
+        poachers.destroy();
     }
 
-    var button1
-
     function gameWin () {
-        bullet.destroy();
-        button1 = game.add.sprite(game.world.centerX, game.world.centerY, 'winButt');
-        button1.inputEnabled = true;
-        button1.events.onInputDown.add( function() { quitGame(); }, this );
+        var button1 = game.add.button(game.world.centerX, game.world.centerY, 'winButt', quitWonGame);
     }
 
     function gameFail () {
-        bullet.destroy();
-        var button = game.add.button(game.world.centerX, game.world.centerY, 'loseButt', quitLostGame);
+        var button2 = game.add.button(game.world.centerX, game.world.centerY, 'loseButt', quitLostGame);
     }
 
 
-    
-    var bullet;
+
     var gunArm;
     var cursors;
     var trigger;
     var bullCount = 0;
     var gameBack
     var elephant
+    var weapon;
     var poacher;
 
     return {
@@ -98,19 +88,19 @@ GameStates.makeGame = function( game, shared ) {
             var body = game.add.sprite(45, 350, 'player');
 
 
-            bullet = game.add.weapon(30, 'bullet');
-            game.physics.arcade.enable(bullet);
-            bullet.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
-            bullet.bulletSpeed = 400;
-            bullet.fireRate = 200;
-            game.physics.arcade.enable(bullet);
-            bullet.physicsBodyType = Phaser.Physics.ARCADE;
+            weapon = game.add.weapon(30, 'bullet');
+            // game.physics.arcade.enable(bullet);
+            weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
+            weapon.bulletSpeed = 400;
+            weapon.fireRate = 200;
+            // bullet.enableBody = true;
+            // bullet.physicsBodyType = Phaser.Physics.ARCADE;
 
             gunArm = game.add.sprite(72, 373, 'gunArm');
             gunArm.anchor.set(0.1, 0.4);
             game.physics.arcade.enable(gunArm);
 
-            bullet.trackSprite(gunArm, 0, 0, true);
+            weapon.trackSprite(gunArm, 0, 0, true);
 
             cursors = game.input.keyboard.createCursorKeys();
             trigger = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
@@ -133,11 +123,11 @@ GameStates.makeGame = function( game, shared ) {
                 gunArm.body.angularVelocity = 0;
             }
             if (trigger.isDown) {
-                bullet.fire();
+                weapon.fire();
                 bullCount += 1;
             }
             game.physics.arcade.overlap(elephant, poacher, gameFail, null, this);
-            game.physics.arcade.overlap(bullet, poacher, killPoacher, null, this);
+            game.physics.arcade.overlap(weapon.bullets, poacher, killPoacher, null, this);
         }
     };  
 };
