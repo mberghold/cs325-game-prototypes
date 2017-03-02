@@ -74,13 +74,13 @@ GameStates.makeGame = function( game, shared ) {
 
         },
 
-        /*
+
         spawnPoacher: function () {
-            poacher = game.add.sprite.(900, game.world.randomY%300 + 300, 'poacher');
-            poacher.anchor.setTo(0.5, 0.5);
+            poacher = game.add.sprite.(700, game.world.randomY%300 + 300, 'poacher');
+            //poacher.anchor.setTo(0.5, 0.5);
             // game.add.tween(poacher).to({ x: 40 }, { y: 490}, 100, Phaser.Easing.Linear.None, true);
         },
-        */
+
         gameFail: function () {
             bullet.destroy();
             var button = game.add.button(game.world.centerX, game.world.centerY, 'loseButt', quitLostGame);
