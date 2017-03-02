@@ -27,9 +27,14 @@ GameStates.makePreloader = function( game ) {
             game.load.image('playButton', 'assets/MenuPlay.png');
             game.load.audio('menuMusic', ['assets/Undertale OST - Spider Dance Menu Music.mp3']);
             game.load.image('gameBack', 'assets/GameBack.png');
-            game.load.spritesheet('elephSheet', 'assets/ElephantSpriteSheet.png', 119, 69, 16);
-            //	+ lots of other required assets here
-            // game.load.image( 'logo', 'assets/phaser.png' );
+            game.load.spritesheet('elephSheet', 'assets/ElephantSpriteSheet.png', 120, 70, 32);
+            game.load.spritesheet('jagSheet', 'assets/JaguarSpriteSheet.png', 80, 50, 6);
+            game.load.image('player', 'assets/Player.png');
+            game.load.image('gunArm', 'assets/GunArm.png');
+            game.load.image('bullet', 'assets/Bullet.png');
+            game.load.image('poacher', 'assets/Poacher.png');
+            game.load.image('winButt', 'assets/VictoryButton.png');
+            game.load.image('loseButt', 'assets/DefeatButton.png');
         },
     
         create: function () {
