@@ -17,15 +17,43 @@ GameStates.makeGame = function( game, shared ) {
 
     }
 
+    function quitLostGame() {
+
+        //  Here you should destroy anything you no longer need.
+        //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
+
+        //  Then let's go back to the main menu.
+        player.destroy();
+        gunArm.destroy();
+        gameBack.destroy();
+        elephant.destroy();
+        poacher.destroy();
+        jaguar.destroy();
+
+        game.state.start('MainMenu');
+
+    } 
+
     function spawnPoacher() {
         poacher = game.add.sprite(700, (game.world.randomY%250 + 300), 'poacher');
         poacher.anchor.setTo(0.5, 0.5);
-        game.add.tween(poacher).to({x: 100, y: 500}, 1500, Phaser.Easing.Linear.None, true);
+        game.add.tween(poacher).to({x: 100, y: 500}, 3000, Phaser.Easing.Linear.None, true);
+        game.physics.arcade.enable(poacher);
+        poacher.enableBody = true;
+        poacher.physicsBodyType = Phaser.Physics.ARCADE;
     }
+
+    function killPoacher() {
+        poacher.destroy();
+    }
+
+    var button1
 
     function gameWin () {
         bullet.destroy();
-        var button1 = game.add.button(game.world.centerX, game.world.centerY, 'winButt', quitWonGame);
+        button1 = game.add.sprite(game.world.centerX, game.world.centerY, 'winButt');
+        button1.inputEnabled = true;
+        button1.events.onInputDown.add( function() { quitGame(); }, this );
     }
 
     function gameFail () {
@@ -33,15 +61,7 @@ GameStates.makeGame = function( game, shared ) {
         var button = game.add.button(game.world.centerX, game.world.centerY, 'loseButt', quitLostGame);
     }
 
-    function quitLostGame() {
 
-        //  Here you should destroy anything you no longer need.
-        //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
-
-        //  Then let's go back to the main menu.
-        game.state.start('MainMenu');
-
-    } 
     
     var bullet;
     var gunArm;
@@ -62,12 +82,14 @@ GameStates.makeGame = function( game, shared ) {
             // bouncy.inputEnabled = true;
             // bouncy.events.onInputDown.add( function() { quitGame(); }, this );
             game.physics.startSystem(Phaser.Physics.ARCADE);
-            game.physics.enable( [ bullet, elephant, poacher ], Phaser.Physics.ARCADE);
             gameBack = game.add.image(0, 0, 'gameBack');
 
             elephant = game.add.sprite(26, 483, 'elephSheet');
             var drink = elephant.animations.add('drink');
             elephant.animations.play('drink', 6, true);
+            game.physics.arcade.enable(elephant);
+            elephant.enableBody = true;
+            elephant.physicsBodyType = Phaser.Physics.ARCADE;
 
             var jaguar = game.add.sprite(45, 300, 'jagSheet');
             var tail = jaguar.animations.add('tail');
@@ -81,6 +103,8 @@ GameStates.makeGame = function( game, shared ) {
             bullet.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
             bullet.bulletSpeed = 400;
             bullet.fireRate = 200;
+            game.physics.arcade.enable(bullet);
+            bullet.physicsBodyType = Phaser.Physics.ARCADE;
 
             gunArm = game.add.sprite(72, 373, 'gunArm');
             gunArm.anchor.set(0.1, 0.4);
@@ -112,12 +136,8 @@ GameStates.makeGame = function( game, shared ) {
                 bullet.fire();
                 bullCount += 1;
             }
-            if ( checkOverlap(elephant, poacher) ) {
-                gameFail();
-            }
-            game.physics.arcade.collide(elephant, poacher, gameFail, null, this);
-            // game.physics.arcade.overlap(bullet, poacher, killPoacher, null, this);
-            // game.physics.arcade.overlap(elephant, poacher, gameFail, null, this);
+            game.physics.arcade.overlap(elephant, poacher, gameFail, null, this);
+            game.physics.arcade.overlap(bullet, poacher, killPoacher, null, this);
         }
     };  
 };
