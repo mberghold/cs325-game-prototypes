@@ -35,6 +35,7 @@ GameStates.makePreloader = function( game ) {
             game.load.image('poacher', 'assets/Poacher.png');
             game.load.image('winButt', 'assets/VictoryButton.png');
             game.load.image('loseButt', 'assets/DefeatButton.png');
+            game.load.audio('gameMusic', ['assets/Benny Hill Theme.mp3']);
         },
     
         create: function () {

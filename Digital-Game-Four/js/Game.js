@@ -10,9 +10,8 @@ GameStates.makeGame = function( game, shared ) {
         //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
 
         //  Then let's go back to the main menu.
-        if (bullCount < shared[0] || shared[0] === 0) {
-            shared[0] = bullCount;
-        }
+        music.stop();
+        shared[0] += 1;
         game.state.start('MainMenu');
 
     }
@@ -23,6 +22,7 @@ GameStates.makeGame = function( game, shared ) {
         //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
 
         //  Then let's go back to the main menu.
+        music.stop();
         game.state.start('MainMenu');
 
     } 
@@ -30,16 +30,14 @@ GameStates.makeGame = function( game, shared ) {
     function spawnPoacher() {
         poacher = game.add.sprite(900, (game.world.randomY%250 + 300), 'poacher');
         poacher.anchor.setTo(0.5, 0.5);
-        game.add.tween(poacher).to({x: 100, y: 500}, 3000, Phaser.Easing.Linear.None, true);
+        game.add.tween(poacher).to({x: 100, y: 500}, speed, Phaser.Easing.Linear.None, true);
         game.physics.arcade.enable(poacher);
         poacher.enableBody = true;
         poacher.physicsBodyType = Phaser.Physics.ARCADE;
     }
     
-    var poacher;
-    
     function killPoacher(poachers, bullets) {
-        spawnPoacher();
+        kills += 1;
         poachers.destroy();
     }
 
@@ -56,11 +54,12 @@ GameStates.makeGame = function( game, shared ) {
     var gunArm;
     var cursors;
     var trigger;
-    var bullCount = 0;
     var gameBack
     var elephant
     var weapon;
     var poacher;
+    var kills = 0;
+    var speed = 3000;
 
     return {
     
@@ -71,6 +70,9 @@ GameStates.makeGame = function( game, shared ) {
             // When you click on the sprite, you go back to the MainMenu.
             // bouncy.inputEnabled = true;
             // bouncy.events.onInputDown.add( function() { quitGame(); }, this );
+            music = game.add.audio('gameMusic');
+            music.play();
+
             game.physics.startSystem(Phaser.Physics.ARCADE);
             gameBack = game.add.image(0, 0, 'gameBack');
 
@@ -88,10 +90,10 @@ GameStates.makeGame = function( game, shared ) {
             var body = game.add.sprite(45, 350, 'player');
 
 
-            weapon = game.add.weapon(30, 'bullet');
+            weapon = game.add.weapon(1, 'bullet');
             // game.physics.arcade.enable(bullet);
             weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
-            weapon.bulletSpeed = 400;
+            weapon.bulletSpeed = 800;
             weapon.fireRate = 200;
             // bullet.enableBody = true;
             // bullet.physicsBodyType = Phaser.Physics.ARCADE;
@@ -105,7 +107,7 @@ GameStates.makeGame = function( game, shared ) {
             cursors = game.input.keyboard.createCursorKeys();
             trigger = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
 
-            spawnPoacher();
+            game.time.events.loop(4000, spawnPoacher);
 
         },
     
@@ -124,10 +126,24 @@ GameStates.makeGame = function( game, shared ) {
             }
             if (trigger.isDown) {
                 weapon.fire();
-                bullCount += 1;
             }
-            game.physics.arcade.overlap(elephant, poacher, gameFail, null, this);
-            game.physics.arcade.overlap(weapon.bullets, poacher, killPoacher, null, this);
+            if (kills > 5 && kills <= 10) {
+                speed = 2500;
+            }
+            if (kills > 10 && kills <= 15) {
+                speed = 2000;
+            }
+            if (kills > 15 && kills <= 20) {
+                speed = 1500;
+            }
+            if (kills > 20 && kills <= 25) {
+                speed = 1000;
+            }
+            game.physics.arcade.overlap(elephant, poacher, gameFail);
+            game.physics.arcade.overlap(weapon.bullets, poacher, killPoacher);
+            if (kills >= 25) {
+                gameWin();
+            }
         }
     };  
 };
