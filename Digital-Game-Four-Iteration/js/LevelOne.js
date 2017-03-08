@@ -12,7 +12,7 @@ GameStates.makeGame = function( game, shared ) {
         //  Then let's go back to the main menu.
         music.stop();
         shared[0] += 1;
-        game.state.start('Level2');
+        game.state.start('LevelTwo');
 
     }
 
