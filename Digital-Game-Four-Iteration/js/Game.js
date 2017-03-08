@@ -1,6 +1,6 @@
 "use strict";
 
-GameStates.makeLevelOne = function( game, shared ) {
+GameStates.makeGame = function( game, shared ) {
     // Create your own variables.
     // var bouncy = null;
     
@@ -12,7 +12,7 @@ GameStates.makeLevelOne = function( game, shared ) {
         //  Then let's go back to the main menu.
         music.stop();
         shared[0] += 1;
-        game.state.start('LevelTwo');
+        game.state.start('MainMenu');
 
     }
 
