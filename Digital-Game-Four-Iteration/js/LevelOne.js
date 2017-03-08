@@ -1,6 +1,6 @@
 "use strict";
 
-GameStates.makeGame = function( game, shared ) {
+GameStates.makeLevelOne = function( game, shared ) {
     // Create your own variables.
     // var bouncy = null;
     
