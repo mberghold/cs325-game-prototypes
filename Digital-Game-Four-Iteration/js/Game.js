@@ -84,11 +84,11 @@ GameStates.makeGame = function( game, shared ) {
             elephant.enableBody = true;
             elephant.physicsBodyType = Phaser.Physics.ARCADE;
 
-            var jaguar = game.add.sprite(45, 300, 'jagSheet');
+            var jaguar = game.add.sprite(25, 300, 'jagSheet');
             var tail = jaguar.animations.add('tail');
             jaguar.animations.play('tail', 4, true);
 
-            var zebra = game.add.sprite(5, 290, 'zebraSheet');
+            var zebra = game.add.sprite(75, 290, 'zebraSheet');
             var munch = zebra.animations.add('munch');
             zebra.animations.play('munch', 6, true);
 
