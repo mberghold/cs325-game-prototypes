@@ -9,7 +9,8 @@ GameStates.makeMainMenu = function( game, shared ) {
     function startOne(pointer) {
 
         //	Ok, the Play Button has been clicked or touched, so let's stop the music (otherwise it'll carry on playing)
-        if(musicOn) {
+        if(shared[4]) {
+            shared[4] = false;
             music.stop();
         }       
 
@@ -19,24 +20,30 @@ GameStates.makeMainMenu = function( game, shared ) {
     }
 
     function startTwo(pointer) {
-        music.stop();
-        game.state.start('LevelTwo');
-    }
-
-    function startTwo(pointer) {
-        if(musicOn) {
+        if(shared[4]) {
            music.stop(); 
         }
         game.state.start('LevelTwo');
     }
 
     function startTwo(pointer) {
-        music.stop();
+        if(shared[4]) {
+           music.stop(); 
+        }
+        game.state.start('LevelTwo');
+    }
+
+    function startTwo(pointer) {
+        if(shared[4]) {
+           music.stop(); 
+        }
         game.state.start('LevelThree');
     }
 
     function startTwo(pointer) {
-        music.stop();
+        if(shared[4]) {
+           music.stop(); 
+        }
         game.state.start('BonusLevel');
     }
     

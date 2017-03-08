@@ -13,10 +13,10 @@ window.onload = function() {
 	// the high score if you want.
 	var shared = {};
 	shared[0] = 0;
-	var oneDone = false;
-	var twoDone = false;
-	var threeDone = false;
-	var musicOn = true;
+	shared[1] = false;
+	shared[2] = false;
+	shared[3] = false;
+	shared[4]= true;
 	
 	game.state.add( 'Boot', GameStates.makeBoot( game ) );
 	game.state.add( 'Preloader', GameStates.makePreloader( game ) );
