@@ -8,7 +8,7 @@ GameStates.makeGame = function( game, shared ) {
 
         //  Here you should destroy anything you no longer need.
         //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
-
+        // 
         //  Then let's go back to the main menu.
         music.stop();
         shared[0] += 1;
@@ -133,23 +133,14 @@ GameStates.makeGame = function( game, shared ) {
                 weapon.fire();
             }
             if (kills <= 5) {
-                speed = 3000;
-            }
-            if (kills > 5 && kills <= 10) {
-                speed = 2500;
-            }
-            if (kills > 10 && kills <= 15) {
                 speed = 2000;
             }
-            if (kills > 15 && kills <= 20) {
+            if (kills > 5 && kills <= 10) {
                 speed = 1500;
-            }
-            if (kills > 20 && kills <= 25) {
-                speed = 1000;
             }
             game.physics.arcade.overlap(elephant, poacher, gameFail);
             game.physics.arcade.overlap(weapon.bullets, poacher, killPoacher);
-            if (kills >= 25) {
+            if (kills >= 10) {
                 gameWin();
             }
         }
