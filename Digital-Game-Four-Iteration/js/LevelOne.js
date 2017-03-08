@@ -10,8 +10,10 @@ GameStates.makeLevelOne = function( game, shared ) {
         //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
 
         //  Then let's go back to the main menu.
-        music.stop();
-        shared[0] += 1;
+        if(musicOn) {
+            music.stop();
+        }
+        oneDone = true;
         game.state.start('LevelTwo');
 
     }
@@ -22,7 +24,9 @@ GameStates.makeLevelOne = function( game, shared ) {
         //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
 
         //  Then let's go back to the main menu.
-        music.stop();
+        if(musicOn) {
+            music.stop();
+        }
         game.state.start('MainMenu');
 
     } 
@@ -51,7 +55,15 @@ GameStates.makeLevelOne = function( game, shared ) {
         var button2 = game.add.button(game.world.centerX, game.world.centerY, 'loseButt', quitLostGame);
     }
 
-
+    function toggleMusic() {
+        if(musicOn) {
+            music.stop();
+        }
+        else {
+            music.play();
+        }
+            
+    }
 
     var gunArm;
     var cursors;
@@ -72,7 +84,11 @@ GameStates.makeLevelOne = function( game, shared ) {
             //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
             music = game.add.audio('gameMusic');
-            music.play();
+            if(musicOn) {
+               music.play();
+            }
+            key1 = game.input.keyboard.addKey(Phaser.Keyboard.M);
+            key1.onDown.add(toggleMusic);
 
             game.physics.startSystem(Phaser.Physics.ARCADE);
             gameBack = game.add.image(0, 0, 'gameBack');

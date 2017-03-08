@@ -13,12 +13,19 @@ window.onload = function() {
 	// the high score if you want.
 	var shared = {};
 	shared[0] = 0;
+	var oneDone = false;
+	var twoDone = false;
+	var threeDone = false;
+	var key1;
+	var musicOn = true;
 	
 	game.state.add( 'Boot', GameStates.makeBoot( game ) );
 	game.state.add( 'Preloader', GameStates.makePreloader( game ) );
 	game.state.add( 'MainMenu', GameStates.makeMainMenu( game, shared ) );
 	game.state.add( 'LevelOne', GameStates.makeLevelOne( game, shared ) );
 	game.state.add( 'LevelTwo', GameStates.makeLevelTwo( game, shared ) );
+	game.state.add( 'LevelThree', GameStates.makeLevelThree( game, shared ) );
+	game.state.add( 'BonusLevel', GameStates.makeBonusLevel( game, shared ) );
 
 	//	Now start the Boot state.
 	game.state.start('Boot');
