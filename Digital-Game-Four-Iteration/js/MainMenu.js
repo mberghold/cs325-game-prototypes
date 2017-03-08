@@ -11,7 +11,7 @@ GameStates.makeMainMenu = function( game, shared ) {
         music.stop();
 
         //	And start the actual game
-        game.state.start('Level1');
+        game.state.start('LevelOne');
 
     }
     
