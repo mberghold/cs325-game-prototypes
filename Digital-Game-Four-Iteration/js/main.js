@@ -16,7 +16,6 @@ window.onload = function() {
 	var oneDone = false;
 	var twoDone = false;
 	var threeDone = false;
-	var key1;
 	var musicOn = true;
 	
 	game.state.add( 'Boot', GameStates.makeBoot( game ) );

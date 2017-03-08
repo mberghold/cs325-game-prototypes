@@ -76,6 +76,7 @@ GameStates.makeLevelOne = function( game, shared ) {
     var speed = 3000;
     var music;
     var spawnLoop;
+    var key1;
 
     return {
     
