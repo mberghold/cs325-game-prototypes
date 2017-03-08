@@ -42,10 +42,12 @@ GameStates.makeGame = function( game, shared ) {
     }
 
     function gameWin () {
+        game.time.events.remove(spawnLoop);
         var button1 = game.add.button(game.world.centerX, game.world.centerY, 'winButt', quitWonGame);
     }
 
     function gameFail () {
+        game.time.events.remove(spawnLoop);
         var button2 = game.add.button(game.world.centerX, game.world.centerY, 'loseButt', quitLostGame);
     }
 
@@ -61,6 +63,7 @@ GameStates.makeGame = function( game, shared ) {
     var kills = 0;
     var speed = 3000;
     var music;
+    var spawnLoop;
 
     return {
     
@@ -68,9 +71,6 @@ GameStates.makeGame = function( game, shared ) {
     
             //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
-            // When you click on the sprite, you go back to the MainMenu.
-            // bouncy.inputEnabled = true;
-            // bouncy.events.onInputDown.add( function() { quitGame(); }, this );
             music = game.add.audio('gameMusic');
             music.play();
 
@@ -112,7 +112,7 @@ GameStates.makeGame = function( game, shared ) {
             cursors = game.input.keyboard.createCursorKeys();
             trigger = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
             kills = 0;
-            game.time.events.loop(3000, spawnPoacher);
+            spawnLoop = game.time.events.loop(3000, spawnPoacher);
 
         },
     
