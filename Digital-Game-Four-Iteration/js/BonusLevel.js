@@ -32,6 +32,7 @@ GameStates.makeBonusLevel = function( game, shared ) {
     }
 
     function gameFail () {
+        weapon.destroy();
         var button2 = game.add.button(game.world.centerX, game.world.centerY, 'loseButt', quitLostGame);
     }
 
@@ -99,7 +100,7 @@ GameStates.makeBonusLevel = function( game, shared ) {
             weapon = game.add.weapon(1, 'bullet');
             // game.physics.arcade.enable(bullet);
             weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
-            weapon.bulletSpeed = 800;
+            weapon.bulletSpeed = 400;
             weapon.fireRate = 200;
             // bullet.enableBody = true;
             // bullet.physicsBodyType = Phaser.Physics.ARCADE;
