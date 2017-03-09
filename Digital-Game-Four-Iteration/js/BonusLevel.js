@@ -29,7 +29,6 @@ GameStates.makeBonusLevel = function( game, shared ) {
     function killGorilla(gorillas, bullets) {
         kills += 1;
         gorillas.destroy();
-        bullets.destroy();
     }
 
     function gameFail () {
