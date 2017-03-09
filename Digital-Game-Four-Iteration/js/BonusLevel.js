@@ -75,6 +75,7 @@ GameStates.makeBonusLevel = function( game, shared ) {
     var speed = 3000;
     var music;
     var key1;
+    var body;
 
     return {
     
@@ -93,7 +94,7 @@ GameStates.makeBonusLevel = function( game, shared ) {
             gameBack = game.add.image(0, 0, 'bonusBack');
             game.add.sprite(0, 0, 'musicToggle');
 
-            var body = game.add.sprite(45, 350, 'player');
+            body = game.add.sprite(45, 350, 'player');
             game.physics.arcade.enable(body);
             body.enableBody = true;
             body.physicsBodyType = Phaser.Physics.ARCADE;
