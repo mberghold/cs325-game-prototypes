@@ -33,7 +33,6 @@ GameStates.makeBonusLevel = function( game, shared ) {
     }
 
     function gameFail () {
-        game.time.events.remove(spawnLoop);
         var button2 = game.add.button(game.world.centerX, game.world.centerY, 'loseButt', quitLostGame);
     }
 
