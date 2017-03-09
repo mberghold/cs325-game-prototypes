@@ -74,15 +74,15 @@ GameStates.makeMainMenu = function( game, shared ) {
             game.add.sprite(0, 0, 'menuBack');
             game.add.sprite(0, 0, 'musicToggle');
     
-            playButton1 = game.add.button( 400, 400, 'playLevelOne', startOne);
+            playButton1 = game.add.button( 350, 400, 'playLevelOne', startOne);
             if(shared[1]) {
-                playButton2 = game.add.button( 400, 450, 'playLevelTwo', startTwo);
+                playButton2 = game.add.button( 550, 400, 'playLevelTwo', startTwo);
             }
             if(shared[2]) {
-                playButton3 = game.add.button( 500, 400, 'playLevelThree', startThree);
+                playButton3 = game.add.button( 350, 450, 'playLevelThree', startThree);
             }
             if(shared[3]) {
-                playButton4 = game.add.button( 500, 450, 'playBonus', startBonus);
+                playButton4 = game.add.button( 550, 450, 'playBonus', startBonus);
             }
 
 

@@ -79,6 +79,8 @@ GameStates.makeLevelOne = function( game, shared ) {
     var music;
     var spawnLoop;
     var key1;
+    var style;
+    var text;
 
     return {
     
@@ -96,6 +98,9 @@ GameStates.makeLevelOne = function( game, shared ) {
             game.physics.startSystem(Phaser.Physics.ARCADE);
             gameBack = game.add.image(0, 0, 'gameBack');
             game.add.sprite(0, 0, 'musicToggle');
+
+            style = { font: "20px Verdana", fill: "#FFFFFF", align: "center" };
+            text = game.add.text( 475, 10, "Kills: " + kills, style);
 
             elephant = game.add.sprite(26, 483, 'elephSheet');
             var drink = elephant.animations.add('drink');
@@ -139,6 +144,8 @@ GameStates.makeLevelOne = function( game, shared ) {
         update: function () {
     
             //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
+
+            text.text = "Kills: " + kills;
 
             if (cursors.up.isDown && (gunArm.angle > -30) ) {
                 gunArm.body.angularVelocity = -50;
