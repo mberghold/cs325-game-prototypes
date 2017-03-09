@@ -3,19 +3,6 @@
 GameStates.makeBonusLevel = function( game, shared ) {
     // Create your own variables.
     // var bouncy = null;
-    
-    function quitLostGame() {
-
-        //  Here you should destroy anything you no longer need.
-        //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
-
-        //  Then let's go back to the main menu.
-        if(shared[4]) {
-            music.stop();
-        }
-        game.state.start('MainMenu');
-
-    } 
 
     function spawnGorilla() {
         gorilla = game.add.sprite(900, (game.world.randomY%250 + 300), 'gorilla');
@@ -32,8 +19,10 @@ GameStates.makeBonusLevel = function( game, shared ) {
     }
 
     function gameFail () {
-        weapon.destroy();
-        var button2 = game.add.button(game.world.centerX, game.world.centerY, 'loseButt', quitLostGame);
+        if(shared[4]) {
+            music.stop();
+        }
+        game.state.start('MainMenu');
     }
 
     function toggleMusic() {
