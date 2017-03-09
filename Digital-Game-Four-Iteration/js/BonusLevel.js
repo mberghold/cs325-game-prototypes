@@ -145,7 +145,7 @@ GameStates.makeBonusLevel = function( game, shared ) {
 
             if (kills >= killCheck) {
                 killCheck += 1;
-                speed = speed/1.2;
+                speed = speed/1.1;
                 spawnGorilla();
             }
 
