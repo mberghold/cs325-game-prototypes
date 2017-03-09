@@ -101,7 +101,7 @@ GameStates.makeLevelTwo = function( game, shared ) {
             game.add.sprite(0, 0, 'musicToggle');
 
             style = { font: "20px Verdana", fill: "#FFFFFF", align: "center" };
-            text = game.add.text( 475, 10, "Kills: " + kills, style);
+            text = game.add.text( 475, 10, "Level 2 || Kills: " + kills, style);
 
             elephant = game.add.sprite(26, 483, 'elephSheet');
             var drink = elephant.animations.add('drink');
@@ -146,7 +146,7 @@ GameStates.makeLevelTwo = function( game, shared ) {
     
             //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
-            text.text = "Kills: " + kills;
+            text.text = "Level 2 || Kills: " + kills;
 
             if (cursors.up.isDown && (gunArm.angle > -30) ) {
                 gunArm.body.angularVelocity = -50;

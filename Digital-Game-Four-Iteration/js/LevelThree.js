@@ -102,7 +102,7 @@ GameStates.makeLevelThree = function( game, shared ) {
             game.add.sprite(0, 0, 'musicToggle');
 
             style = { font: "20px Verdana", fill: "#FFFFFF", align: "center" };
-            text = game.add.text( 475, 10, "Kills: " + kills, style);
+            text = game.add.text( 475, 10, "Level 3 || Kills: " + kills, style);
 
             elephant = game.add.sprite(26, 483, 'elephSheet');
             var drink = elephant.animations.add('drink');
@@ -147,7 +147,7 @@ GameStates.makeLevelThree = function( game, shared ) {
     
             //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
-            text.text = "Kills: " + kills;
+            text.text = "Level 3 || Kills: " + kills;
 
             if (cursors.up.isDown && (gunArm.angle > -30) ) {
                 gunArm.body.angularVelocity = -50;
@@ -164,12 +164,9 @@ GameStates.makeLevelThree = function( game, shared ) {
             if (kills <= 5) {
                 speed = 1000;
             }
-            if (kills > 5 && kills <= 10) {
-                speed = 500;
-            }
             game.physics.arcade.overlap(elephant, poacher, gameFail);
             game.physics.arcade.overlap(weapon.bullets, poacher, killPoacher);
-            if (kills >= 10) {
+            if (kills >= 5) {
                 gameWin();
             }
         }
