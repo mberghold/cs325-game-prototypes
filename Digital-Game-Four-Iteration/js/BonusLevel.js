@@ -20,7 +20,7 @@ GameStates.makeBonusLevel = function( game, shared ) {
     function spawnGorilla() {
         gorilla = game.add.sprite(900, (game.world.randomY%250 + 300), 'gorilla');
         gorilla.anchor.setTo(0.5, 0.5);
-        game.add.tween(gorilla).to({x: 45, y: 355}, speed, Phaser.Easing.Linear.None, true);
+        game.add.tween(gorilla).to({x: 65, y: 375}, speed, Phaser.Easing.Linear.None, true);
         game.physics.arcade.enable(gorilla);
         gorilla.enableBody = true;
         gorilla.physicsBodyType = Phaser.Physics.ARCADE;
