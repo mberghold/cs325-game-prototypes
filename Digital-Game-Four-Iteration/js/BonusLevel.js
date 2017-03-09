@@ -52,7 +52,7 @@ GameStates.makeBonusLevel = function( game, shared ) {
     function startAnimation() {
         var intimidate = startGorilla.animations.add('intimidate');
         startGorilla.animations.play('intimidate', 8, false);
-        intimidate.onComplete(walkBack);
+        intimidate.onComplete.add(walkBack, this);
 
     }
 
