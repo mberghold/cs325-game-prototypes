@@ -58,7 +58,7 @@ GameStates.makeBonusLevel = function( game, shared ) {
 
     function walkBack() {
         var tween2 = game.add.tween(startGorilla).to({x: 900, y: 350}, 3500, Phaser.Easing.Linear.None, true);
-        tween2.onCompleteCallback(spawnGorilla);
+        tween2.onComplete.add(spawnGorilla, this);
     }
 
 
@@ -118,7 +118,7 @@ GameStates.makeBonusLevel = function( game, shared ) {
 
             startGorilla = game.add.sprite(900, 350, 'gorSheet');
             var tween1 = game.add.tween(startGorilla).to({x: 600, y: 350}, 3500, Phaser.Easing.Linear.None, true);
-            tween1.onCompleteCallback(startAnimation);
+            tween1.onComplete.add(startAnimation, this);
 
 
         },
