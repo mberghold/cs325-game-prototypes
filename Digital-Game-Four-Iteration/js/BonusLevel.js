@@ -95,6 +95,7 @@ GameStates.makeBonusLevel = function( game, shared ) {
 
             game.physics.startSystem(Phaser.Physics.ARCADE);
             gameBack = game.add.image(0, 0, 'gameBack');
+            game.add.sprite(0, 0, 'musicToggle');
 
             elephant = game.add.sprite(26, 483, 'elephSheet');
             var drink = elephant.animations.add('drink');
@@ -107,7 +108,7 @@ GameStates.makeBonusLevel = function( game, shared ) {
             var tail = jaguar.animations.add('tail');
             jaguar.animations.play('tail', 4, true);
 
-            var zebra = game.add.sprite(75, 290, 'zebraSheet');
+            var zebra = game.add.sprite(125, 290, 'zebraSheet');
             var munch = zebra.animations.add('munch');
             zebra.animations.play('munch', 6, true);
 

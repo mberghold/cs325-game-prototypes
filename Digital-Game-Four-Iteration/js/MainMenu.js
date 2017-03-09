@@ -13,7 +13,6 @@ GameStates.makeMainMenu = function( game, shared ) {
 
         //	Ok, the Play Button has been clicked or touched, so let's stop the music (otherwise it'll carry on playing)
         if(shared[4]) {
-            shared[4] = false;
             music.stop();
         }       
 
@@ -29,21 +28,14 @@ GameStates.makeMainMenu = function( game, shared ) {
         game.state.start('LevelTwo');
     }
 
-    function startTwo(pointer) {
-        if(shared[4]) {
-           music.stop(); 
-        }
-        game.state.start('LevelTwo');
-    }
-
-    function startTwo(pointer) {
+    function startThree(pointer) {
         if(shared[4]) {
            music.stop(); 
         }
         game.state.start('LevelThree');
     }
 
-    function startTwo(pointer) {
+    function startBonus(pointer) {
         if(shared[4]) {
            music.stop(); 
         }
@@ -80,6 +72,7 @@ GameStates.makeMainMenu = function( game, shared ) {
             key1.onDown.add(toggleMusic);
 
             game.add.sprite(0, 0, 'menuBack');
+            game.add.sprite(0, 0, 'musicToggle');
     
             playButton1 = game.add.button( 400, 400, 'playLevelOne', startOne);
             if(shared[1]) {

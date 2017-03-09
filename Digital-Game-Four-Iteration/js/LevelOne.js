@@ -95,6 +95,7 @@ GameStates.makeLevelOne = function( game, shared ) {
 
             game.physics.startSystem(Phaser.Physics.ARCADE);
             gameBack = game.add.image(0, 0, 'gameBack');
+            game.add.sprite(0, 0, 'musicToggle');
 
             elephant = game.add.sprite(26, 483, 'elephSheet');
             var drink = elephant.animations.add('drink');
