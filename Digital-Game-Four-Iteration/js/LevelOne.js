@@ -159,10 +159,10 @@ GameStates.makeLevelOne = function( game, shared ) {
             if (trigger.isDown) {
                 weapon.fire();
             }
-            if (kills <= 5) {
+            if (kills <= 4) {
                 speed = 3000;
             }
-            if (kills > 5 && kills <= 10) {
+            if (kills > 4 && kills <= 9) {
                 speed = 2500;
             }
             game.physics.arcade.overlap(elephant, poacher, gameFail);

@@ -41,6 +41,10 @@ GameStates.makePreloader = function( game ) {
             game.load.image('winButt', 'assets/VictoryButton.png');
             game.load.image('loseButt', 'assets/DefeatButton.png');
             game.load.audio('gameMusic', ['assets/Benny Hill Theme.mp3']);
+            game.load.image('bonusBack', 'assets/BonusBack.png');
+            game.load.image('gorilla', 'assets/GorillaSprite.png');
+            game.load.spritesheet('gorSheet', 'assets/GorillaSpriteSheet.png', 80, 90, 12);
+            game.load.audio('bonusMusic', ['assets/GorillaTheme.mp3']);
         },
     
         create: function () {

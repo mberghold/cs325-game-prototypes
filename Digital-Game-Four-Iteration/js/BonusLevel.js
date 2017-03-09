@@ -4,19 +4,6 @@ GameStates.makeBonusLevel = function( game, shared ) {
     // Create your own variables.
     // var bouncy = null;
     
-    function quitWonGame() {
-
-        //  Here you should destroy anything you no longer need.
-        //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
-        // 
-        //  Then let's go back to the main menu.
-        if(shared[4]) {
-            music.stop();
-        }
-        game.state.start('MainMenu');
-
-    }
-
     function quitLostGame() {
 
         //  Here you should destroy anything you no longer need.
@@ -30,23 +17,19 @@ GameStates.makeBonusLevel = function( game, shared ) {
 
     } 
 
-    function spawnPoacher() {
-        poacher = game.add.sprite(900, (game.world.randomY%250 + 300), 'poacher');
+    function spawnGorilla() {
+        gorilla = game.add.sprite(900, (game.world.randomY%250 + 300), 'gorilla');
         poacher.anchor.setTo(0.5, 0.5);
-        game.add.tween(poacher).to({x: 100, y: 500}, speed, Phaser.Easing.Linear.None, true);
-        game.physics.arcade.enable(poacher);
-        poacher.enableBody = true;
-        poacher.physicsBodyType = Phaser.Physics.ARCADE;
+        game.add.tween(gorilla).to({x: 45, y: 355}, speed, Phaser.Easing.Linear.None, true);
+        game.physics.arcade.enable(gorilla);
+        gorilla.enableBody = true;
+        gorilla.physicsBodyType = Phaser.Physics.ARCADE;
     }
     
-    function killPoacher(poachers, bullets) {
+    function killGorilla(gorillas, bullets) {
         kills += 1;
-        poachers.destroy();
-    }
-
-    function gameWin () {
-        game.time.events.remove(spawnLoop);
-        var button1 = game.add.button(game.world.centerX, game.world.centerY, 'winButt', quitWonGame);
+        gorillas.destroy();
+        bullets.destroy();
     }
 
     function gameFail () {
@@ -66,6 +49,18 @@ GameStates.makeBonusLevel = function( game, shared ) {
             
     }
 
+    function startAnimation() {
+        var intimidate = elephant.animations.add('intimidate');
+        intimidate.animations.play('intimidate', 8, false);
+        intimidate.onComplete(walkBack);
+
+    }
+
+    function walkBack() {
+        var tween2 = game.add.tween(startGorilla).to({x: 900, y: 350}, 3500, Phaser.Easing.Linear.None, true);
+        tween2.onComplete(spawnGorilla);
+    }
+
 
     var gunArm;
     var cursors;
@@ -73,11 +68,12 @@ GameStates.makeBonusLevel = function( game, shared ) {
     var gameBack
     var elephant
     var weapon;
-    var poacher;
+    var gorilla;
+    var startGorilla;
     var kills = 0;
+    var killCheck = 1;
     var speed = 3000;
     var music;
-    var spawnLoop;
     var key1;
 
     return {
@@ -86,7 +82,7 @@ GameStates.makeBonusLevel = function( game, shared ) {
     
             //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
-            music = game.add.audio('gameMusic');
+            music = game.add.audio('bonusMusic');
             if(shared[4]) {
                music.play();
             }
@@ -94,26 +90,13 @@ GameStates.makeBonusLevel = function( game, shared ) {
             key1.onDown.add(toggleMusic);
 
             game.physics.startSystem(Phaser.Physics.ARCADE);
-            gameBack = game.add.image(0, 0, 'gameBack');
+            gameBack = game.add.image(0, 0, 'bonusBack');
             game.add.sprite(0, 0, 'musicToggle');
 
-            elephant = game.add.sprite(26, 483, 'elephSheet');
-            var drink = elephant.animations.add('drink');
-            elephant.animations.play('drink', 6, true);
-            game.physics.arcade.enable(elephant);
-            elephant.enableBody = true;
-            elephant.physicsBodyType = Phaser.Physics.ARCADE;
-
-            var jaguar = game.add.sprite(25, 300, 'jagSheet');
-            var tail = jaguar.animations.add('tail');
-            jaguar.animations.play('tail', 4, true);
-
-            var zebra = game.add.sprite(125, 290, 'zebraSheet');
-            var munch = zebra.animations.add('munch');
-            zebra.animations.play('munch', 6, true);
-
             var body = game.add.sprite(45, 350, 'player');
-
+            game.physics.arcade.enable(body);
+            body.enableBody = true;
+            body.physicsBodyType = Phaser.Physics.ARCADE;
 
             weapon = game.add.weapon(1, 'bullet');
             // game.physics.arcade.enable(bullet);
@@ -132,7 +115,11 @@ GameStates.makeBonusLevel = function( game, shared ) {
             cursors = game.input.keyboard.createCursorKeys();
             trigger = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
             kills = 0;
-            spawnLoop = game.time.events.loop(3000, spawnPoacher);
+
+            startGorilla = game.add.sprite(900, 350, 'gorSheet');
+            var tween1 = game.add.tween(startGorilla).to({x: 600, y: 350}, 3500, Phaser.Easing.Linear.None, true);
+            tween1.onComplete(startAnimation);
+
 
         },
     
@@ -152,17 +139,18 @@ GameStates.makeBonusLevel = function( game, shared ) {
             if (trigger.isDown) {
                 weapon.fire();
             }
-            if (kills <= 5) {
-                speed = 2000;
+
+
+            if (kills === killCheck) {
+                killCheck += 1;
+                speed = speed/1.2;
+                spawnGorilla();
             }
-            if (kills > 5 && kills <= 10) {
-                speed = 1500;
-            }
-            game.physics.arcade.overlap(elephant, poacher, gameFail);
-            game.physics.arcade.overlap(weapon.bullets, poacher, killPoacher);
-            if (kills >= 10) {
-                gameWin();
-            }
+
+
+
+            game.physics.arcade.overlap(body, gorilla, gameFail);
+            game.physics.arcade.overlap(weapon.bullets, gorilla, killGorilla);
         }
     };  
 };
