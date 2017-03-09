@@ -4,6 +4,9 @@ GameStates.makeMainMenu = function( game, shared ) {
 
 	var music = null;
 	var playButton1 = null;
+    var playButton2 = null;
+    var playButton3 = null;
+    var playButton4 = null;
     var key1;
 
     function startOne(pointer) {
@@ -78,15 +81,15 @@ GameStates.makeMainMenu = function( game, shared ) {
 
             game.add.sprite(0, 0, 'menuBack');
     
-            playButton1 = game.add.button( 400, 400, 'playButton', startOne);
+            playButton1 = game.add.button( 400, 400, 'playLevelOne', startOne);
             if(shared[1]) {
-                playButton1 = game.add.button( 400, 450, 'playButton', startTwo);
+                playButton2 = game.add.button( 400, 450, 'playLevelTwo', startTwo);
             }
             if(shared[2]) {
-                playButton1 = game.add.button( 500, 400, 'playButton', startThree);
+                playButton3 = game.add.button( 500, 400, 'playLevelThree', startThree);
             }
             if(shared[3]) {
-                playButton1 = game.add.button( 500, 450, 'playButton', startBonus);
+                playButton4 = game.add.button( 500, 450, 'playBonus', startBonus);
             }
 
 

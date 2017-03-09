@@ -107,7 +107,7 @@ GameStates.makeLevelOne = function( game, shared ) {
             var tail = jaguar.animations.add('tail');
             jaguar.animations.play('tail', 4, true);
 
-            var zebra = game.add.sprite(75, 290, 'zebraSheet');
+            var zebra = game.add.sprite(125, 290, 'zebraSheet');
             var munch = zebra.animations.add('munch');
             zebra.animations.play('munch', 6, true);
 

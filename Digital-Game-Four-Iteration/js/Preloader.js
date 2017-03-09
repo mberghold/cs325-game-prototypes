@@ -24,7 +24,11 @@ GameStates.makePreloader = function( game ) {
             //	Here we load the rest of the assets our game needs.
             //	As this is just a Project Template I've not provided these assets, swap them for your own.
             game.load.image('menuBack', 'assets/MenuBack.png');
-            game.load.image('playButton', 'assets/MenuPlay.png');
+            game.load.image('playLevelOne', 'assets/LevelOneButton.png');
+            game.load.image('playLevelTwo', 'assets/LevelTwoButton.png');
+            game.load.image('playLevelThree', 'assets/LevelThreeButton.png');
+            game.load.image('playBonus', 'assets/BonusLevelButton.png');
+            game.load.image('musicToggle', 'assets/MusicToggle.png');
             game.load.audio('menuMusic', ['assets/Undertale OST - Spider Dance Menu Music.mp3']);
             game.load.image('gameBack', 'assets/GameBack.png');
             game.load.spritesheet('elephSheet', 'assets/ElephantSpriteSheet.png', 120, 70, 32);

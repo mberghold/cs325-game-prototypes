@@ -14,7 +14,8 @@ GameStates.makeLevelThree = function( game, shared ) {
             music.stop();
         }
         shared[3] = true;
-        game.state.start('BonusLevel');
+        shared[0] += 1;
+        game.state.start('MainMenu');
 
     }
 

@@ -13,7 +13,6 @@ GameStates.makeBonusLevel = function( game, shared ) {
         if(shared[4]) {
             music.stop();
         }
-        shared[0] += 1;
         game.state.start('MainMenu');
 
     }
