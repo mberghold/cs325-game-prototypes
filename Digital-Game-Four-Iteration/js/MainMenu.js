@@ -49,10 +49,12 @@ GameStates.makeMainMenu = function( game, shared ) {
     
     function toggleMusic() {
         if(shared[4]) {
+            shared[4] = false;
             music.stop();
         }
         else {
             music.play();
+            shared[4] = true;
         }
             
     }
