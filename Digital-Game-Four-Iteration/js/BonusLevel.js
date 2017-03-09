@@ -100,7 +100,7 @@ GameStates.makeBonusLevel = function( game, shared ) {
             weapon = game.add.weapon(1, 'bullet');
             // game.physics.arcade.enable(bullet);
             weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
-            weapon.bulletSpeed = 400;
+            weapon.bulletSpeed = 1600;
             weapon.fireRate = 200;
             // bullet.enableBody = true;
             // bullet.physicsBodyType = Phaser.Physics.ARCADE;

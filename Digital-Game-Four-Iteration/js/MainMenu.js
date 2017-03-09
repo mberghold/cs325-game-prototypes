@@ -81,9 +81,9 @@ GameStates.makeMainMenu = function( game, shared ) {
             if(shared[2]) {
                 playButton3 = game.add.button( 350, 450, 'playLevelThree', startThree);
             }
-            if(shared[3]) {
+            // if(shared[3]) {
                 playButton4 = game.add.button( 550, 450, 'playBonus', startBonus);
-            }
+            // }
 
 
             var style = { font: "20px Verdana", fill: "#FFFFFF", align: "center" };
