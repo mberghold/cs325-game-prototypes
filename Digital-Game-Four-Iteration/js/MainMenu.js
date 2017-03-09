@@ -48,7 +48,7 @@ GameStates.makeMainMenu = function( game, shared ) {
     }
     
     function toggleMusic() {
-        if(musicOn) {
+        if(shared[4]) {
             music.stop();
         }
         else {
@@ -75,13 +75,13 @@ GameStates.makeMainMenu = function( game, shared ) {
             game.add.sprite(0, 0, 'menuBack');
     
             playButton1 = game.add.button( 400, 400, 'playButton', startOne);
-            if(oneDone) {
+            if(shared[1]) {
                 playButton1 = game.add.button( 400, 450, 'playButton', startTwo);
             }
-            if(oneDone) {
+            if(shared[2]) {
                 playButton1 = game.add.button( 500, 400, 'playButton', startThree);
             }
-            if(oneDone) {
+            if(shared[3]) {
                 playButton1 = game.add.button( 500, 450, 'playButton', startBonus);
             }
 
