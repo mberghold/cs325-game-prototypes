@@ -110,6 +110,10 @@ GameStates.makeBonusLevel = function( game, shared ) {
 
             weapon.trackSprite(gunArm, 0, 0, true);
 
+            kills = 0;
+            killCheck = 1;
+            speed = 3000;
+
             cursors = game.input.keyboard.createCursorKeys();
             trigger = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
             kills = 0;
@@ -139,7 +143,7 @@ GameStates.makeBonusLevel = function( game, shared ) {
             }
 
 
-            if (kills === killCheck) {
+            if (kills >= killCheck) {
                 killCheck += 1;
                 speed = speed/1.2;
                 spawnGorilla();
