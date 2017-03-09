@@ -94,7 +94,7 @@ GameStates.makeBonusLevel = function( game, shared ) {
             gameBack = game.add.image(0, 0, 'bonusBack');
             game.add.sprite(0, 0, 'musicToggle');
 
-            body = game.add.sprite(45, 350, 'player');
+            body = game.add.sprite(45, 350, 'nightPlayer');
             game.physics.arcade.enable(body);
             body.enableBody = true;
             body.physicsBodyType = Phaser.Physics.ARCADE;

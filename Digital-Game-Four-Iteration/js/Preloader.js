@@ -35,6 +35,7 @@ GameStates.makePreloader = function( game ) {
             game.load.spritesheet('jagSheet', 'assets/JaguarSpriteSheet.png', 80, 50, 6);
             game.load.spritesheet('zebraSheet', 'assets/ZebraSpriteSheet.png', 90, 70, 12);
             game.load.image('player', 'assets/Player.png');
+            game.load.image('nightPlayer', 'assets/NightPlayer.png');
             game.load.image('gunArm', 'assets/GunArm.png');
             game.load.image('bullet', 'assets/Bullet.png');
             game.load.image('poacher', 'assets/Poacher.png');
