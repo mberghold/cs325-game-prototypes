@@ -10,10 +10,10 @@ GameStates.makeLevelThree = function( game, shared ) {
         //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
         // 
         //  Then let's go back to the main menu.
-        if(musicOn) {
+        if(shared[4]) {
             music.stop();
         }
-        threeDone = true;
+        shared[3] = true;
         game.state.start('BonusLevel');
 
     }
@@ -24,7 +24,7 @@ GameStates.makeLevelThree = function( game, shared ) {
         //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
 
         //  Then let's go back to the main menu.
-        if(musicOn) {
+        if(shared[4]) {
             music.stop();
         }
         game.state.start('MainMenu');
@@ -56,11 +56,13 @@ GameStates.makeLevelThree = function( game, shared ) {
     }
 
     function toggleMusic() {
-        if(musicOn) {
+        if(shared[4]) {
+            shared[4] = false;
             music.stop();
         }
         else {
             music.play();
+            shared[4] = true;
         }
             
     }
@@ -86,7 +88,7 @@ GameStates.makeLevelThree = function( game, shared ) {
             //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
             music = game.add.audio('gameMusic');
-            if(musicOn) {
+            if(shared[4]) {
                music.play();
             }
             key1 = game.input.keyboard.addKey(Phaser.Keyboard.M);

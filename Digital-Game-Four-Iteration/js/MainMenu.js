@@ -69,7 +69,9 @@ GameStates.makeMainMenu = function( game, shared ) {
             //	Naturally I expect you to do something significantly better :)
     
             music = game.add.audio('menuMusic');
-            music.play();
+            if(shared[4]) {
+               music.play();
+            }
             
             key1 = game.input.keyboard.addKey(Phaser.Keyboard.M);
             key1.onDown.add(toggleMusic);
