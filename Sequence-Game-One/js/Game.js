@@ -140,6 +140,12 @@ GameStates.makeGame = function( game, shared ) {
         count++;
     }
 
+    function upTen() {
+        faceups[count] = 10;
+        ten.destroy();
+        count++;
+    }
+
     function beginGame() {
         count = 5;
         text.destroy();
