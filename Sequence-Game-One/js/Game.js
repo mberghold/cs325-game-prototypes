@@ -261,12 +261,12 @@ GameStates.makeGame = function( game, shared ) {
         game.add.image(0, 0, 'preback');
         itext = game.add.text(460, 750, "Press I for instructions.", style);
 
-        for(i = 0; i < 10; i++) {
+        for(var i = 0; i < 10; i++) {
             computer[i] = i + 1;
         }
 
-        for(i = 0; i < 10; i++) {
-            leftover[i] = i + 1;
+        for(var g = 0; g < 10; g++) {
+            leftover[g] = g + 1;
         }
 
         pickCards();
