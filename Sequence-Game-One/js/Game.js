@@ -203,7 +203,7 @@ GameStates.makeGame = function( game, shared ) {
     }
 
     function compDraw() {
-        complay.id = removeRandomItem(computer);
+        complay.id = computer.removeRandomItem();
         placeCard(260, 150, complay.card, complay.id);
         compturns++;
         complay.playing = true;
@@ -320,7 +320,7 @@ GameStates.makeGame = function( game, shared ) {
     }
 
     function playRandom() {
-        var int = removeRandomItem(leftover);
+        var int = leftover.removeRandomItem();
         if(int === complay.id) {
         } else if(int - complay.id > 0) {
             playerscore += 3;
