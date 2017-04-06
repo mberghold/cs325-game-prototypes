@@ -46,43 +46,43 @@ GameStates.makeGame = function( game, shared ) {
         count = 0;
         text = game.add.text(600, 50, "Pick your four face up cards", style);
 
-        ace = game.add.sprite(20, 250, 'ace');
+        ace = game.add.sprite(20, 100, 'ace');
         ace.inputEnabled = true;
         ace.events.onInputDown.add(upAce, this);
 
-        two = game.add.sprite(260, 250, 'two');
+        two = game.add.sprite(260, 100, 'two');
         two.inputEnabled = true;
         two.events.onInputDown.add(upTwo, this);
 
-        three = game.add.sprite(500, 250, 'three');
+        three = game.add.sprite(500, 100, 'three');
         three.inputEnabled = true;
         three.events.onInputDown.add(upThree, this);
 
-        four = game.add.sprite(740, 250, 'four');
+        four = game.add.sprite(740, 100, 'four');
         four.inputEnabled = true;
         four.events.onInputDown.add(upFour, this);
 
-        five = game.add.sprite(980, 250, 'five');
+        five = game.add.sprite(980, 100, 'five');
         five.inputEnabled = true;
         five.events.onInputDown.add(upFive, this);
 
-        six = game.add.sprite(20, 600, 'six');
+        six = game.add.sprite(20, 400, 'six');
         six.inputEnabled = true;
         six.events.onInputDown.add(upSix, this);
 
-        seven = game.add.sprite(260, 600, 'seven');
+        seven = game.add.sprite(260, 400, 'seven');
         seven.inputEnabled = true;
         seven.events.onInputDown.add(upSeven, this);
 
-        eight = game.add.sprite(500, 600, 'ace');
+        eight = game.add.sprite(500, 400, 'eight');
         eight.inputEnabled = true;
         eight.events.onInputDown.add(upEight, this);
 
-        nine = game.add.sprite(740, 600, 'nine');
+        nine = game.add.sprite(740, 400, 'nine');
         nine.inputEnabled = true;
         nine.events.onInputDown.add(upNine, this);
 
-        ten = game.add.sprite(980, 600, 'ten');
+        ten = game.add.sprite(980, 400, 'ten');
         ten.inputEnabled = true;
         ten.events.onInputDown.add(upTen, this);
     }
