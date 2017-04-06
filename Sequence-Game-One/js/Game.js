@@ -20,6 +20,7 @@ GameStates.makeGame = function( game, shared ) {
     var eight;
     var nine;
     var ten;
+    var count;
     
     function quitGame() {
 
@@ -42,7 +43,7 @@ GameStates.makeGame = function( game, shared ) {
     }
 
     function pickCards() {
-        var count = 0;
+        count = 0;
         text = game.add.text(600, 50, "Pick your four face up cards", style);
 
         ace = game.add.sprite(20, 250, 'ace');
