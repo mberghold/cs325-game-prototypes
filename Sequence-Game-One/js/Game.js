@@ -47,43 +47,43 @@ GameStates.makeGame = function( game, shared ) {
 
         ace = game.add.sprite(20, 250, 'ace');
         ace.inputEnabled = true;
-        ace.events.onInputDown(upAce, this);
+        ace.events.onInputDown.add(upAce, this);
 
         two = game.add.sprite(260, 250, 'two');
         two.inputEnabled = true;
-        two.events.onInputDown(upTwo, this);
+        two.events.onInputDown.add(upTwo, this);
 
         three = game.add.sprite(500, 250, 'three');
         three.inputEnabled = true;
-        three.events.onInputDown(upThree, this);
+        three.events.onInputDown.add(upThree, this);
 
         four = game.add.sprite(740, 250, 'four');
         four.inputEnabled = true;
-        four.events.onInputDown(upFour, this);
+        four.events.onInputDown.add(upFour, this);
 
         five = game.add.sprite(980, 250, 'five');
         five.inputEnabled = true;
-        five.events.onInputDown(upFive, this);
+        five.events.onInputDown.add(upFive, this);
 
         six = game.add.sprite(20, 600, 'six');
         six.inputEnabled = true;
-        six.events.onInputDown(upSix, this);
+        six.events.onInputDown.add(upSix, this);
 
         seven = game.add.sprite(260, 600, 'seven');
         seven.inputEnabled = true;
-        seven.events.onInputDown(upSeven, this);
+        seven.events.onInputDown.add(upSeven, this);
 
         eight = game.add.sprite(500, 600, 'ace');
         eight.inputEnabled = true;
-        eight.events.onInputDown(upEight, this);
+        eight.events.onInputDown.add(upEight, this);
 
         nine = game.add.sprite(740, 600, 'nine');
         nine.inputEnabled = true;
-        nine.events.onInputDown(upNine, this);
+        nine.events.onInputDown.add(upNine, this);
 
         ten = game.add.sprite(980, 600, 'ten');
         ten.inputEnabled = true;
-        ten.events.onInputDown(upTen, this);
+        ten.events.onInputDown.add(upTen, this);
     }
 
     function upAce() {
