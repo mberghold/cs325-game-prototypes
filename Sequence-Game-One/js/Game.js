@@ -218,19 +218,15 @@ GameStates.makeGame = function( game, shared ) {
 
     function makeBoard() {
         placeCard(20, 450, card1, faceups[0]);
-        card1.inputEnabled = true;
         card1.events.onInputDown.add(playCard, this, 0, faceups[0]);
 
         placeCard(260, 450, card2, faceups[1]);
-        card2.inputEnabled = true;
         card2.events.onInputDown.add(playCard, this, 0, faceups[1]);
 
         placeCard(500, 450, card3, faceups[2]);
-        card3.inputEnabled = true;
         card3.events.onInputDown.add(playCard, this, 0, faceups[2]);
 
         placeCard(740, 450, card4, faceups[3]);
-        card4.inputEnabled = true;
         card4.events.onInputDown.add(playCard, this, 0, faceups[3]);
 
         facedown = game.add.sprite(980, 450, 'back');
@@ -286,6 +282,7 @@ GameStates.makeGame = function( game, shared ) {
         } else {
             card = game.add.sprite(x, y, 'ten');
         }
+        card.inputEnabled = true;
     }
     
     return {
