@@ -217,7 +217,28 @@ GameStates.makeGame = function( game, shared ) {
     }
 
     function makeBoard() {
-        placeCard(20, 450, card1, faceups[0]);
+        if(faceups[0] === 1) {
+            card1 = game.add.sprite(20, 450, 'ace');
+        } else if(faceups[0] === 2) {
+            card1 = game.add.sprite(20, 450, 'two');
+        } else if(faceups[0] === 3) {
+            card1 = game.add.sprite(20, 450, 'three');
+        } else if(faceups[0] === 4) {
+            card1 = game.add.sprite(20, 450, 'four');
+        } else if(faceups[0] === 5) {
+            card1 = game.add.sprite(20, 450, 'five');
+        } else if(faceups[0] === 6) {
+            card1 = game.add.sprite(20, 450, 'six');
+        } else if(faceups[0] === 7) {
+            card1 = game.add.sprite(20, 450, 'seven');
+        } else if(faceups[0] === 8) {
+            card1 = game.add.sprite(20, 450, 'eight');
+        } else if(faceups[0] === 9) {
+            card1 = game.add.sprite(20, 450, 'nine');x
+        } else {
+            card1 = game.add.sprite(20, 450, 'ten');
+        }
+        card1.inputEnabled = true;
         card1.events.onInputDown.add(playCard, this, 0, faceups[0]);
 
         placeCard(260, 450, card2, faceups[1]);
