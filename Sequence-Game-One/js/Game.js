@@ -2,7 +2,23 @@
 
 GameStates.makeGame = function( game, shared ) {
     // Create your own variables.
-    var bouncy = null;
+    var key1;
+    var instruct;
+    var itext;
+    var back;
+    var faceups = {};
+    var style = { font: "20px Verdana", fill: "#FFFFFF", align: "center" };
+    var text;
+    var ace;
+    var two;
+    var three;
+    var four;
+    var five;
+    var six;
+    var seven;
+    var eight;
+    var nine;
+    var ten;
     
     function quitGame() {
 
@@ -13,45 +29,153 @@ GameStates.makeGame = function( game, shared ) {
         game.state.start('MainMenu');
 
     }
+
+    function showInstruct() {
+        if(toggle) {
+            instruct = game.add.sprite(0, 0, 'instruct') 
+        } else {
+            instruct.destroy();
+        }
+    }
+
+    function pickCards() {
+        var count = 0;
+        text = game.add.text(600, 50, "Pick your four face up cards", style);
+
+        ace = game.add.sprite(20, 250, 'ace');
+        ace.inputEnabled = true;
+        ace.events.onInputDown(upAce, this);
+
+        two = game.add.sprite(260, 250, 'two');
+        two.inputEnabled = true;
+        two.events.onInputDown(upTwo, this);
+
+        three = game.add.sprite(500, 250, 'three');
+        three.inputEnabled = true;
+        three.events.onInputDown(upThree, this);
+
+        four = game.add.sprite(740, 250, 'four');
+        four.inputEnabled = true;
+        four.events.onInputDown(upFour, this);
+
+        five = game.add.sprite(980, 250, 'five');
+        five.inputEnabled = true;
+        five.events.onInputDown(upFive, this);
+
+        six = game.add.sprite(20, 600, 'six');
+        six.inputEnabled = true;
+        six.events.onInputDown(upSix, this);
+
+        seven = game.add.sprite(260, 600, 'seven');
+        seven.inputEnabled = true;
+        seven.events.onInputDown(upSeven, this);
+
+        eight = game.add.sprite(500, 600, 'ace');
+        eight.inputEnabled = true;
+        eight.events.onInputDown(upEight, this);
+
+        nine = game.add.sprite(740, 600, 'nine');
+        nine.inputEnabled = true;
+        nine.events.onInputDown(upNine, this);
+
+        ten = game.add.sprite(980, 600, 'ten');
+        ten.inputEnabled = true;
+        ten.events.onInputDown(upTen, this);
+    }
+
+    function upAce() {
+        faceups[count] = 1;
+        ace.destroy();
+        count++;
+    }
+
+    function upTwo() {
+        faceups[count] = 2;
+        two.destroy();
+        count++;
+    }
+
+    function upThree() {
+        faceups[count] = 3;
+        three.destroy();
+        count++;
+    }
+
+    function upFour() {
+        faceups[count] = 4;
+        four.destroy();
+        count++;
+    }
+
+    function upFive() {
+        faceups[count] = 5;
+        five.destroy();
+        count++;
+    }
+
+    function upSix() {
+        faceups[count] = 6;
+        six.destroy();
+        count++;
+    }
+
+    function upSeven() {
+        faceups[count] = 7;
+        seven.destroy();
+        count++;
+    }
+
+    function upEight() {
+        faceups[count] = 8;
+        eight.destroy();
+        count++;
+    }
+
+    function upNine() {
+        faceups[count] = 9;
+        nine.destroy();
+        count++;
+    }
+
+    function beginGame() {
+        count = 5;
+        text.destroy();
+        ace.destroy();
+        two.destroy();
+        three.destroy();
+        four.destroy();
+        five.destroy();
+        six.destroy();
+        seven.destroy();
+        eight.destroy();
+        nine.destroy();
+        ten.destroy();
+
+        makeBoard();
+    }
+
+    function makeBoard() {
+
+    }
     
     return {
     
         create: function () {
     
-            //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-            
-            // Create a sprite at the center of the screen using the 'logo' image.
-            bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'logo' );
-            // Anchor the sprite at its center, as opposed to its top-left corner.
-            // so it will be truly centered.
-            bouncy.anchor.setTo( 0.5, 0.5 );
-            
-            // Turn on the arcade physics engine for this sprite.
-            game.physics.enable( bouncy, Phaser.Physics.ARCADE );
-            // Make it bounce off of the world bounds.
-            bouncy.body.collideWorldBounds = true;
-            
-            // Add some text using a CSS style.
-            // Center it in X, and position its top 15 pixels from the top of the world.
-            var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-            var text = game.add.text( game.world.centerX, 15, "Build something amazing.", style );
-            text.anchor.setTo( 0.5, 0.0 );
-            
-            // When you click on the sprite, you go back to the MainMenu.
-            bouncy.inputEnabled = true;
-            bouncy.events.onInputDown.add( function() { quitGame(); }, this );
+        key1 = game.input.keyboard.addKey(Phaser.Keyboard.I);
+        key1.onDown.add(toggleInstruct);
+
+        game.add.image(0, 0, 'preback');
+        itext = game.add.text(600, 750, "Press I for instructions.", style);
+
+        pickCards();
+
         },
     
         update: function () {
-    
-            //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-            
-            // Accelerate the 'logo' sprite towards the cursor,
-            // accelerating at 500 pixels/second and moving no faster than 500 pixels/second
-            // in X or Y.
-            // This function returns the rotation angle that makes it visually match its
-            // new trajectory.
-            bouncy.rotation = game.physics.arcade.accelerateToPointer( bouncy, game.input.activePointer, 500, 500, 500 );
+            if(count === 4) {
+                beginGame();
+            }
         }
     };
 };

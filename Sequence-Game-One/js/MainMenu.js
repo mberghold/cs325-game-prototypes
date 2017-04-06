@@ -4,6 +4,7 @@ GameStates.makeMainMenu = function( game, shared ) {
 
 	var playButton = null;
     var instruct = null;
+    var key1;
     var toggle = true;
     
     function startGame(pointer) {

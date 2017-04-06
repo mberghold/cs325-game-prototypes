@@ -33,7 +33,7 @@ GameStates.makePreloader = function( game ) {
             game.load.image('eight', 'EightSpade.png');
             game.load.image('nine', 'NineSpade.png');
             game.load.image('ten', 'TenSpade.png');
-            game.load.image('back', 'CardBack.gif');
+            game.load.image('back', 'CardBack.jpg');
             game.load.image('menuback', 'MainMenuBack.png');
             game.load.image('play', 'MenuPlay.png');
             game.load.image('instruct', 'SampleInstruct.png');
