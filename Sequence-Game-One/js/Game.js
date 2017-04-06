@@ -307,7 +307,7 @@ GameStates.makeGame = function( game, shared ) {
         } else if(faceups[3] === 8) {
             card4 = game.add.sprite(740, 450, 'eight');
         } else if(faceups[3] === 9) {
-            card4 = game.add.sprite(740, 450, 'nine');x
+            card4 = game.add.sprite(740, 450, 'nine');
         } else {
             card4 = game.add.sprite(740, 450, 'ten');
         }
