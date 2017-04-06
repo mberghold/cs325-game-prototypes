@@ -35,6 +35,9 @@ GameStates.makeGame = function( game, shared ) {
     var turns = 0;
     var randomplays = 0;
     var scoretext;
+    var complayid;
+    var complaycard;
+    var complayplaying;
 
 
     
@@ -203,11 +206,32 @@ GameStates.makeGame = function( game, shared ) {
     }
 
     function compDraw() {
-        complay.id = Phaser.ArrayUtils.removeRandomItem(computer);
-        placeCard(260, 150, complay.card, complay.id);
+        complayid = Phaser.ArrayUtils.removeRandomItem(computer);
+        if(complayid === 1) {
+            complaycard = game.add.sprite(260, 150, 'ace');
+        } else if(complayid === 2) {
+            complaycard = game.add.sprite(260, 150, 'two');
+        } else if(complayid === 3) {
+            complaycard = game.add.sprite(260, 150, 'three');
+        } else if(complayid === 4) {
+            complaycard = game.add.sprite(260, 150, 'four');
+        } else if(complayid === 5) {
+            complaycard = game.add.sprite(260, 150, 'five');
+        } else if(complayid === 6) {
+            complaycard = game.add.sprite(260, 150, 'six');
+        } else if(complayid === 7) {
+            complaycard = game.add.sprite(260, 150, 'seven');
+        } else if(complayid === 8) {
+            complaycard = game.add.sprite(260, 150, 'eight');
+        } else if(complayid === 9) {
+            complaycard = game.add.sprite(260, 150, 'nine');
+        } else {
+            complaycard = game.add.sprite(260, 150, 'ten');
+        }
+        complaycard.inputEnabled = true;
         compturns++;
-        complay.playing = true;
-        while(complay.playing) {
+        complayplaying = true;
+        while(complayplaying) {
 
         }
         if(compturns < 10) {
@@ -289,7 +313,6 @@ GameStates.makeGame = function( game, shared ) {
         card3.inputEnabled = true;
         card3.events.onInputDown.add(playCard, this, 0, faceups[2]);
 
-        placeCard(740, 450, card4, faceups[3]);
         if(faceups[3] === 1) {
             card4 = game.add.sprite(740, 450, 'ace');
         } else if(faceups[3] === 2) {
@@ -343,31 +366,6 @@ GameStates.makeGame = function( game, shared ) {
         complay.playing = false;
         this.destroy();
         return;
-    }
-
-    function placeCard(x, y, card, id) {
-        if(id === 1) {
-            card = game.add.sprite(x, y, 'ace');
-        } else if(id === 2) {
-            card = game.add.sprite(x, y, 'two');
-        } else if(id === 3) {
-            card = game.add.sprite(x, y, 'three');
-        } else if(id === 4) {
-            card = game.add.sprite(x, y, 'four');
-        } else if(id === 5) {
-            card = game.add.sprite(x, y, 'five');
-        } else if(id === 6) {
-            card = game.add.sprite(x, y, 'six');
-        } else if(id === 7) {
-            card = game.add.sprite(x, y, 'seven');
-        } else if(id === 8) {
-            card = game.add.sprite(x, y, 'eight');
-        } else if(id === 9) {
-            card = game.add.sprite(x, y, 'nine');x
-        } else {
-            card = game.add.sprite(x, y, 'ten');
-        }
-        card.inputEnabled = true;
     }
     
     return {
