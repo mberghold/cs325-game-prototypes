@@ -27,7 +27,7 @@ GameStates.makeGame = function( game, shared ) {
     var card4;
     var used = {};
     var facedown;
-    var computer = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    var computer = {};
 
     
     function quitGame() {
@@ -174,10 +174,27 @@ GameStates.makeGame = function( game, shared ) {
 
     function makeBoard() {
         placeCard(20, 450, card1, faceups[0]);
+        card1.inputEnabled = true;
+        card1.events.onInputDown.add(playCard, this, 0, faceups[0]);
+
         placeCard(260, 450, card2, faceups[1]);
+        card2.inputEnabled = true;
+        card2.events.onInputDown.add(playCard, this, 0, faceups[1]);
+
         placeCard(500, 450, card3, faceups[2]);
+        card3.inputEnabled = true;
+        card3.events.onInputDown.add(playCard, this, 0, faceups[2]);
+
         placeCard(740, 450, card4, faceups[3]);
+        card4.inputEnabled = true;
+        card4.events.onInputDown.add(playCard, this, 0, faceups[3]);
+
         facedown = game.add.sprite(980, 450, 'back');
+        facedown.inputEnabled = true;
+    }
+
+    function playCard(int) {
+
     }
 
     function placeCard(x, y, card, id) {
@@ -213,6 +230,10 @@ GameStates.makeGame = function( game, shared ) {
 
         game.add.image(0, 0, 'preback');
         itext = game.add.text(460, 750, "Press I for instructions.", style);
+
+        for(i = 0; i < 10; i++) {
+            computer[i] = i + 1;
+        }
 
         pickCards();
 
