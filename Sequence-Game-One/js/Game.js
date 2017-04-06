@@ -197,7 +197,7 @@ GameStates.makeGame = function( game, shared ) {
     function makeRandDeck() {
         for(var t = 0; t < 10; t++) {
             if(leftover[t] === faceups[0] || leftover[t] === faceups[1] || leftover[t] === faceups[2] || leftover[t] === faceups[3]) {
-                leftover[t].destroy();
+                leftover[t] = null;
             }
         }
     }
