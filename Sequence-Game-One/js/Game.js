@@ -33,6 +33,8 @@ GameStates.makeGame = function( game, shared ) {
     var compscore = 0;
     var playerscore = 0;
     var turns 0;
+    var randomplays = 0;
+    var scoretext;
 
 
     
@@ -42,8 +44,17 @@ GameStates.makeGame = function( game, shared ) {
         //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
 
         //  Then let's go back to the main menu.
+
         game.state.start('MainMenu');
 
+    }
+
+    function endGame() {
+        var endscreen = game.add.sprite(0, 0, 'preback');
+        endscreen.inputEnabled = true;
+        endscreen.events.onInputDown.add(quitGame);
+
+        var endtext = game.add.text(500, 200, "Player: " + playerscore + "   Computer: " + compscore + "\n Click to return to menu.", style);
     }
 
     function toggleInstruct() {
@@ -180,7 +191,7 @@ GameStates.makeGame = function( game, shared ) {
         makeBoard();
 
         compDraw();
-        quitGame();
+        endGame();
     }
 
     function makeRandDeck() {
@@ -228,7 +239,17 @@ GameStates.makeGame = function( game, shared ) {
     }
 
     function playRandom() {
-        
+        var int = removeRandomItem(leftover);
+        if(int === complay.id) {
+        } else if(int - complay.id > 0) {
+            playerscore += 3;
+        } else {
+            compscore += 3;
+        }
+        complay.playing = false;
+        if(randomplays === 6) {
+            this.destroy();
+        }
     }
 
     function playCard(int) {
@@ -276,6 +297,7 @@ GameStates.makeGame = function( game, shared ) {
 
         game.add.image(0, 0, 'preback');
         itext = game.add.text(460, 750, "Press I for instructions.", style);
+        scoretext = game.add.text(900, 100, "Player: " + playerscore + "   Computer: " + compscore, style);
 
         for(var i = 0; i < 10; i++) {
             computer[i] = i + 1;
@@ -290,9 +312,12 @@ GameStates.makeGame = function( game, shared ) {
         },
     
         update: function () {
+            scoretext.text = "Player: " + playerscore + "   Computer: " + compscore;
             if(count === 4) {
                 beginGame();
             }
+
+
         }
     };
 };
