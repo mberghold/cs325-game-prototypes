@@ -4,6 +4,7 @@ GameStates.makeGame = function( game, shared ) {
     // Create your own variables.
     var key1;
     var instruct;
+    var toggle = true;
     var itext;
     var back;
     var faceups = {};
@@ -32,9 +33,11 @@ GameStates.makeGame = function( game, shared ) {
 
     function toggleInstruct() {
         if(toggle) {
-            instruct = game.add.sprite(0, 0, 'instruct') 
+            instruct = game.add.sprite(0, 0, 'instruct');
+            toggle = false; 
         } else {
             instruct.destroy();
+            toggle = true;
         }
     }
 

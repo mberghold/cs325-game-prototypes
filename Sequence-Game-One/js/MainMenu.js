@@ -18,9 +18,11 @@ GameStates.makeMainMenu = function( game, shared ) {
 
     function toggleInstruct() {
         if(toggle) {
-            instruct = game.add.sprite(0, 0, 'instruct') 
+            instruct = game.add.sprite(0, 0, 'instruct');
+            toggle = false;
         } else {
             instruct.destroy();
+            toggle = true;
         }
     }
     
