@@ -21,6 +21,14 @@ GameStates.makeGame = function( game, shared ) {
     var nine;
     var ten;
     var count;
+    var card1;
+    var card2;
+    var card3;
+    var card4;
+    var used = {};
+    var facedown;
+    var computer = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
     
     function quitGame() {
 
@@ -44,7 +52,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function pickCards() {
         count = 0;
-        text = game.add.text(520, 50, "Pick your four face up cards", style);
+        text = game.add.text(460, 50, "Pick your four face up cards", style);
 
         ace = game.add.sprite(20, 100, 'ace');
         ace.inputEnabled = true;
@@ -165,7 +173,35 @@ GameStates.makeGame = function( game, shared ) {
     }
 
     function makeBoard() {
+        placeCard(20, 450, card1, faceups[0]);
+        placeCard(260, 450, card2, faceups[1]);
+        placeCard(500, 450, card3, faceups[2]);
+        placeCard(740, 450, card4, faceups[3]);
+        facedown = game.add.sprite(980, 450, 'back');
+    }
 
+    function placeCard(x, y, card, id) {
+        if(id === 1) {
+            card = game.add.sprite(x, y, 'ace');
+        } else if(id === 2) {
+            card = game.add.sprite(x, y, 'two');
+        } else if(id === 3) {
+            card = game.add.sprite(x, y, 'three');
+        } else if(id === 4) {
+            card = game.add.sprite(x, y, 'four');
+        } else if(id === 5) {
+            card = game.add.sprite(x, y, 'five');
+        } else if(id === 6) {
+            card = game.add.sprite(x, y, 'six');
+        } else if(id === 7) {
+            card = game.add.sprite(x, y, 'seven');
+        } else if(id === 8) {
+            card = game.add.sprite(x, y, 'eight');
+        } else if(id === 9) {
+            card = game.add.sprite(x, y, 'nine');x
+        } else {
+            card = game.add.sprite(x, y, 'ten');
+        }
     }
     
     return {
@@ -176,7 +212,7 @@ GameStates.makeGame = function( game, shared ) {
         key1.onDown.add(toggleInstruct);
 
         game.add.image(0, 0, 'preback');
-        itext = game.add.text(520, 750, "Press I for instructions.", style);
+        itext = game.add.text(460, 750, "Press I for instructions.", style);
 
         pickCards();
 
