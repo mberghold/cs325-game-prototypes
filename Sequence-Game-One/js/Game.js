@@ -68,6 +68,7 @@ GameStates.makeGame = function( game, shared ) {
             instruct.destroy();
             toggle = true;
         }
+        return;
     }
 
     function pickCards() {
@@ -113,70 +114,81 @@ GameStates.makeGame = function( game, shared ) {
         ten = game.add.sprite(980, 400, 'ten');
         ten.inputEnabled = true;
         ten.events.onInputDown.add(upTen, this);
+
+        return;
     }
 
     function upAce() {
         faceups[count] = 1;
         ace.destroy();
         count++;
+        return;
     }
 
     function upTwo() {
         faceups[count] = 2;
         two.destroy();
         count++;
+        return;
     }
 
     function upThree() {
         faceups[count] = 3;
         three.destroy();
         count++;
+        return;
     }
 
     function upFour() {
         faceups[count] = 4;
         four.destroy();
         count++;
+        return;
     }
 
     function upFive() {
         faceups[count] = 5;
         five.destroy();
         count++;
+        return;
     }
 
     function upSix() {
         faceups[count] = 6;
         six.destroy();
         count++;
+        return;
     }
 
     function upSeven() {
         faceups[count] = 7;
         seven.destroy();
         count++;
+        return;
     }
 
     function upEight() {
         faceups[count] = 8;
         eight.destroy();
         count++;
+        return;
     }
 
     function upNine() {
         faceups[count] = 9;
         nine.destroy();
         count++;
+        return;
     }
 
     function upTen() {
         faceups[count] = 10;
         ten.destroy();
         count++;
+        return;
     }
 
     function beginGame() {
-        count = 5;
         if(text != null) {
             text.destroy();
         }
@@ -225,6 +237,7 @@ GameStates.makeGame = function( game, shared ) {
                 leftover[t] = null;
             }
         }
+        return;
     }
 
     function compDraw() {
@@ -259,7 +272,7 @@ GameStates.makeGame = function( game, shared ) {
         if(compturns < 10) {
             compDraw();
         }
-
+        return;
     }
 
     function makeBoard() {
@@ -362,6 +375,8 @@ GameStates.makeGame = function( game, shared ) {
         facedown = game.add.sprite(980, 450, 'back');
         facedown.inputEnabled = true;
         facedown.events.onInputDown.add(playRandom, this);
+
+        return;
     }
 
     function playRandom() {
@@ -376,6 +391,7 @@ GameStates.makeGame = function( game, shared ) {
         if(randomplays === 6) {
             this.destroy();
         }
+        return;
     }
 
     function playCard(int) {
@@ -416,6 +432,7 @@ GameStates.makeGame = function( game, shared ) {
         update: function () {
             scoretext.text = "Player: " + playerscore + "   Computer: " + compscore;
             if(count === 4) {
+                count = 5;
                 beginGame();
             }
 
