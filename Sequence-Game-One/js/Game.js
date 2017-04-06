@@ -32,7 +32,7 @@ GameStates.makeGame = function( game, shared ) {
     var compturns = 0;
     var compscore = 0;
     var playerscore = 0;
-    var turns 0;
+    var turns = 0;
     var randomplays = 0;
     var scoretext;
 
