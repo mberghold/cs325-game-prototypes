@@ -177,17 +177,39 @@ GameStates.makeGame = function( game, shared ) {
 
     function beginGame() {
         count = 5;
-        text.destroy();
-        ace.destroy();
-        two.destroy();
-        three.destroy();
-        four.destroy();
-        five.destroy();
-        six.destroy();
-        seven.destroy();
-        eight.destroy();
-        nine.destroy();
-        ten.destroy();
+        if(text != null) {
+            text.destroy();
+        }
+        if(ace != null) {
+            ace.destroy();
+        }
+        if(ace != null) {
+            two.destroy();
+        }
+        if(ace != null) {
+            three.destroy();
+        }
+        if(ace != null) {
+            four.destroy();
+        }
+        if(ace != null) {
+            five.destroy();
+        }
+        if(ace != null) {
+            six.destroy();
+        }
+        if(ace != null) {
+            seven.destroy();
+        }
+        if(ace != null) {
+            eight.destroy();
+        }
+        if(ace != null) {
+            nine.destroy();
+        }
+        if(ace != null) {
+            ten.destroy();
+        }
 
         makeRandDeck();
 
