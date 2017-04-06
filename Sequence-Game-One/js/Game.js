@@ -241,13 +241,77 @@ GameStates.makeGame = function( game, shared ) {
         card1.inputEnabled = true;
         card1.events.onInputDown.add(playCard, this, 0, faceups[0]);
 
-        placeCard(260, 450, card2, faceups[1]);
+        if(faceups[1] === 1) {
+            card2 = game.add.sprite(260, 450, 'ace');
+        } else if(faceups[1] === 2) {
+            card2 = game.add.sprite(260, 450, 'two');
+        } else if(faceups[1] === 3) {
+            card2 = game.add.sprite(260, 450, 'three');
+        } else if(faceups[1] === 4) {
+            card2 = game.add.sprite(260, 450, 'four');
+        } else if(faceups[1] === 5) {
+            card2 = game.add.sprite(260, 450, 'five');
+        } else if(faceups[1] === 6) {
+            card2 = game.add.sprite(260, 450, 'six');
+        } else if(faceups[1] === 7) {
+            card2 = game.add.sprite(260, 450, 'seven');
+        } else if(faceups[1] === 8) {
+            card2 = game.add.sprite(260, 450, 'eight');
+        } else if(faceups[1] === 9) {
+            card2 = game.add.sprite(260, 450, 'nine');x
+        } else {
+            card2 = game.add.sprite(260, 450, 'ten');
+        }
+        card2.inputEnabled = true;
         card2.events.onInputDown.add(playCard, this, 0, faceups[1]);
 
-        placeCard(500, 450, card3, faceups[2]);
+        if(faceups[2] === 1) {
+            card3 = game.add.sprite(500, 450, 'ace');
+        } else if(faceups[2] === 2) {
+            card3 = game.add.sprite(500, 450, 'two');
+        } else if(faceups[2] === 3) {
+            card3 = game.add.sprite(500, 450, 'three');
+        } else if(faceups[2] === 4) {
+            card3 = game.add.sprite(500, 450, 'four');
+        } else if(faceups[2] === 5) {
+            card3 = game.add.sprite(500, 450, 'five');
+        } else if(faceups[2] === 6) {
+            card3 = game.add.sprite(500, 450, 'six');
+        } else if(faceups[2] === 7) {
+            card3 = game.add.sprite(500, 450, 'seven');
+        } else if(faceups[2] === 8) {
+            card3 = game.add.sprite(500, 450, 'eight');
+        } else if(faceups[2] === 9) {
+            card3 = game.add.sprite(500, 450, 'nine');x
+        } else {
+            card3 = game.add.sprite(500, 450, 'ten');
+        }
+        card3.inputEnabled = true;
         card3.events.onInputDown.add(playCard, this, 0, faceups[2]);
 
         placeCard(740, 450, card4, faceups[3]);
+        if(faceups[3] === 1) {
+            card4 = game.add.sprite(740, 450, 'ace');
+        } else if(faceups[3] === 2) {
+            card4 = game.add.sprite(740, 450, 'two');
+        } else if(faceups[3] === 3) {
+            card4 = game.add.sprite(740, 450, 'three');
+        } else if(faceups[3] === 4) {
+            card4 = game.add.sprite(740, 450, 'four');
+        } else if(faceups[3] === 5) {
+            card4 = game.add.sprite(740, 450, 'five');
+        } else if(faceups[3] === 6) {
+            card4 = game.add.sprite(740, 450, 'six');
+        } else if(faceups[3] === 7) {
+            card4 = game.add.sprite(740, 450, 'seven');
+        } else if(faceups[3] === 8) {
+            card4 = game.add.sprite(740, 450, 'eight');
+        } else if(faceups[3] === 9) {
+            card4 = game.add.sprite(740, 450, 'nine');x
+        } else {
+            card4 = game.add.sprite(740, 450, 'ten');
+        }
+        card4.inputEnabled = true;
         card4.events.onInputDown.add(playCard, this, 0, faceups[3]);
 
         facedown = game.add.sprite(980, 450, 'back');
