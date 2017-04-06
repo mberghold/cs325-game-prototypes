@@ -44,7 +44,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function pickCards() {
         count = 0;
-        text = game.add.text(600, 50, "Pick your four face up cards", style);
+        text = game.add.text(520, 50, "Pick your four face up cards", style);
 
         ace = game.add.sprite(20, 100, 'ace');
         ace.inputEnabled = true;
@@ -176,7 +176,7 @@ GameStates.makeGame = function( game, shared ) {
         key1.onDown.add(toggleInstruct);
 
         game.add.image(0, 0, 'preback');
-        itext = game.add.text(600, 750, "Press I for instructions.", style);
+        itext = game.add.text(520, 750, "Press I for instructions.", style);
 
         pickCards();
 
