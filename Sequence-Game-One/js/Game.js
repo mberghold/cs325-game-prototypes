@@ -30,7 +30,7 @@ GameStates.makeGame = function( game, shared ) {
 
     }
 
-    function showInstruct() {
+    function toggleInstruct() {
         if(toggle) {
             instruct = game.add.sprite(0, 0, 'instruct') 
         } else {

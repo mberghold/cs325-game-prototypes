@@ -16,7 +16,7 @@ GameStates.makeMainMenu = function( game, shared ) {
 
     }
 
-    function showInstruct() {
+    function toggleInstruct() {
         if(toggle) {
             instruct = game.add.sprite(0, 0, 'instruct') 
         } else {
@@ -36,7 +36,7 @@ GameStates.makeMainMenu = function( game, shared ) {
     
             game.add.sprite(0, 0, 'menuback');
     
-            playButton = game.add.button( 503, 550, 'menuplay', startGame);
+            playButton = game.add.button( 503, 550, 'play', startGame);
     
         },
     

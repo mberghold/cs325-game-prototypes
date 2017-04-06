@@ -23,20 +23,20 @@ GameStates.makePreloader = function( game ) {
     
             //	Here we load the rest of the assets our game needs.
             //	As this is just a Project Template I've not provided these assets, swap them for your own.
-            game.load.image('ace', 'AceSpade.png');
-            game.load.image('two', 'TwoSpade.png');
-            game.load.image('three', 'ThreeSpade.png');
-            game.load.image('four', 'FourSpade.png');
-            game.load.image('five', 'FiveSpade.png');
-            game.load.image('six', 'SixSpade.png');
-            game.load.image('seven', 'SevenSpade.png');
-            game.load.image('eight', 'EightSpade.png');
-            game.load.image('nine', 'NineSpade.png');
-            game.load.image('ten', 'TenSpade.png');
-            game.load.image('back', 'CardBack.jpg');
-            game.load.image('menuback', 'MainMenuBack.png');
-            game.load.image('play', 'MenuPlay.png');
-            game.load.image('instruct', 'SampleInstruct.png');
+            game.load.image('ace', 'assets/AceSpade.png');
+            game.load.image('two', 'assets/TwoSpade.png');
+            game.load.image('three', 'assets/ThreeSpade.png');
+            game.load.image('four', 'assets/FourSpade.png');
+            game.load.image('five', 'assets/FiveSpade.png');
+            game.load.image('six', 'assets/SixSpade.png');
+            game.load.image('seven', 'assets/SevenSpade.png');
+            game.load.image('eight', 'assets/EightSpade.png');
+            game.load.image('nine', 'assets/NineSpade.png');
+            game.load.image('ten', 'assets/TenSpade.png');
+            game.load.image('back', 'assets/CardBack.jpg');
+            game.load.image('menuback', 'assets/MainMenuBack.png');
+            game.load.image('play', 'assets/MenuPlay.png');
+            game.load.image('instruct', 'assets/SampleInstruct.png');
 
 
 
