@@ -32,6 +32,7 @@ GameStates.makeGame = function( game, shared ) {
     var compturns = 0;
     var compscore = 0;
     var playerscore = 0;
+    var turns 0;
 
 
     
@@ -174,10 +175,20 @@ GameStates.makeGame = function( game, shared ) {
         nine.destroy();
         ten.destroy();
 
+        makeRandDeck();
+
         makeBoard();
 
         compDraw();
         quitGame();
+    }
+
+    function makeRandDeck() {
+        for(var t = 0; t < 10; t++) {
+            if(leftover[t] === faceups[0] || leftover[t] === faceups[1] || leftover[t] === faceups[2] || leftover[t] === faceups[3]) {
+                leftover[t].destroy();
+            }
+        }
     }
 
     function compDraw() {
@@ -213,6 +224,11 @@ GameStates.makeGame = function( game, shared ) {
 
         facedown = game.add.sprite(980, 450, 'back');
         facedown.inputEnabled = true;
+        facedown.events.onInputDown.add(playRandom, this);
+    }
+
+    function playRandom() {
+        
     }
 
     function playCard(int) {
