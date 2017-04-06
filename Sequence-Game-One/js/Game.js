@@ -203,7 +203,7 @@ GameStates.makeGame = function( game, shared ) {
     }
 
     function compDraw() {
-        complay.id = computer.removeRandomItem();
+        complay.id = Phaser.ArrayUtils.removeRandomItem(computer);
         placeCard(260, 150, complay.card, complay.id);
         compturns++;
         complay.playing = true;
@@ -320,7 +320,7 @@ GameStates.makeGame = function( game, shared ) {
     }
 
     function playRandom() {
-        var int = leftover.removeRandomItem();
+        var int = Phaser.ArrayUtils.removeRandomItem(leftover);
         if(int === complay.id) {
         } else if(int - complay.id > 0) {
             playerscore += 3;
