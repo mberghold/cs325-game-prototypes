@@ -25,9 +25,14 @@ GameStates.makeGame = function( game, shared ) {
     var card2;
     var card3;
     var card4;
-    var used = {};
+    var leftover = {};
     var facedown;
     var computer = {};
+    var complay;
+    var compturns = 0;
+    var compscore = 0;
+    var playerscore = 0;
+
 
     
     function quitGame() {
@@ -170,6 +175,23 @@ GameStates.makeGame = function( game, shared ) {
         ten.destroy();
 
         makeBoard();
+
+        compDraw();
+        quitGame();
+    }
+
+    function compDraw() {
+        complay.id = removeRandomItem(computer);
+        placeCard(260, 150, complay.card, complay.id);
+        compturns++;
+        complay.playing = true;
+        while(complay.playing) {
+
+        }
+        if(compturns < 10) {
+            compDraw();
+        }
+
     }
 
     function makeBoard() {
@@ -194,7 +216,15 @@ GameStates.makeGame = function( game, shared ) {
     }
 
     function playCard(int) {
-
+        if(int === complay.id) {
+        } else if(int - complay.id > 0) {
+            playerscore += 3;
+        } else {
+            compscore += 3;
+        }
+        complay.playing = false;
+        this.destroy();
+        return;
     }
 
     function placeCard(x, y, card, id) {
@@ -233,6 +263,10 @@ GameStates.makeGame = function( game, shared ) {
 
         for(i = 0; i < 10; i++) {
             computer[i] = i + 1;
+        }
+
+        for(i = 0; i < 10; i++) {
+            leftover[i] = i + 1;
         }
 
         pickCards();
