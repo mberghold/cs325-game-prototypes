@@ -50,7 +50,8 @@ GameStates.makeGame = function( game, shared ) {
         //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
 
         //  Then let's go back to the main menu.
-
+        compturns = 0;
+        count = 0;
         game.state.start('MainMenu');
 
     }

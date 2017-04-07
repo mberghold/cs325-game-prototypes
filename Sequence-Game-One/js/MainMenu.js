@@ -4,7 +4,7 @@ GameStates.makeMainMenu = function( game, shared ) {
 
 	var playButton = null;
     var instruct = null;
-    var key1;
+    var key1 = null;
     var toggle = true;
     
     function startGame(pointer) {
@@ -38,7 +38,7 @@ GameStates.makeMainMenu = function( game, shared ) {
     
             game.add.sprite(0, 0, 'menuback');
 
-            console.log("Update 13");
+            console.log("Update 14");
     
             playButton = game.add.button( 503, 550, 'play', startGame);
     
