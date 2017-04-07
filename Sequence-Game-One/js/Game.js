@@ -77,43 +77,43 @@ GameStates.makeGame = function( game, shared ) {
 
         ace = game.add.sprite(20, 100, 'ace');
         ace.inputEnabled = true;
-        ace.events.onInputDown.add(upAce, this);
+        ace.events.onInputDown.addOnce(upAce, this);
 
         two = game.add.sprite(260, 100, 'two');
         two.inputEnabled = true;
-        two.events.onInputDown.add(upTwo, this);
+        two.events.onInputDown.addOnce(upTwo, this);
 
         three = game.add.sprite(500, 100, 'three');
         three.inputEnabled = true;
-        three.events.onInputDown.add(upThree, this);
+        three.events.onInputDown.addOnce(upThree, this);
 
         four = game.add.sprite(740, 100, 'four');
         four.inputEnabled = true;
-        four.events.onInputDown.add(upFour, this);
+        four.events.onInputDown.addOnce(upFour, this);
 
         five = game.add.sprite(980, 100, 'five');
         five.inputEnabled = true;
-        five.events.onInputDown.add(upFive, this);
+        five.events.onInputDown.addOnce(upFive, this);
 
         six = game.add.sprite(20, 400, 'six');
         six.inputEnabled = true;
-        six.events.onInputDown.add(upSix, this);
+        six.events.onInputDown.addOnce(upSix, this);
 
         seven = game.add.sprite(260, 400, 'seven');
         seven.inputEnabled = true;
-        seven.events.onInputDown.add(upSeven, this);
+        seven.events.onInputDown.addOnce(upSeven, this);
 
         eight = game.add.sprite(500, 400, 'eight');
         eight.inputEnabled = true;
-        eight.events.onInputDown.add(upEight, this);
+        eight.events.onInputDown.addOnce(upEight, this);
 
         nine = game.add.sprite(740, 400, 'nine');
         nine.inputEnabled = true;
-        nine.events.onInputDown.add(upNine, this);
+        nine.events.onInputDown.addOnce(upNine, this);
 
         ten = game.add.sprite(980, 400, 'ten');
         ten.inputEnabled = true;
-        ten.events.onInputDown.add(upTen, this);
+        ten.events.onInputDown.addOnce(upTen, this);
 
         return;
     }
@@ -136,8 +136,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function upThree() {
         faceups[count] = 3;
-        three.destroy();
-        three = game.add.sprite(500, 100, back);
+        three.loadTexture('back', 0);
         count++;
         return;
     }
