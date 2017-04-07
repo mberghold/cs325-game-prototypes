@@ -120,108 +120,88 @@ GameStates.makeGame = function( game, shared ) {
 
     function upAce() {
         faceups[count] = 1;
-        ace.destroy();
+        ace = game.add.sprite(40, 100, back);
         count++;
         return;
     }
 
     function upTwo() {
         faceups[count] = 2;
-        two.destroy();
+        two = game.add.sprite(260, 100, back);
         count++;
         return;
     }
 
     function upThree() {
         faceups[count] = 3;
-        three.destroy();
+        three = game.add.sprite(500, 100, back);
         count++;
         return;
     }
 
     function upFour() {
         faceups[count] = 4;
-        four.destroy();
+        four = game.add.sprite(740, 100, back);
         count++;
         return;
     }
 
     function upFive() {
         faceups[count] = 5;
-        five.destroy();
+        five = game.add.sprite(980, 100, back);
         count++;
         return;
     }
 
     function upSix() {
         faceups[count] = 6;
-        six.destroy();
+        six = game.add.sprite(40, 400, back);
         count++;
         return;
     }
 
     function upSeven() {
         faceups[count] = 7;
-        seven.destroy();
+        seven = game.add.sprite(260, 400, back);
         count++;
         return;
     }
 
     function upEight() {
         faceups[count] = 8;
-        eight.destroy();
+        eight = game.add.sprite(500, 400, back);
         count++;
         return;
     }
 
     function upNine() {
         faceups[count] = 9;
-        nine.destroy();
+        nine = game.add.sprite(740, 400, back);
         count++;
         return;
     }
 
     function upTen() {
         faceups[count] = 10;
-        ten.destroy();
+        ten = game.add.sprite(980, 400, back);
         count++;
         return;
     }
 
     function beginGame() {
-        if(text != null) {
-            text.destroy();
-        }
-        if(ace != null) {
-            ace.destroy();
-        }
-        if(ace != null) {
-            two.destroy();
-        }
-        if(ace != null) {
-            three.destroy();
-        }
-        if(ace != null) {
-            four.destroy();
-        }
-        if(ace != null) {
-            five.destroy();
-        }
-        if(ace != null) {
-            six.destroy();
-        }
-        if(ace != null) {
-            seven.destroy();
-        }
-        if(ace != null) {
-            eight.destroy();
-        }
-        if(ace != null) {
-            nine.destroy();
-        }
-        if(ace != null) {
-            ten.destroy();
-        }
+        console.log("Faceups: " + faceups[0] + " " + faceups[1] + " " + faceups[2] + " " + faceups[3]);
+        text.text = "";
+
+        ace.destroy();
+        two.destroy();
+        three.destroy();  
+        four.destroy();
+        five.destroy();        
+        six.destroy();        
+        seven.destroy();       
+        eight.destroy();        
+        nine.destroy();        
+        ten.destroy();
 
         makeRandDeck();
 
@@ -427,12 +407,14 @@ GameStates.makeGame = function( game, shared ) {
 
         pickCards();
 
+
+
         },
     
         update: function () {
             scoretext.text = "Player: " + playerscore + "   Computer: " + compscore;
             if(count === 4) {
-                count = 5;
+                count = 50;
                 beginGame();
             }
 
