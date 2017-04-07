@@ -38,6 +38,7 @@ GameStates.makeGame = function( game, shared ) {
     var complayid;
     var complaycard;
     var picked;
+    var complaycardmade = false;
 
 
     
@@ -202,26 +203,52 @@ GameStates.makeGame = function( game, shared ) {
 
     function compDraw() {
         complayid = Phaser.ArrayUtils.removeRandomItem(computer);
-        if(complayid === 1) {
-            complaycard = game.add.sprite(260, 150, 'ace');
-        } else if(complayid === 2) {
-            complaycard = game.add.sprite(260, 150, 'two');
-        } else if(complayid === 3) {
-            complaycard = game.add.sprite(260, 150, 'three');
-        } else if(complayid === 4) {
-            complaycard = game.add.sprite(260, 150, 'four');
-        } else if(complayid === 5) {
-            complaycard = game.add.sprite(260, 150, 'five');
-        } else if(complayid === 6) {
-            complaycard = game.add.sprite(260, 150, 'six');
-        } else if(complayid === 7) {
-            complaycard = game.add.sprite(260, 150, 'seven');
-        } else if(complayid === 8) {
-            complaycard = game.add.sprite(260, 150, 'eight');
-        } else if(complayid === 9) {
-            complaycard = game.add.sprite(260, 150, 'nine');
+        console.log(complayid);
+        if(complaycardmade) {
+            if(complayid === 1) {
+                complaycard.loadTexture('ace', 0);
+            } else if(complayid === 2) {
+                complaycard.loadTexture('two', 0);
+            } else if(complayid === 3) {
+                complaycard.loadTexture('three', 0);
+            } else if(complayid === 4) {
+                complaycard.loadTexture('four', 0);
+            } else if(complayid === 5) {
+                complaycard.loadTexture('five', 0);
+            } else if(complayid === 6) {
+                complaycard.loadTexture('six', 0);
+            } else if(complayid === 7) {
+                complaycard.loadTexture('seven', 0);
+            } else if(complayid === 8) {
+                complaycard.loadTexture('eight', 0);
+            } else if(complayid === 9) {
+                complaycard.loadTexture('nine', 0);
+            } else {
+                complaycard.loadTexture('ten', 0);
+            }
         } else {
-            complaycard = game.add.sprite(260, 150, 'ten');
+            if(complayid === 1) {
+                complaycard = game.add.sprite(260, 150, 'ace');
+            } else if(complayid === 2) {
+                complaycard = game.add.sprite(260, 150, 'two');
+            } else if(complayid === 3) {
+                complaycard = game.add.sprite(260, 150, 'three');
+            } else if(complayid === 4) {
+                complaycard = game.add.sprite(260, 150, 'four');
+            } else if(complayid === 5) {
+                complaycard = game.add.sprite(260, 150, 'five');
+            } else if(complayid === 6) {
+                complaycard = game.add.sprite(260, 150, 'six');
+            } else if(complayid === 7) {
+                complaycard = game.add.sprite(260, 150, 'seven');
+            } else if(complayid === 8) {
+                complaycard = game.add.sprite(260, 150, 'eight');
+            } else if(complayid === 9) {
+                complaycard = game.add.sprite(260, 150, 'nine');
+            } else {
+                complaycard = game.add.sprite(260, 150, 'ten');
+            }
+            complaycardmade = true;
         }
         return;
     }
@@ -333,32 +360,34 @@ GameStates.makeGame = function( game, shared ) {
     function playRandom() {
         randomplays++;
         var int = Phaser.ArrayUtils.removeRandomItem(leftover);
+        console.log(int);
         if(int === complayid) {
+            playerscore += 1;
+            compscore += 1;
         } else if(int - complayid > 0) {
             playerscore += 3;
         } else {
             compscore += 3;
         }
+        if(randomplays === 6) {
+            facedown.destroy();
+        }
         compturns++;
         if(compturns < 10) {
             compDraw();
-        }
-        if(randomplays === 6) {
-            facedown.destroy();
         }
         return;
     }
 
     function playCard(int, numCard) {
+        console.log(int, numCard);
         if(int === complayid) {
+            playerscore += 1;
+            compscore += 1;
         } else if(int - complayid > 0) {
             playerscore += 3;
         } else {
             compscore += 3;
-        }
-        compturns++;
-        if(compturns < 10) {
-            compDraw();
         }
         if(numCard === 1) {
             card1.destroy();
@@ -368,6 +397,10 @@ GameStates.makeGame = function( game, shared ) {
             card3.destroy();
         } else if(numCard === 4) {
             card4.destroy();
+        }
+        compturns++;
+        if(compturns < 10) {
+            compDraw();
         }
         return;
     }
@@ -410,7 +443,6 @@ GameStates.makeGame = function( game, shared ) {
 
         pickCards();
 
-        console.log("Faceups: " + faceups[0] + " " + faceups[1] + " " + faceups[2] + " " + faceups[3]);
         text.text = "";
 
         },
