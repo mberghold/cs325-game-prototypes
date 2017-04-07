@@ -452,8 +452,8 @@ GameStates.makeGame = function( game, shared ) {
 
         game.add.image(0, 0, 'preback');
         itext = game.add.text(460, 750, "Press I for instructions.", style);
-        scoretext = game.add.text(900, 50, "Player: " + playerscore + "   Computer: " + compscore, style);
-        randomtext = game.add.text(900, 100, "Random Cards Played: ", style);
+        scoretext = game.add.text(700, 50, "Player: " + playerscore + "   Computer: " + compscore, style);
+        randomtext = game.add.text(700, 100, "Random Cards Played: ", style);
 
         for(var i = 0; i < 10; i++) {
             computer[i] = i + 1;

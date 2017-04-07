@@ -38,7 +38,7 @@ GameStates.makeMainMenu = function( game, shared ) {
     
             game.add.sprite(0, 0, 'menuback');
 
-            console.log("Update 10");
+            console.log("Update 11");
     
             playButton = game.add.button( 503, 550, 'play', startGame);
     
