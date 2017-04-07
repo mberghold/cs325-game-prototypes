@@ -37,7 +37,6 @@ GameStates.makeGame = function( game, shared ) {
     var scoretext;
     var complayid;
     var complaycard;
-    var complayplaying;
 
 
     
@@ -73,48 +72,50 @@ GameStates.makeGame = function( game, shared ) {
 
     function pickCards() {
         count = 0;
-        text = game.add.text(460, 50, "Pick your four face up cards", style);
+        while(count < 4) {
+            console.log("Count: " + count);
+            text = game.add.text(460, 50, "Pick your four face up cards", style);
 
-        ace = game.add.sprite(20, 100, 'ace');
-        ace.inputEnabled = true;
-        ace.events.onInputDown.addOnce(upAce, this);
+            ace = game.add.sprite(20, 100, 'ace');
+            ace.inputEnabled = true;
+            ace.events.onInputDown.addOnce(upAce, this);
 
-        two = game.add.sprite(260, 100, 'two');
-        two.inputEnabled = true;
-        two.events.onInputDown.addOnce(upTwo, this);
+            two = game.add.sprite(260, 100, 'two');
+            two.inputEnabled = true;
+            two.events.onInputDown.addOnce(upTwo, this);
 
-        three = game.add.sprite(500, 100, 'three');
-        three.inputEnabled = true;
-        three.events.onInputDown.addOnce(upThree, this);
+            three = game.add.sprite(500, 100, 'three');
+            three.inputEnabled = true;
+            three.events.onInputDown.addOnce(upThree, this);
 
-        four = game.add.sprite(740, 100, 'four');
-        four.inputEnabled = true;
-        four.events.onInputDown.addOnce(upFour, this);
+            four = game.add.sprite(740, 100, 'four');
+            four.inputEnabled = true;
+            four.events.onInputDown.addOnce(upFour, this);
 
-        five = game.add.sprite(980, 100, 'five');
-        five.inputEnabled = true;
-        five.events.onInputDown.addOnce(upFive, this);
+            five = game.add.sprite(980, 100, 'five');
+            five.inputEnabled = true;
+            five.events.onInputDown.addOnce(upFive, this);
 
-        six = game.add.sprite(20, 400, 'six');
-        six.inputEnabled = true;
-        six.events.onInputDown.addOnce(upSix, this);
+            six = game.add.sprite(20, 400, 'six');
+            six.inputEnabled = true;
+            six.events.onInputDown.addOnce(upSix, this);
 
-        seven = game.add.sprite(260, 400, 'seven');
-        seven.inputEnabled = true;
-        seven.events.onInputDown.addOnce(upSeven, this);
+            seven = game.add.sprite(260, 400, 'seven');
+            seven.inputEnabled = true;
+            seven.events.onInputDown.addOnce(upSeven, this);
 
-        eight = game.add.sprite(500, 400, 'eight');
-        eight.inputEnabled = true;
-        eight.events.onInputDown.addOnce(upEight, this);
+            eight = game.add.sprite(500, 400, 'eight');
+            eight.inputEnabled = true;
+            eight.events.onInputDown.addOnce(upEight, this);
 
-        nine = game.add.sprite(740, 400, 'nine');
-        nine.inputEnabled = true;
-        nine.events.onInputDown.addOnce(upNine, this);
+            nine = game.add.sprite(740, 400, 'nine');
+            nine.inputEnabled = true;
+            nine.events.onInputDown.addOnce(upNine, this);
 
-        ten = game.add.sprite(980, 400, 'ten');
-        ten.inputEnabled = true;
-        ten.events.onInputDown.addOnce(upTen, this);
-
+            ten = game.add.sprite(980, 400, 'ten');
+            ten.inputEnabled = true;
+            ten.events.onInputDown.addOnce(upTen, this);
+        }
         return;
     }
 
@@ -188,29 +189,6 @@ GameStates.makeGame = function( game, shared ) {
         return;
     }
 
-    function beginGame() {
-        console.log("Faceups: " + faceups[0] + " " + faceups[1] + " " + faceups[2] + " " + faceups[3]);
-        text.text = "";
-
-        ace.destroy();
-        two.destroy();
-        three.destroy();  
-        four.destroy();
-        five.destroy();        
-        six.destroy();        
-        seven.destroy();       
-        eight.destroy();        
-        nine.destroy();        
-        ten.destroy();
-
-        makeRandDeck();
-
-        makeBoard();
-
-        compDraw();
-        endGame();
-    }
-
     function makeRandDeck() {
         var p = 0;
         for(var t = 0; t < 10; t++) {
@@ -245,15 +223,6 @@ GameStates.makeGame = function( game, shared ) {
             complaycard = game.add.sprite(260, 150, 'nine');
         } else {
             complaycard = game.add.sprite(260, 150, 'ten');
-        }
-        complaycard.inputEnabled = true;
-        compturns++;
-        complayplaying = true;
-        while(complayplaying) {
-
-        }
-        if(compturns < 10) {
-            compDraw();
         }
         return;
     }
@@ -375,6 +344,10 @@ GameStates.makeGame = function( game, shared ) {
         if(randomplays === 6) {
             this.destroy();
         }
+        compturns++;
+        if(compturns < 10) {
+            compDraw();
+        }
         return;
     }
 
@@ -387,6 +360,10 @@ GameStates.makeGame = function( game, shared ) {
         }
         complay.playing = false;
         this.destroy();
+        compturns++;
+        if(compturns < 10) {
+            compDraw();
+        }
         return;
     }
     
@@ -409,18 +386,36 @@ GameStates.makeGame = function( game, shared ) {
 
         pickCards();
 
+        console.log("Faceups: " + faceups[0] + " " + faceups[1] + " " + faceups[2] + " " + faceups[3]);
+        text.text = "";
 
+        ace.destroy();
+        two.destroy();
+        three.destroy();  
+        four.destroy();
+        five.destroy();        
+        six.destroy();        
+        seven.destroy();       
+        eight.destroy();        
+        nine.destroy();        
+        ten.destroy();
+
+        makeRandDeck();
+
+        makeBoard();
+
+        compDraw();
+        if(compturns >= 10) {
+            endGame();
+        }
 
         },
     
         update: function () {
             scoretext.text = "Player: " + playerscore + "   Computer: " + compscore;
-            if(count === 4) {
-                count = 50;
-                beginGame();
-            }
 
 
         }
     };
 };
+
