@@ -37,6 +37,8 @@ GameStates.makeMainMenu = function( game, shared ) {
             key1.onDown.add(toggleInstruct);
     
             game.add.sprite(0, 0, 'menuback');
+
+            console.log("Update 1");
     
             playButton = game.add.button( 503, 550, 'play', startGame);
     
