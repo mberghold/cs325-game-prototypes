@@ -244,7 +244,7 @@ GameStates.makeGame = function( game, shared ) {
         } else if(faceups[0] === 8) {
             card1 = game.add.sprite(20, 450, 'eight');
         } else if(faceups[0] === 9) {
-            card1 = game.add.sprite(20, 450, 'nine');x
+            card1 = game.add.sprite(20, 450, 'nine');
         } else {
             card1 = game.add.sprite(20, 450, 'ten');
         }
@@ -268,7 +268,7 @@ GameStates.makeGame = function( game, shared ) {
         } else if(faceups[1] === 8) {
             card2 = game.add.sprite(260, 450, 'eight');
         } else if(faceups[1] === 9) {
-            card2 = game.add.sprite(260, 450, 'nine');x
+            card2 = game.add.sprite(260, 450, 'nine');
         } else {
             card2 = game.add.sprite(260, 450, 'ten');
         }
@@ -292,7 +292,7 @@ GameStates.makeGame = function( game, shared ) {
         } else if(faceups[2] === 8) {
             card3 = game.add.sprite(500, 450, 'eight');
         } else if(faceups[2] === 9) {
-            card3 = game.add.sprite(500, 450, 'nine');x
+            card3 = game.add.sprite(500, 450, 'nine');
         } else {
             card3 = game.add.sprite(500, 450, 'ten');
         }
