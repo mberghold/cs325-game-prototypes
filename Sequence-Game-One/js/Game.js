@@ -7,7 +7,7 @@ GameStates.makeGame = function( game, shared ) {
     var toggle = true;
     var itext;
     var back;
-    var faceups = {};
+    var faceups = [];
     var style = { font: "20px Verdana", fill: "#FFFFFF", align: "center" };
     var text;
     var ace;
@@ -25,9 +25,9 @@ GameStates.makeGame = function( game, shared ) {
     var card2;
     var card3;
     var card4;
-    var leftover = {};
+    var leftover = [];
     var facedown;
-    var computer = {};
+    var computer = [];
     var complay;
     var compturns = 0;
     var compscore = 0;
