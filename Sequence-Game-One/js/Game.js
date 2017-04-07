@@ -120,6 +120,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function upAce() {
         faceups[count] = 1;
+        ace.destroy();
         ace = game.add.sprite(40, 100, back);
         count++;
         return;
@@ -127,6 +128,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function upTwo() {
         faceups[count] = 2;
+        two.destroy();
         two = game.add.sprite(260, 100, back);
         count++;
         return;
@@ -134,6 +136,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function upThree() {
         faceups[count] = 3;
+        three.destroy();
         three = game.add.sprite(500, 100, back);
         count++;
         return;
@@ -141,6 +144,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function upFour() {
         faceups[count] = 4;
+        four.destroy();
         four = game.add.sprite(740, 100, back);
         count++;
         return;
@@ -148,6 +152,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function upFive() {
         faceups[count] = 5;
+        five.destroy();
         five = game.add.sprite(980, 100, back);
         count++;
         return;
@@ -155,6 +160,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function upSix() {
         faceups[count] = 6;
+        six.destroy();
         six = game.add.sprite(40, 400, back);
         count++;
         return;
@@ -162,6 +168,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function upSeven() {
         faceups[count] = 7;
+        seven.destroy();
         seven = game.add.sprite(260, 400, back);
         count++;
         return;
@@ -169,6 +176,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function upEight() {
         faceups[count] = 8;
+        eight.destroy();
         eight = game.add.sprite(500, 400, back);
         count++;
         return;
@@ -176,6 +184,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function upNine() {
         faceups[count] = 9;
+        nine.destroy();
         nine = game.add.sprite(740, 400, back);
         count++;
         return;
@@ -183,6 +192,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function upTen() {
         faceups[count] = 10;
+        ten.destroy();
         ten = game.add.sprite(980, 400, back);
         count++;
         return;
@@ -404,6 +414,8 @@ GameStates.makeGame = function( game, shared ) {
         for(var g = 0; g < 10; g++) {
             leftover[g] = g + 1;
         }
+
+        console.log("Comp: " + computer[0] + " " + computer[9]);
 
         pickCards();
 
