@@ -26,6 +26,7 @@ GameStates.makeGame = function( game, shared ) {
     var card3;
     var card4;
     var leftover = [];
+    var randcards = [];
     var facedown;
     var computer = [];
     var complay;
@@ -39,6 +40,7 @@ GameStates.makeGame = function( game, shared ) {
     var complaycard;
     var picked;
     var complaycardmade = false;
+    var randomtext;
 
 
     
@@ -197,13 +199,11 @@ GameStates.makeGame = function( game, shared ) {
                 p++;
             }
         }
-        console.log("Leftover: " + leftover[0], + " " + leftover[1], + " " + leftover[2], + " " + leftover[3], + " " + leftover[4], + " " + leftover[5]);
         return;
     }
 
     function compDraw() {
         complayid = Phaser.ArrayUtils.removeRandomItem(computer, 0, 9 - compturns);
-        console.log(complayid);
         if(complaycardmade) {
             if(complayid === 1) {
                 complaycard.loadTexture('ace', 0);
@@ -360,7 +360,7 @@ GameStates.makeGame = function( game, shared ) {
     function playRandom() {
         randomplays++;
         var int = Phaser.ArrayUtils.removeRandomItem(leftover, 0, 6 - randomplays);
-        console.log(int);
+        randcards[randomplays] = int;
         if(int === complayid) {
             playerscore += 1;
             compscore += 1;
@@ -400,7 +400,6 @@ GameStates.makeGame = function( game, shared ) {
     }
 
     function playCard(int, numCard) {
-        console.log(int, numCard);
         if(int === complayid) {
             playerscore += 1;
             compscore += 1;
@@ -454,12 +453,11 @@ GameStates.makeGame = function( game, shared ) {
         game.add.image(0, 0, 'preback');
         itext = game.add.text(460, 750, "Press I for instructions.", style);
         scoretext = game.add.text(900, 50, "Player: " + playerscore + "   Computer: " + compscore, style);
+        randomtext = game.add.text(900, 100, "Random Cards Played: ");
 
         for(var i = 0; i < 10; i++) {
             computer[i] = i + 1;
         }
-
-        console.log("Comp: " + computer[0] + " " + computer[9]);
 
         pickCards();
 
@@ -469,6 +467,27 @@ GameStates.makeGame = function( game, shared ) {
     
         update: function () {
             scoretext.text = "Player: " + playerscore + "   Computer: " + compscore;
+
+            if(randomplays === 0) {
+                randomtext.text = "Random Cards Played: " ;
+            } else if(randomplays === 1) {
+                randomtext.text = "Random Cards Played: " + randcards[1];
+            } else if(randomplays === 2) {
+                randomtext.text = "Random Cards Played: " + randcards[1] + ", " + randcards[2];
+            } else if(randomplays === 3) {
+                randomtext.text = "Random Cards Played: " + randcards[1] + ", " + randcards[2] + ", " + randcards[3];
+            } else if(randomplays === 4) {
+                randomtext.text = "Random Cards Played: " + randcards[1] + ", " + randcards[2] + ", " + randcards[3] + ", " + randcards[4];
+            } else if(randomplays === 5) {
+                randomtext.text = "Random Cards Played: " + randcards[1] + ", " + randcards[2] + ", " + randcards[3] + ", " + randcards[4] + ", " + randcards[5];
+            } else if(randomplays === 6) {
+                randomtext.text = "Random Cards Played: " + randcards[1] + ", " + randcards[2] + ", " + randcards[3] + ", " + randcards[4] + ", " + randcards[5] + ", " + randcards[6];
+            }
+
+            
+
+
+
             if(compturns >= 10) {
                 endGame();
             }
