@@ -2,45 +2,45 @@
 
 GameStates.makeGame = function( game, shared ) {
     // Create your own variables.
-    var key1;
-    var instruct;
+    var key1 = null;
+    var instruct = null;
     var toggle = true;
-    var itext;
-    var back;
+    var itext = null;
+    var back = null;
     var faceups = [];
     var style = { font: "20px Verdana", fill: "#FFFFFF", align: "center" };
-    var text;
-    var ace;
-    var two;
-    var three;
-    var four;
-    var five;
-    var six;
-    var seven;
-    var eight;
-    var nine;
-    var ten;
-    var count;
-    var card1;
-    var card2;
-    var card3;
-    var card4;
+    var text = null;
+    var ace = null;
+    var two = null;
+    var three = null;
+    var four = null;
+    var five = null;
+    var six = null;
+    var seven = null;
+    var eight = null;
+    var nine = null;
+    var ten = null;
+    var count = null;
+    var card1 = null;
+    var card2 = null;
+    var card3 = null;
+    var card4 = null;
     var leftover = [];
     var randcards = [];
-    var facedown;
+    var facedown = null;
     var computer = [];
-    var complay;
+    var complay = null;
     var compturns = 0;
     var compscore = 0;
     var playerscore = 0;
     var turns = 0;
     var randomplays = 0;
-    var scoretext;
-    var complayid;
-    var complaycard;
-    var picked;
+    var scoretext = null;
+    var complayid = null;
+    var complaycard = null;
+    var picked = null;
     var complaycardmade = false;
-    var randomtext;
+    var randomtext = null;
 
 
     
@@ -483,10 +483,6 @@ GameStates.makeGame = function( game, shared ) {
             } else if(randomplays === 6) {
                 randomtext.text = "Random Cards Played: " + randcards[1] + ", " + randcards[2] + ", " + randcards[3] + ", " + randcards[4] + ", " + randcards[5] + ", " + randcards[6];
             }
-
-            
-
-
 
             if(compturns >= 10) {
                 endGame();
