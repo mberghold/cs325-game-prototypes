@@ -49,13 +49,17 @@ GameStates.makeGame = function( game, shared ) {
 
         //  Then let's go back to the main menu.
         compturns = 0;
-        count = 0;
+        count = null;
         compscore = 0;
         playerscore = 0;
         leftover = [];
         randcards = [];
         computer = [];
         randomplays = 0;
+        complaycard = null;
+        complaycardmade = false;
+        complayid = null;
+        complay = null;
         game.state.start('MainMenu');
 
     }
