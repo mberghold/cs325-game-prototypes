@@ -339,13 +339,12 @@ GameStates.makeGame = function( game, shared ) {
         } else {
             compscore += 3;
         }
-        complay.playing = false;
-        if(randomplays === 6) {
-            this.destroy();
-        }
         compturns++;
         if(compturns < 10) {
             compDraw();
+        }
+        if(randomplays === 6) {
+            this.destroy();
         }
         return;
     }
@@ -357,13 +356,31 @@ GameStates.makeGame = function( game, shared ) {
         } else {
             compscore += 3;
         }
-        complay.playing = false;
-        this.destroy();
         compturns++;
         if(compturns < 10) {
             compDraw();
         }
+        this.destroy();
         return;
+    }
+
+    function beginGame() {
+        ace.destroy();
+        two.destroy();
+        three.destroy();  
+        four.destroy();
+        five.destroy();        
+        six.destroy();        
+        seven.destroy();       
+        eight.destroy();        
+        nine.destroy();        
+        ten.destroy();
+
+        makeRandDeck();
+
+        makeBoard();
+
+        compDraw();
     }
     
     return {
@@ -385,29 +402,8 @@ GameStates.makeGame = function( game, shared ) {
 
         pickCards();
 
-        while(count < 4) {
-            console.log("Count: " + count);
-        }
-
         console.log("Faceups: " + faceups[0] + " " + faceups[1] + " " + faceups[2] + " " + faceups[3]);
         text.text = "";
-
-        ace.destroy();
-        two.destroy();
-        three.destroy();  
-        four.destroy();
-        five.destroy();        
-        six.destroy();        
-        seven.destroy();       
-        eight.destroy();        
-        nine.destroy();        
-        ten.destroy();
-
-        makeRandDeck();
-
-        makeBoard();
-
-        compDraw();
 
         },
     
@@ -415,6 +411,11 @@ GameStates.makeGame = function( game, shared ) {
             scoretext.text = "Player: " + playerscore + "   Computer: " + compscore;
             if(compturns >= 10) {
                 endGame();
+            }
+
+            if(count >= 4) {
+                beginGame();
+                count = 0;
             }
 
         }
