@@ -120,16 +120,14 @@ GameStates.makeGame = function( game, shared ) {
 
     function upAce() {
         faceups[count] = 1;
-        ace.destroy();
-        ace = game.add.sprite(40, 100, back);
+        ace.loadTexture('back', 0);
         count++;
         return;
     }
 
     function upTwo() {
         faceups[count] = 2;
-        two.destroy();
-        two = game.add.sprite(260, 100, back);
+        two.loadTexture('back', 0);
         count++;
         return;
     }
@@ -143,56 +141,49 @@ GameStates.makeGame = function( game, shared ) {
 
     function upFour() {
         faceups[count] = 4;
-        four.destroy();
-        four = game.add.sprite(740, 100, back);
+        four.loadTexture('back', 0);
         count++;
         return;
     }
 
     function upFive() {
         faceups[count] = 5;
-        five.destroy();
-        five = game.add.sprite(980, 100, back);
+        five.loadTexture('back', 0);
         count++;
         return;
     }
 
     function upSix() {
         faceups[count] = 6;
-        six.destroy();
-        six = game.add.sprite(40, 400, back);
+        six.loadTexture('back', 0);
         count++;
         return;
     }
 
     function upSeven() {
         faceups[count] = 7;
-        seven.destroy();
-        seven = game.add.sprite(260, 400, back);
+        seven.loadTexture('back', 0);
         count++;
         return;
     }
 
     function upEight() {
         faceups[count] = 8;
-        eight.destroy();
-        eight = game.add.sprite(500, 400, back);
+        eight.loadTexture('back', 0);
         count++;
         return;
     }
 
     function upNine() {
         faceups[count] = 9;
-        nine.destroy();
-        nine = game.add.sprite(740, 400, back);
+        nine.loadTexture('back', 0);
         count++;
         return;
     }
 
     function upTen() {
         faceups[count] = 10;
-        ten.destroy();
-        ten = game.add.sprite(980, 400, back);
+        ten.loadTexture('back', 0);
         count++;
         return;
     }
@@ -221,11 +212,14 @@ GameStates.makeGame = function( game, shared ) {
     }
 
     function makeRandDeck() {
+        var p = 0;
         for(var t = 0; t < 10; t++) {
-            if(leftover[t] === faceups[0] || leftover[t] === faceups[1] || leftover[t] === faceups[2] || leftover[t] === faceups[3]) {
-                leftover[t] = null;
+            if(faceups[0] != computer[t] && faceups[1] != computer[t] && faceups[2] != computer[t] && faceups[3] != computer[t]) {
+                leftover[p] = t + 1;
+                p++;
             }
         }
+        console.log("Leftover: " + leftover[0], + " " + leftover[1], + " " + leftover[2], + " " + leftover[3], + " " + leftover[4], + " " + leftover[5]);
         return;
     }
 
@@ -287,7 +281,7 @@ GameStates.makeGame = function( game, shared ) {
             card1 = game.add.sprite(20, 450, 'ten');
         }
         card1.inputEnabled = true;
-        card1.events.onInputDown.add(playCard, this, 0, faceups[0]);
+        card1.events.onInputDown.addOnce(playCard, this, 0, faceups[0]);
 
         if(faceups[1] === 1) {
             card2 = game.add.sprite(260, 450, 'ace');
@@ -311,7 +305,7 @@ GameStates.makeGame = function( game, shared ) {
             card2 = game.add.sprite(260, 450, 'ten');
         }
         card2.inputEnabled = true;
-        card2.events.onInputDown.add(playCard, this, 0, faceups[1]);
+        card2.events.onInputDown.addOnce(playCard, this, 0, faceups[1]);
 
         if(faceups[2] === 1) {
             card3 = game.add.sprite(500, 450, 'ace');
@@ -335,7 +329,7 @@ GameStates.makeGame = function( game, shared ) {
             card3 = game.add.sprite(500, 450, 'ten');
         }
         card3.inputEnabled = true;
-        card3.events.onInputDown.add(playCard, this, 0, faceups[2]);
+        card3.events.onInputDown.addOnce(playCard, this, 0, faceups[2]);
 
         if(faceups[3] === 1) {
             card4 = game.add.sprite(740, 450, 'ace');
@@ -359,7 +353,7 @@ GameStates.makeGame = function( game, shared ) {
             card4 = game.add.sprite(740, 450, 'ten');
         }
         card4.inputEnabled = true;
-        card4.events.onInputDown.add(playCard, this, 0, faceups[3]);
+        card4.events.onInputDown.addOnce(playCard, this, 0, faceups[3]);
 
         facedown = game.add.sprite(980, 450, 'back');
         facedown.inputEnabled = true;
@@ -369,6 +363,7 @@ GameStates.makeGame = function( game, shared ) {
     }
 
     function playRandom() {
+        randomplays++;
         var int = Phaser.ArrayUtils.removeRandomItem(leftover);
         if(int === complay.id) {
         } else if(int - complay.id > 0) {
@@ -408,10 +403,6 @@ GameStates.makeGame = function( game, shared ) {
 
         for(var i = 0; i < 10; i++) {
             computer[i] = i + 1;
-        }
-
-        for(var g = 0; g < 10; g++) {
-            leftover[g] = g + 1;
         }
 
         console.log("Comp: " + computer[0] + " " + computer[9]);
