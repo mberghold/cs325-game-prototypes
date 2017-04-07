@@ -333,8 +333,8 @@ GameStates.makeGame = function( game, shared ) {
     function playRandom() {
         randomplays++;
         var int = Phaser.ArrayUtils.removeRandomItem(leftover);
-        if(int === complay.id) {
-        } else if(int - complay.id > 0) {
+        if(int === complayid) {
+        } else if(int - complayid > 0) {
             playerscore += 3;
         } else {
             compscore += 3;
@@ -350,8 +350,8 @@ GameStates.makeGame = function( game, shared ) {
     }
 
     function playCard(int) {
-        if(int === complay.id) {
-        } else if(int - complay.id > 0) {
+        if(int === complayid) {
+        } else if(int - complayid > 0) {
             playerscore += 3;
         } else {
             compscore += 3;
