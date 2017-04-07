@@ -202,7 +202,7 @@ GameStates.makeGame = function( game, shared ) {
     }
 
     function compDraw() {
-        complayid = Phaser.ArrayUtils.removeRandomItem(computer);
+        complayid = Phaser.ArrayUtils.removeRandomItem(computer, 0, 9 - compturns);
         console.log(complayid);
         if(complaycardmade) {
             if(complayid === 1) {
@@ -276,7 +276,7 @@ GameStates.makeGame = function( game, shared ) {
             card1 = game.add.sprite(20, 450, 'ten');
         }
         card1.inputEnabled = true;
-        card1.events.onInputDown.addOnce(playCard, this, 0, faceups[0], 1);
+        card1.events.onInputDown.addOnce(playCard1);
 
         if(faceups[1] === 1) {
             card2 = game.add.sprite(260, 450, 'ace');
@@ -300,7 +300,7 @@ GameStates.makeGame = function( game, shared ) {
             card2 = game.add.sprite(260, 450, 'ten');
         }
         card2.inputEnabled = true;
-        card2.events.onInputDown.addOnce(playCard, this, 0, faceups[1], 2);
+        card2.events.onInputDown.addOnce(playCard2);
 
         if(faceups[2] === 1) {
             card3 = game.add.sprite(500, 450, 'ace');
@@ -324,7 +324,7 @@ GameStates.makeGame = function( game, shared ) {
             card3 = game.add.sprite(500, 450, 'ten');
         }
         card3.inputEnabled = true;
-        card3.events.onInputDown.addOnce(playCard, this, 0, faceups[2], 3);
+        card3.events.onInputDown.addOnce(playCard3);
 
         if(faceups[3] === 1) {
             card4 = game.add.sprite(740, 450, 'ace');
@@ -348,7 +348,7 @@ GameStates.makeGame = function( game, shared ) {
             card4 = game.add.sprite(740, 450, 'ten');
         }
         card4.inputEnabled = true;
-        card4.events.onInputDown.addOnce(playCard, this, 0, faceups[3], 4);
+        card4.events.onInputDown.addOnce(playCard4);
 
         facedown = game.add.sprite(980, 450, 'back');
         facedown.inputEnabled = true;
@@ -359,7 +359,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function playRandom() {
         randomplays++;
-        var int = Phaser.ArrayUtils.removeRandomItem(leftover);
+        var int = Phaser.ArrayUtils.removeRandomItem(leftover, 0, 6 - randomplays);
         console.log(int);
         if(int === complayid) {
             playerscore += 1;
@@ -376,6 +376,26 @@ GameStates.makeGame = function( game, shared ) {
         if(compturns < 10) {
             compDraw();
         }
+        return;
+    }
+
+    function playCard1() {
+        playCard(faceups[0], 1);
+        return;
+    }
+
+    function playCard2() {
+        playCard(faceups[1], 2);
+        return;
+    }
+
+    function playCard3() {
+        playCard(faceups[2], 3);
+        return;
+    }
+
+    function playCard4() {
+        playCard(faceups[3], 4);
         return;
     }
 
