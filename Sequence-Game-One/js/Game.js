@@ -386,7 +386,7 @@ GameStates.makeGame = function( game, shared ) {
         pickCards();
 
         while(count < 4) {
-            
+            console.log("Count: " + count);
         }
 
         console.log("Faceups: " + faceups[0] + " " + faceups[1] + " " + faceups[2] + " " + faceups[3]);
