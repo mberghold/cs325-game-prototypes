@@ -37,6 +37,7 @@ GameStates.makeGame = function( game, shared ) {
     var scoretext;
     var complayid;
     var complaycard;
+    var picked;
 
 
     
@@ -72,7 +73,6 @@ GameStates.makeGame = function( game, shared ) {
 
     function pickCards() {
         count = 0;
-        while(count < 4) {
             console.log("Count: " + count);
             text = game.add.text(460, 50, "Pick your four face up cards", style);
 
@@ -115,6 +115,8 @@ GameStates.makeGame = function( game, shared ) {
             ten = game.add.sprite(980, 400, 'ten');
             ten.inputEnabled = true;
             ten.events.onInputDown.addOnce(upTen, this);
+        while(!picked) {
+            picked = false;
         }
         return;
     }
@@ -405,15 +407,18 @@ GameStates.makeGame = function( game, shared ) {
         makeBoard();
 
         compDraw();
-        if(compturns >= 10) {
-            endGame();
-        }
 
         },
     
         update: function () {
             scoretext.text = "Player: " + playerscore + "   Computer: " + compscore;
+            if(compturns >= 10) {
+                endGame();
+            }
 
+            if(count >= 4) {
+                picked = true;
+            }
 
         }
     };
