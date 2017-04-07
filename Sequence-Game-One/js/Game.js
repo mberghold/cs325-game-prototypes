@@ -73,51 +73,48 @@ GameStates.makeGame = function( game, shared ) {
 
     function pickCards() {
         count = 0;
-            console.log("Count: " + count);
-            text = game.add.text(460, 50, "Pick your four face up cards", style);
+        text = game.add.text(460, 50, "Pick your four face up cards", style);
 
-            ace = game.add.sprite(20, 100, 'ace');
-            ace.inputEnabled = true;
-            ace.events.onInputDown.addOnce(upAce, this);
+        ace = game.add.sprite(20, 100, 'ace');
+        ace.inputEnabled = true;
+        ace.events.onInputDown.addOnce(upAce, this);
+            
+        two = game.add.sprite(260, 100, 'two');
+        two.inputEnabled = true;
+        two.events.onInputDown.addOnce(upTwo, this);
 
-            two = game.add.sprite(260, 100, 'two');
-            two.inputEnabled = true;
-            two.events.onInputDown.addOnce(upTwo, this);
+        three = game.add.sprite(500, 100, 'three');
+        three.inputEnabled = true;
+        three.events.onInputDown.addOnce(upThree, this);
 
-            three = game.add.sprite(500, 100, 'three');
-            three.inputEnabled = true;
-            three.events.onInputDown.addOnce(upThree, this);
+        four = game.add.sprite(740, 100, 'four');
+        four.inputEnabled = true;
+        four.events.onInputDown.addOnce(upFour, this);
 
-            four = game.add.sprite(740, 100, 'four');
-            four.inputEnabled = true;
-            four.events.onInputDown.addOnce(upFour, this);
+        five = game.add.sprite(980, 100, 'five');
+        five.inputEnabled = true;
+        five.events.onInputDown.addOnce(upFive, this);
 
-            five = game.add.sprite(980, 100, 'five');
-            five.inputEnabled = true;
-            five.events.onInputDown.addOnce(upFive, this);
+        six = game.add.sprite(20, 400, 'six');
+        six.inputEnabled = true;
+        six.events.onInputDown.addOnce(upSix, this);
 
-            six = game.add.sprite(20, 400, 'six');
-            six.inputEnabled = true;
-            six.events.onInputDown.addOnce(upSix, this);
+        seven = game.add.sprite(260, 400, 'seven');
+        seven.inputEnabled = true;
+        seven.events.onInputDown.addOnce(upSeven, this);
 
-            seven = game.add.sprite(260, 400, 'seven');
-            seven.inputEnabled = true;
-            seven.events.onInputDown.addOnce(upSeven, this);
+        eight = game.add.sprite(500, 400, 'eight');
+        eight.inputEnabled = true;
+        eight.events.onInputDown.addOnce(upEight, this);
 
-            eight = game.add.sprite(500, 400, 'eight');
-            eight.inputEnabled = true;
-            eight.events.onInputDown.addOnce(upEight, this);
+        nine = game.add.sprite(740, 400, 'nine');
+        nine.inputEnabled = true;
+        nine.events.onInputDown.addOnce(upNine, this);
 
-            nine = game.add.sprite(740, 400, 'nine');
-            nine.inputEnabled = true;
-            nine.events.onInputDown.addOnce(upNine, this);
+        ten = game.add.sprite(980, 400, 'ten');
+        ten.inputEnabled = true;
+        ten.events.onInputDown.addOnce(upTen, this);
 
-            ten = game.add.sprite(980, 400, 'ten');
-            ten.inputEnabled = true;
-            ten.events.onInputDown.addOnce(upTen, this);
-        while(!picked) {
-            picked = false;
-        }
         return;
     }
 
@@ -388,6 +385,10 @@ GameStates.makeGame = function( game, shared ) {
 
         pickCards();
 
+        while(count < 4) {
+            
+        }
+
         console.log("Faceups: " + faceups[0] + " " + faceups[1] + " " + faceups[2] + " " + faceups[3]);
         text.text = "";
 
@@ -414,10 +415,6 @@ GameStates.makeGame = function( game, shared ) {
             scoretext.text = "Player: " + playerscore + "   Computer: " + compscore;
             if(compturns >= 10) {
                 endGame();
-            }
-
-            if(count >= 4) {
-                picked = true;
             }
 
         }
