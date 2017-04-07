@@ -33,12 +33,10 @@ GameStates.makeGame = function( game, shared ) {
     var compturns = 0;
     var compscore = 0;
     var playerscore = 0;
-    var turns = 0;
     var randomplays = 0;
     var scoretext = null;
     var complayid = null;
     var complaycard = null;
-    var picked = null;
     var complaycardmade = false;
     var randomtext = null;
 
@@ -52,6 +50,12 @@ GameStates.makeGame = function( game, shared ) {
         //  Then let's go back to the main menu.
         compturns = 0;
         count = 0;
+        compscore = 0;
+        playerscore = 0;
+        leftover = [];
+        randcards = [];
+        computer = [];
+        randomplays = 0;
         game.state.start('MainMenu');
 
     }
