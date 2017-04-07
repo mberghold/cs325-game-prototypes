@@ -249,7 +249,7 @@ GameStates.makeGame = function( game, shared ) {
             card1 = game.add.sprite(20, 450, 'ten');
         }
         card1.inputEnabled = true;
-        card1.events.onInputDown.addOnce(playCard, this, 0, faceups[0], card1);
+        card1.events.onInputDown.addOnce(playCard, this, 0, faceups[0], 1);
 
         if(faceups[1] === 1) {
             card2 = game.add.sprite(260, 450, 'ace');
@@ -273,7 +273,7 @@ GameStates.makeGame = function( game, shared ) {
             card2 = game.add.sprite(260, 450, 'ten');
         }
         card2.inputEnabled = true;
-        card2.events.onInputDown.addOnce(playCard, this, 0, faceups[1], card2);
+        card2.events.onInputDown.addOnce(playCard, this, 0, faceups[1], 2);
 
         if(faceups[2] === 1) {
             card3 = game.add.sprite(500, 450, 'ace');
@@ -297,7 +297,7 @@ GameStates.makeGame = function( game, shared ) {
             card3 = game.add.sprite(500, 450, 'ten');
         }
         card3.inputEnabled = true;
-        card3.events.onInputDown.addOnce(playCard, this, 0, faceups[2], card3);
+        card3.events.onInputDown.addOnce(playCard, this, 0, faceups[2], 3);
 
         if(faceups[3] === 1) {
             card4 = game.add.sprite(740, 450, 'ace');
@@ -321,16 +321,16 @@ GameStates.makeGame = function( game, shared ) {
             card4 = game.add.sprite(740, 450, 'ten');
         }
         card4.inputEnabled = true;
-        card4.events.onInputDown.addOnce(playCard, this, 0, faceups[3], card4);
+        card4.events.onInputDown.addOnce(playCard, this, 0, faceups[3], 4);
 
         facedown = game.add.sprite(980, 450, 'back');
         facedown.inputEnabled = true;
-        facedown.events.onInputDown.add(playRandom, this, 0, facedown);
+        facedown.events.onInputDown.add(playRandom);
 
         return;
     }
 
-    function playRandom(facedownz) {
+    function playRandom() {
         randomplays++;
         var int = Phaser.ArrayUtils.removeRandomItem(leftover);
         if(int === complayid) {
@@ -344,12 +344,12 @@ GameStates.makeGame = function( game, shared ) {
             compDraw();
         }
         if(randomplays === 6) {
-            facedownz.destroy();
+            facedown.destroy();
         }
         return;
     }
 
-    function playCard(int, cardz) {
+    function playCard(int, numCard) {
         if(int === complayid) {
         } else if(int - complayid > 0) {
             playerscore += 3;
@@ -360,7 +360,15 @@ GameStates.makeGame = function( game, shared ) {
         if(compturns < 10) {
             compDraw();
         }
-        cardz.destroy();
+        if(numCard === 1) {
+            card1.destroy();
+        } else if(numCard === 2) {
+            card2.destroy();
+        } else if(numCard === 3) {
+            card3.destroy();
+        } else if(numCard === 4) {
+            card4.destroy();
+        }
         return;
     }
 
