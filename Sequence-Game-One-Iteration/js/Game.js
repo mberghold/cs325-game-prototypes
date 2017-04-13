@@ -49,6 +49,8 @@ GameStates.makeGame = function( game, shared ) {
     var tieRound = null;
     var randCardPlay = null;
     var randTween = null;
+    var playerRS = 0;
+    var compRS = 0;
 
     
     function quitGame() {
@@ -419,16 +421,15 @@ GameStates.makeGame = function( game, shared ) {
         var int = Phaser.ArrayUtils.removeRandomItem(leftover, 0, 6 - randomplays);
         showRandom(int);
         randcards[randomplays] = int;
-        if(int === complayid) {
+        calcScore(int);
+        playerscore += playerRS;
+        compscore += compRS;
+        if(playerRS === compRS) {
             tieRound.play();
-            playerscore += 1;
-            compscore += 1;
-        } else if(int - complayid > 0) {
+        } else if(playerRS - compRS > 0) {
             winRound.play();
-            playerscore += 3;
         } else {
             loseRound.play();
-            compscore += 3;
         }
         if(randomplays === 6) {
             facedown.inputEnabled = false;
@@ -465,17 +466,80 @@ GameStates.makeGame = function( game, shared ) {
         return;
     }
 
-    function playCard(int, numCard) {
+    function calcScore(int) {
+        playerRS = 0;
+        compRS = 0;
+
+        if(int === 2) {
+            if(compscore - playerscore >= 5) {
+                playerRS += 3;
+            }
+        }
+        if(complayid === 2) {
+            if(playerscore - compscore >= 5) {
+                compRS += 3;
+            }
+        }
+
+        if(int === 7) {
+            playerRS += 1;
+        }
+        if(complayid === 7) {
+            compRS += 1;
+        }
+
         if(int === complayid) {
-            tieRound.play();
-            playerscore += 1;
-            compscore += 1;
+            playerRS += 1;
+            compRS += 2;
         } else if(int - complayid > 0) {
+            if(int === 4) {
+                playerRS += 2;
+            }
+            if(int === 3) {
+                playerRS -= 2;
+            }
+            if(complayid === 8) {
+                compRS -= 2;
+            }
+            if(int === 10) {
+                playerRS -= 2 + int - complayid;
+            }
+            if(int === 6) {
+                playerRS -= 3 + int - complayid;
+                compRS += 3;
+            }
+            playerRS += 3 + int - complayid;
+        } else {
+            if(complayid === 4) {
+                compRS += 2;
+            }
+            if(complayid === 3) {
+                compRS -= 2;
+            }
+            if(int === 8) {
+                playRS -= 2;
+            }
+            if(complayid === 10) {
+                compRS -= 2 + complayid - int;
+            }
+            if(complayid === 6) {
+                compRS -= 3 + complayid - int;
+                playerRS += 3;
+            }
+            compRS += 3 + complayid - int;
+        }
+    }
+
+    function playCard(int, numCard) {
+        calcScore(int);
+        playerscore += playerRS;
+        compscore += compRS;
+        if(playerRS === compRS) {
+            tieRound.play();
+        } else if(playerRS - compRS > 0) {
             winRound.play();
-            playerscore += 3;
         } else {
             loseRound.play();
-            compscore += 3;
         }
         if(numCard === 1) {
             card1.inputEnabled = false;
