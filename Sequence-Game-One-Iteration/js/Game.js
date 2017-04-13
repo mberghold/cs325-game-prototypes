@@ -48,6 +48,7 @@ GameStates.makeGame = function( game, shared ) {
     var winRound = null;
     var tieRound = null;
     var randCardPlay = null;
+    var randTween = null;
 
     
     function quitGame() {
@@ -406,8 +407,9 @@ GameStates.makeGame = function( game, shared ) {
         } else {
             randCardPlay = game.add.sprite(980, 450, 'ten');
         }
-        game.add.tween(randCardPlay).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
-        randCardPlay.destroy();
+        randTween = game.add.tween(randCardPlay).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
+        randTween.onComplete.add(function(){randCardPlay.kill();}, this);
+        
 
     }
 
