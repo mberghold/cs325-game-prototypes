@@ -38,10 +38,13 @@ GameStates.makePreloader = function( game ) {
             game.load.image('play', 'assets/MenuPlay.png');
             game.load.image('instruct', 'assets/SampleInstruct.png');
             game.load.audio('clickNote', 'assets/you-know.mp3');
-            game.load.audio('getOut', 'assets/get-outta-here.mp3');
-            game.load.audio('endTurn', 'assets/chimes-glassy.mp3');
+            game.load.audio('loseRound', 'assets/get-outta-here.mp3');
+            game.load.audio('winRound', 'assets/thin.mp3');
+            game.load.audio('tieRound', 'assets/locking-mechanism.mp3');
+            game.load.audio('beginTurnSound', 'assets/chimes-glassy.mp3');
             game.load.audio('winSound', 'assets/good-morning.mp3');
             game.load.audio('loseSound', 'assets/bring-the-drama.mp3');
+            game.load.audio('drawSound', 'assets/mistery-unlocked.mp3');
 
 
 

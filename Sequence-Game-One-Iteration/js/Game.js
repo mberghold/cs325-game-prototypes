@@ -40,6 +40,13 @@ GameStates.makeGame = function( game, shared ) {
     var complaycardmade = false;
     var randomtext = null;
     var click = null;
+    var winSound = null;
+    var loseSound = null;
+    var beginTurnSound = null;
+    var drawSound = null;
+    var loseRound = null;
+    var winRound = null;
+    var tieRound = null;
 
 
     
@@ -69,6 +76,14 @@ GameStates.makeGame = function( game, shared ) {
         var endscreen = game.add.sprite(0, 0, 'preback');
         endscreen.inputEnabled = true;
         endscreen.events.onInputDown.add(quitGame);
+
+        if(playerscore > compscore) {
+            winSound.play();
+        } else if(compscore > playerscore) {
+            loseSound.play();
+        } else {
+            drawSound.play();
+        }
 
         var endtext = game.add.text(500, 200, "Player: " + playerscore + "   Computer: " + compscore + "\n Click to return to menu.", style);
     }
@@ -223,6 +238,7 @@ GameStates.makeGame = function( game, shared ) {
     }
 
     function compDraw() {
+        beginTurnSound.play();
         complayid = Phaser.ArrayUtils.removeRandomItem(computer, 0, 9 - compturns);
         if(complaycardmade) {
             if(complayid === 1) {
@@ -378,15 +394,19 @@ GameStates.makeGame = function( game, shared ) {
     }
 
     function playRandom() {
+        click.play();
         randomplays++;
         var int = Phaser.ArrayUtils.removeRandomItem(leftover, 0, 6 - randomplays);
         randcards[randomplays] = int;
         if(int === complayid) {
+            tieRound.play();
             playerscore += 1;
             compscore += 1;
         } else if(int - complayid > 0) {
+            winRound.play();
             playerscore += 3;
         } else {
+            loseRound.play();
             compscore += 3;
         }
         if(randomplays === 6) {
@@ -400,32 +420,39 @@ GameStates.makeGame = function( game, shared ) {
     }
 
     function playCard1() {
+        click.play();
         playCard(faceups[0], 1);
         return;
     }
 
     function playCard2() {
+        click.play();
         playCard(faceups[1], 2);
         return;
     }
 
     function playCard3() {
+        click.play();
         playCard(faceups[2], 3);
         return;
     }
 
     function playCard4() {
+        click.play();
         playCard(faceups[3], 4);
         return;
     }
 
     function playCard(int, numCard) {
         if(int === complayid) {
+            tieRound.play();
             playerscore += 1;
             compscore += 1;
         } else if(int - complayid > 0) {
+            winRound.play();
             playerscore += 3;
         } else {
+            loseRound.play();
             compscore += 3;
         }
         if(numCard === 1) {
@@ -468,6 +495,14 @@ GameStates.makeGame = function( game, shared ) {
         create: function () {
     
         click = game.add.audio('clickNote');
+        winSound = game.add.audio('winSound');
+        loseSound = game.add.audio('loseSound');
+        drawSound = game.add.audio('drawSound');
+        beginTurnSound = game.add.audio('beginTurnSound');
+        winRound = game.add.audio('winRound');
+        loseRound = game.add.audio('loseRound');
+        tieRound = game.add.audio('tieRound');
+
         key1 = game.input.keyboard.addKey(Phaser.Keyboard.I);
         key1.onDown.add(toggleInstruct);
 
