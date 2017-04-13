@@ -488,12 +488,23 @@ GameStates.makeGame = function( game, shared ) {
             compRS += 1;
         }
 
+        if(int === 1) {
+            if(compscore > playerscore) {
+                playerRS += 5;
+            }
+        }
+        if(complayid === 1) {
+            if(playerscore > compscore) {
+                compRS += 5;
+            }
+        }
+
         if(int === complayid) {
-            playerRS += 1;
-            compRS += 2;
+            playerRS += 3;
+            compRS += 6;
         } else if(int - complayid > 0) {
             if(int === 4) {
-                playerRS += 2;
+                compRS += 2;
             }
             if(int === 3) {
                 playerRS -= 2;
@@ -506,12 +517,12 @@ GameStates.makeGame = function( game, shared ) {
             }
             if(int === 6) {
                 playerRS -= 3 + int - complayid;
-                compRS += 3;
+                compRS += 5;
             }
             playerRS += 3 + int - complayid;
         } else {
             if(complayid === 4) {
-                compRS += 2;
+                playerRS += 2;
             }
             if(complayid === 3) {
                 compRS -= 2;
@@ -524,7 +535,7 @@ GameStates.makeGame = function( game, shared ) {
             }
             if(complayid === 6) {
                 compRS -= 3 + complayid - int;
-                playerRS += 3;
+                playerRS += 5;
             }
             compRS += 3 + complayid - int;
         }
