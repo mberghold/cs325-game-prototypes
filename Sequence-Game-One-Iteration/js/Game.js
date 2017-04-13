@@ -568,11 +568,11 @@ GameStates.makeGame = function( game, shared ) {
 
             if(compturns >= 10) {
                 if(playerscore > compscore) {
-                    game.addOnce(winSound.play());
+                    winSound.play();
                 } else if(compscore > playerscore) {
-                    game.addOnce(loseSound.play());
+                    loseSound.play();
                 } else {
-                    game.addOnce(drawSound.play());
+                    drawSound.play();
                 }
                 compturns = 0;
                 endGame();
