@@ -574,6 +574,7 @@ GameStates.makeGame = function( game, shared ) {
                 } else {
                     game.addOnce(drawSound.play());
                 }
+                compturns = 0;
                 endGame();
             }
 
