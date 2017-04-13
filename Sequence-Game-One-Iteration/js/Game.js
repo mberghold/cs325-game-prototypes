@@ -39,6 +39,7 @@ GameStates.makeGame = function( game, shared ) {
     var complaycard = null;
     var complaycardmade = false;
     var randomtext = null;
+    var click = null;
 
 
     
@@ -132,6 +133,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function upAce() {
         faceups[count] = 1;
+        click.play();
         ace.loadTexture('back', 0);
         count++;
         return;
@@ -139,6 +141,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function upTwo() {
         faceups[count] = 2;
+        click.play();
         two.loadTexture('back', 0);
         count++;
         return;
@@ -146,6 +149,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function upThree() {
         faceups[count] = 3;
+        click.play();
         three.loadTexture('back', 0);
         count++;
         return;
@@ -153,6 +157,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function upFour() {
         faceups[count] = 4;
+        click.play();
         four.loadTexture('back', 0);
         count++;
         return;
@@ -160,6 +165,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function upFive() {
         faceups[count] = 5;
+        click.play();
         five.loadTexture('back', 0);
         count++;
         return;
@@ -167,6 +173,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function upSix() {
         faceups[count] = 6;
+        click.play();
         six.loadTexture('back', 0);
         count++;
         return;
@@ -174,6 +181,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function upSeven() {
         faceups[count] = 7;
+        click.play();
         seven.loadTexture('back', 0);
         count++;
         return;
@@ -181,6 +189,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function upEight() {
         faceups[count] = 8;
+        click.play();
         eight.loadTexture('back', 0);
         count++;
         return;
@@ -188,6 +197,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function upNine() {
         faceups[count] = 9;
+        click.play();
         nine.loadTexture('back', 0);
         count++;
         return;
@@ -195,6 +205,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function upTen() {
         faceups[count] = 10;
+        click.play();
         ten.loadTexture('back', 0);
         count++;
         return;
@@ -456,6 +467,7 @@ GameStates.makeGame = function( game, shared ) {
     
         create: function () {
     
+        click = game.add.audio('clickNote');
         key1 = game.input.keyboard.addKey(Phaser.Keyboard.I);
         key1.onDown.add(toggleInstruct);
 
