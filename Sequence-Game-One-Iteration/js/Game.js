@@ -47,7 +47,7 @@ GameStates.makeGame = function( game, shared ) {
     var loseRound = null;
     var winRound = null;
     var tieRound = null;
-
+    var randCardPlay = null;
 
     
     function quitGame() {
@@ -68,18 +68,12 @@ GameStates.makeGame = function( game, shared ) {
         complaycardmade = false;
         complayid = null;
         complay = null;
+        randCardPlay = null;
         game.state.start('MainMenu');
 
     }
 
     function endGame() {
-        if(playerscore > compscore) {
-            winSound.play();
-        } else if(compscore > playerscore) {
-            loseSound.play();
-        } else {
-            drawSound.play();
-        }
         var endscreen = game.add.sprite(0, 0, 'preback');
         endscreen.inputEnabled = true;
         endscreen.events.onInputDown.add(quitGame);
@@ -390,10 +384,38 @@ GameStates.makeGame = function( game, shared ) {
         return;
     }
 
+    function showRandom(int) {
+        if(int === 1) {
+            randCardPlay = game.add.sprite(980, 450, 'ace');
+        } else if(int === 2) {
+            randCardPlay = game.add.sprite(980, 450, 'two');
+        } else if(int === 3) {
+            randCardPlay = game.add.sprite(980, 450, 'three');
+        } else if(int === 4) {
+            randCardPlay = game.add.sprite(980, 450, 'four');
+        } else if(int === 5) {
+            randCardPlay = game.add.sprite(980, 450, 'five');
+        } else if(int === 6) {
+            randCardPlay = game.add.sprite(980, 450, 'six');
+        } else if(int === 7) {
+            randCardPlay = game.add.sprite(980, 450, 'seven');
+        } else if(int === 8) {
+            randCardPlay = game.add.sprite(980, 450, 'eight');
+        } else if(int === 9) {
+            randCardPlay = game.add.sprite(980, 450, 'nine');
+        } else {
+            randCardPlay = game.add.sprite(980, 450, 'ten');
+        }
+        game.add.tween(randCardPlay).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
+        randCardPlay.destroy();
+
+    }
+
     function playRandom() {
         click.play();
         randomplays++;
         var int = Phaser.ArrayUtils.removeRandomItem(leftover, 0, 6 - randomplays);
+        showRandom(int);
         randcards[randomplays] = int;
         if(int === complayid) {
             tieRound.play();
@@ -454,13 +476,17 @@ GameStates.makeGame = function( game, shared ) {
             compscore += 3;
         }
         if(numCard === 1) {
-            card1.destroy();
+            card1.inputEnabled = false;
+            game.add.tween(card1).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
         } else if(numCard === 2) {
-            card2.destroy();
+            card2.inputEnabled = false;
+            game.add.tween(card2).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
         } else if(numCard === 3) {
-            card3.destroy();
+            card3.inputEnabled = false;
+            game.add.tween(card3).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
         } else if(numCard === 4) {
-            card4.destroy();
+            card4.inputEnabled = false;
+            game.add.tween(card4).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
         }
         compturns++;
         if(compturns < 10) {
@@ -539,6 +565,13 @@ GameStates.makeGame = function( game, shared ) {
             }
 
             if(compturns >= 10) {
+                if(playerscore > compscore) {
+                    winSound.play();
+                } else if(compscore > playerscore) {
+                    loseSound.play();
+                } else {
+                    drawSound.play();
+                }
                 endGame();
             }
 
