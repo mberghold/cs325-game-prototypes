@@ -513,7 +513,9 @@ GameStates.makeGame = function( game, shared ) {
                 compRS -= 2;
             }
             if(int === 10) {
-                playerRS -= 2 + int - complayid;
+                if(playerscore > compscore + 3) {
+                    playerRS -= 2 + int - complayid;
+                }
             }
             if(int === 6) {
                 playerRS -= 3 + int - complayid;
@@ -531,7 +533,9 @@ GameStates.makeGame = function( game, shared ) {
                 playRS -= 2;
             }
             if(complayid === 10) {
-                compRS -= 2 + complayid - int;
+                if(compscore > playerscore + 3) {
+                    compRS -= 2 + complayid - int;
+                }
             }
             if(complayid === 6) {
                 compRS -= 3 + complayid - int;
