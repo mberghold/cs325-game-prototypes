@@ -73,10 +73,6 @@ GameStates.makeGame = function( game, shared ) {
     }
 
     function endGame() {
-        var endscreen = game.add.sprite(0, 0, 'preback');
-        endscreen.inputEnabled = true;
-        endscreen.events.onInputDown.add(quitGame);
-
         if(playerscore > compscore) {
             winSound.play();
         } else if(compscore > playerscore) {
@@ -84,7 +80,9 @@ GameStates.makeGame = function( game, shared ) {
         } else {
             drawSound.play();
         }
-
+        var endscreen = game.add.sprite(0, 0, 'preback');
+        endscreen.inputEnabled = true;
+        endscreen.events.onInputDown.add(quitGame);
         var endtext = game.add.text(500, 200, "Player: " + playerscore + "   Computer: " + compscore + "\n Click to return to menu.", style);
     }
 
@@ -238,7 +236,6 @@ GameStates.makeGame = function( game, shared ) {
     }
 
     function compDraw() {
-        beginTurnSound.play();
         complayid = Phaser.ArrayUtils.removeRandomItem(computer, 0, 9 - compturns);
         if(complaycardmade) {
             if(complayid === 1) {
@@ -410,7 +407,8 @@ GameStates.makeGame = function( game, shared ) {
             compscore += 3;
         }
         if(randomplays === 6) {
-            facedown.destroy();
+            facedown.inputEnabled = false;
+            game.add.tween(facedown).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
         }
         compturns++;
         if(compturns < 10) {
@@ -486,7 +484,7 @@ GameStates.makeGame = function( game, shared ) {
         makeRandDeck();
 
         makeBoard();
-
+        beginTurnSound.play();
         compDraw();
     }
     
