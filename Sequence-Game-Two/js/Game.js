@@ -33,14 +33,23 @@ GameStates.makeGame = function( game, shared ) {
 
     function startPrint() {
         topleft[3] = game.add.sprite(100, 200, 'back');
+        topleft[3].scale.setTo(0.5, 0.5);
         topcen[3] = game.add.sprite(230, 355, 'back');
+        topcen[3].scale.setTo(0.5, 0.5);
         topright[3] = game.add.sprite(360, 510, 'back');
+        topright[3].scale.setTo(0.5, 0.5);
         midleft[3] = game.add.sprite(100, 200, 'back');
+        midleft[3].scale.setTo(0.5, 0.5);
         midcen[3] = game.add.sprite(230, 355, 'back');
+        midcen[3].scale.setTo(0.5, 0.5);
         midright[3] = game.add.sprite(360, 510, 'back');
+        midright[3].scale.setTo(0.5, 0.5);
         botleft[3] = game.add.sprite(100, 200, 'back');
+        botleft[3].scale.setTo(0.5, 0.5);
         botcen[3] = game.add.sprite(230, 355, 'back');
+        botcen[3].scale.setTo(0.5, 0.5);
         botright[3] = game.add.sprite(360, 510, 'back');
+        botright[3].scale.setTo(0.5, 0.5);
     }
     
     return {

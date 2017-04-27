@@ -41,7 +41,7 @@ GameStates.makePreloader = function( game ) {
             game.load.image('seven', 'assets/SevenSpade.png');
             game.load.image('eight', 'assets/EightSpade.png');
             game.load.image('nine', 'assets/NineSpade.png');
-            game.load.image('back', 'assets/CardBack.png');
+            game.load.image('back', 'assets/CardBack.jpg');
 
 
         },
