@@ -97,6 +97,9 @@ GameStates.makeGame = function( game, shared ) {
             music = game.add.audio('gameMusic');
             music.play();
 
+            style = { font: "20px Verdana", fill: "#FFFFFF", align: "center" };
+            spytext = game.add.text(500, 100, "All clear for now...", style);
+
             for(var i = 0; i < 9; i++) {
                 cards[i] = i + 1;
             }
@@ -153,9 +156,6 @@ GameStates.makeGame = function( game, shared ) {
             startPrint();
 
             flipCard(midcen);
-
-            style = { font: "20px Verdana", fill: "#FFFFFF", align: "center" };
-            spytext = game.add.text(500, 100, "All clear for now...", style);
     
             //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
             //
