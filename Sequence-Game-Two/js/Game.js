@@ -193,7 +193,9 @@ GameStates.makeGame = function( game, shared ) {
             }
             card[4] = 1;
             if(card[2] === 1) {
-                spytext.text = "We're being hacked!";
+                if(game.rnd.integerInRange(1, 2) === 1) {
+                    spytext.text = "We're being hacked!";
+                }
             }
         }
     }
