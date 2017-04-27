@@ -132,7 +132,7 @@ GameStates.makeGame = function( game, shared ) {
             midleft[4] = 0;
             if(midleft[0] === random)
                 midleft[2] = 1;
-            midcen[2] = 0;
+            midcen[2] = 1;
             midcen[4] = 0;
             if(midcen[0] === random)
                 midcen[2] = 1;
