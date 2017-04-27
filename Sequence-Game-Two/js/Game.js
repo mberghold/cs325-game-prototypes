@@ -196,7 +196,9 @@ GameStates.makeGame = function( game, shared ) {
         console.log(prompt - random);
         shared.count = 1001;
         if((prompt - random) === 0) {
-            shared.count = count;
+            if(shared.count > count) {
+                shared.count = count;
+            }
         }
 
         music.stop();
