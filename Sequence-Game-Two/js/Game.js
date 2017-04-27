@@ -21,6 +21,8 @@ GameStates.makeGame = function( game, shared ) {
     var spytext = null;
     var ordtext = null;
     var count = 0;
+    var prompt = null;
+    var guess = null;
 
     var random;
     
@@ -268,6 +270,8 @@ GameStates.makeGame = function( game, shared ) {
                 botright[2] = 1;
 
             startPrint();
+
+            prompt = prompt("Who is the spy?? (Input 1 - 9)");
     
             //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
             //
