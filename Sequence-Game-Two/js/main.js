@@ -11,8 +11,7 @@ window.onload = function() {
 	
 	// An object for shared variables, so that them main menu can show
 	// the high score if you want.
-	var shared = {};
-	shared[0] = 1000;
+	var shared = 1000;
 	
 	game.state.add( 'Boot', GameStates.makeBoot( game ) );
 	game.state.add( 'Preloader', GameStates.makePreloader( game ) );
