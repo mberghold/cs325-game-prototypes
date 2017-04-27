@@ -244,7 +244,7 @@ GameStates.makeGame = function( game, shared ) {
             midleft[4] = 0;
             if(midleft[0] === random)
                 midleft[2] = 1;
-            midcen[2] = 1;
+            midcen[2] = 0;
             midcen[4] = 0;
             if(midcen[0] === random)
                 midcen[2] = 1;
@@ -266,8 +266,6 @@ GameStates.makeGame = function( game, shared ) {
                 botright[2] = 1;
 
             startPrint();
-
-            flipCard(midcen);
     
             //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
             //
