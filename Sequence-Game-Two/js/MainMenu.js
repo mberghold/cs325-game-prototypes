@@ -28,7 +28,7 @@ GameStates.makeMainMenu = function( game, shared ) {
             music = game.add.audio('titleMusic');
             music.play();
     
-            game.add.sprite(0, 0, 'preloadback');
+            game.add.sprite(0, 0, 'menuback');
 
             style = { font: "20px Verdana", fill: "#FFFFFF", align: "center" };
             text = game.add.text(280, 350, "", style);
@@ -42,7 +42,7 @@ GameStates.makeMainMenu = function( game, shared ) {
     
             playButton = game.add.button( 303, 400, 'menuPlay', startGame);
 
-            console.log("Update 0.3");
+            console.log("Update 0.31");
     
         },
     
