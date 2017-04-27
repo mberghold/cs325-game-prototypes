@@ -17,10 +17,8 @@ GameStates.makeGame = function( game, shared ) {
     var botleft = {};
     var botcen = {};
     var botright = {};
-    var spy = null;
     var style = null;
     var spytext = null;
-    var seconds = null;
 
     var random;
     
@@ -60,6 +58,9 @@ GameStates.makeGame = function( game, shared ) {
         if(card[4] === 1) {
             card[3].loadTexture('back');
             card[4] = 0;
+            if(card[2] === 1) {
+                spytext.text = "All clear for now...";
+            }
         }
         else {
             if(card[0] === 1) {
@@ -82,6 +83,9 @@ GameStates.makeGame = function( game, shared ) {
                 card[3].loadTexture('nine');
             }
             card[4] = 1;
+            if(card[2] === 1) {
+                spytext.text = "We're being hacked!";
+            }
         }
     }
     
@@ -113,75 +117,58 @@ GameStates.makeGame = function( game, shared ) {
             topleft[4] = 0;
             if(topleft[0] === random)
                 topleft[2] = 1;
-                spy = topleft;
             topcen[2] = 0;
             topcen[4] = 0;
             if(topcen[0] === random)
                 topcen[2] = 1;
-                spy = topcen;
             topright[2] = 0;
             topright[4] = 0;
             if(topright[0] === random)
                 topright[2] = 1;
-                spy = topright;
             midleft[2] = 0;
             midleft[4] = 0;
             if(midleft[0] === random)
                 midleft[2] = 1;
-                spy = midleft;
-            midcen[2] = 1;
+            midcen[2] = 0;
             midcen[4] = 0;
             if(midcen[0] === random)
                 midcen[2] = 1;
-                spy = midcen;
             midright[2] = 0;
             midright[4] = 0;
             if(midright[0] === random)
                 midright[2] = 1;
-                spy = midright;
             botleft[2] = 0;
             botleft[4] = 0;
             if(botleft[0] === random)
                 botleft[2] = 1;
-                spy = botleft;
             botcen[2] = 0;
             botcen[4] = 0;
             if(botcen[0] === random)
                 botcen[2] = 1;
-                spy = botcen;
             botright[2] = 0;
             botright[4] = 0;
             if(botright[0] === random)
                 botright[2] = 1;
-                spy = botright;
 
             startPrint();
 
             flipCard(midcen);
 
             style = { font: "20px Verdana", fill: "#FFFFFF", align: "center" };
-
-            seconds = Math.floor(game.time.time / 1000) % 5;
-
-            spytext = game.add.text(500, 100, "", style);
+            spytext = game.add.text(500, 100, "All clear for now...", style);
     
             //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
             //
         },
     
         update: function () {
-            seconds = Math.floor(game.time.time / 1000) % 10;
-            if(seconds === 4){
+
+            if (game.input.activePointer.isDown)
+            {
                 flipCard(midcen);
             }
             //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
             //
-
-            if(spy[4] = 1) {
-                spytext.text = "We're being hacked!";
-            } else {
-                spytext.text = "All clear for now...";
-            }
         }
     };
 };
