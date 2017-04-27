@@ -19,6 +19,8 @@ GameStates.makeGame = function( game, shared ) {
     var botright = {};
     var style = null;
     var spytext = null;
+    var ordtext = null;
+    var count = 0;
 
     var random;
     
@@ -36,22 +38,129 @@ GameStates.makeGame = function( game, shared ) {
     function startPrint() {
         topleft[3] = game.add.sprite(100, 100, 'back');
         topleft[3].scale.setTo(0.5, 0.5);
+        topleft[3].inputEnabled = true;
+        topleft[3].events.onInputDown(flipTL, this);
+
         topcen[3] = game.add.sprite(230, 100, 'back');
         topcen[3].scale.setTo(0.5, 0.5);
+        topcen[3].inputEnabled = true;
+        topcen[3].events.onInputDown(flipTC, this);
+
         topright[3] = game.add.sprite(360, 100, 'back');
         topright[3].scale.setTo(0.5, 0.5);
+        topright[3].inputEnabled = true;
+        topright[3].events.onInputDown(flipTR, this);
+
         midleft[3] = game.add.sprite(100, 255, 'back');
         midleft[3].scale.setTo(0.5, 0.5);
+        midleft[3].inputEnabled = true;
+        midleft[3].events.onInputDown(flipML, this);
+
         midcen[3] = game.add.sprite(230, 255, 'back');
         midcen[3].scale.setTo(0.5, 0.5);
+        midcen[3].inputEnabled = true;
+        midcen[3].events.onInputDown(flipMC, this);
+
         midright[3] = game.add.sprite(360, 255, 'back');
         midright[3].scale.setTo(0.5, 0.5);
+        midright[3].inputEnabled = true;
+        midright[3].events.onInputDown(flipMR, this);
+
         botleft[3] = game.add.sprite(100, 410, 'back');
         botleft[3].scale.setTo(0.5, 0.5);
+        botleft[3].inputEnabled = true;
+        botleft[3].events.onInputDown(flipBL, this);
+
         botcen[3] = game.add.sprite(230, 410, 'back');
         botcen[3].scale.setTo(0.5, 0.5);
+        botcen[3].inputEnabled = true;
+        botcen[3].events.onInputDown(flipBC, this);
+
         botright[3] = game.add.sprite(360, 410, 'back');
         botright[3].scale.setTo(0.5, 0.5);
+        botright[3].inputEnabled = true;
+        botright[3].events.onInputDown(flipBR, this);
+    }
+
+    function flipTL() {
+        flipCard(topleft);
+        flipCard(topcen);
+        flipCard(topright);
+        flipCard(midleft);
+        flipCard(botleft);
+        count += 1;
+    }
+
+    function flipTC() {
+        flipCard(topleft);
+        flipCard(topcen);
+        flipCard(topright);
+        flipCard(midcen);
+        flipCard(botcen);
+        count += 1;
+    }
+
+    function flipTR() {
+        flipCard(topleft);
+        flipCard(topcen);
+        flipCard(topright);
+        flipCard(midright);
+        flipCard(botright);
+        count += 1;
+    }
+
+    function flipML() {
+        flipCard(topleft);
+        flipCard(midleft);
+        flipCard(midcen);
+        flipCard(midright);
+        flipCard(botleft);
+        count += 1;
+    }
+
+    function flipMC() {
+        flipCard(topcen);
+        flipCard(midleft);
+        flipCard(midcen);
+        flipCard(midright);
+        flipCard(botcen);
+        count += 1;
+    }
+
+    function flipMR() {
+        flipCard(topright);
+        flipCard(midleft);
+        flipCard(midcen);
+        flipCard(midright);
+        flipCard(botright);
+        count += 1;
+    }
+
+    function flipBL() {
+        flipCard(topleft);
+        flipCard(midleft);
+        flipCard(botleft);
+        flipCard(botcen);
+        flipCard(botright);
+        count += 1;
+    }
+
+    function flipBC() {
+        flipCard(topcen);
+        flipCard(midcen);
+        flipCard(botleft);
+        flipCard(botcen);
+        flipCard(botright);
+        count += 1;
+    }
+
+    function flipBR() {
+        flipCard(topright);
+        flipCard(midright);
+        flipCard(botleft);
+        flipCard(botcen);
+        flipCard(botright);
+        count += 1;
     }
 
     function flipCard(card) {
@@ -97,8 +206,11 @@ GameStates.makeGame = function( game, shared ) {
             music = game.add.audio('gameMusic');
             music.play();
 
+            count = 0;
+
             style = { font: "20px Verdana", fill: "#FFFFFF", align: "center" };
             spytext = game.add.text(500, 100, "All clear for now...", style);
+            ordtext = game.add.text(500, 200, "Orders given: " + count, style);
 
             for(var i = 0; i < 9; i++) {
                 cards[i] = i + 1;
@@ -162,11 +274,7 @@ GameStates.makeGame = function( game, shared ) {
         },
     
         update: function () {
-
-            if (game.input.activePointer.isDown)
-            {
-                flipCard(midcen);
-            }
+            ordtext.text = "Orders given: " + count;
             //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
             //
         }
