@@ -193,9 +193,9 @@ GameStates.makeGame = function( game, shared ) {
 
     function guessSpy() {
         prompt = window.prompt("Who is the spy?? (1 - 9)");
-        console.log(prompt + " " + random);
+        console.log(prompt - random);
         shared.count = 1001;
-        if(prompt === random) {
+        if((prompt - random) === 0) {
             shared.count = count;
         }
 
