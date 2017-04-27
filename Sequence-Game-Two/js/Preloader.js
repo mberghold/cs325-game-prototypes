@@ -30,6 +30,17 @@ GameStates.makePreloader = function( game ) {
             // game.load.image( 'logo', 'assets/phaser.png' );
             game.load.audio('titleMusic', 'assets/PinkPanther.mp3');
             game.load.image('menuPlay', 'assets/MenuPlay.png');
+            game.load.image('menuBack', 'assets/PreloadBack.png');
+            game.load.image('ace', 'AceSpade.png');
+            game.load.image('two', 'TwoSpade.png');
+            game.load.image('three', 'ThreeSpade.png');
+            game.load.image('four', 'FourSpade.png');
+            game.load.image('five', 'FiveSpade.png');
+            game.load.image('six', 'SixSpade.png');
+            game.load.image('seven', 'SevenSpade.png');
+            game.load.image('eight', 'EightSpade.png');
+            game.load.image('nine', 'NineSpade.png');
+            game.load.image('back', 'CardBack.png');
 
 
         },

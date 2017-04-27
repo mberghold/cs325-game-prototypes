@@ -29,6 +29,8 @@ GameStates.makeMainMenu = function( game, shared ) {
             game.add.sprite(0, 0, 'preloadback');
     
             playButton = game.add.button( 303, 400, 'menuPlay');
+
+            console.log("Update 0.01");
     
         },
     
