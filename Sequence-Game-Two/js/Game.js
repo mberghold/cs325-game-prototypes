@@ -16,7 +16,6 @@ GameStates.makeGame = function( game, shared ) {
     var botleft = {};
     var botcen = {};
     var botright = {};
-    var deck = {};
 
     var random;
     
@@ -62,25 +61,35 @@ GameStates.makeGame = function( game, shared ) {
             botcen[0] = Phaser.ArrayUtils.removeRandomItem(cards);
             botright[0] = Phaser.ArrayUtils.removeRandomItem(cards);
 
-            deck[0] = topleft;
-            deck[1] = topcen;
-            deck[2] = topright;
-            deck[3] = midleft;
-            deck[4] = midcen;
-            deck[5] = midright;
-            deck[6] = botleft;
-            deck[7] = botcen;
-            deck[8] = botright;
-
             random = game.rnd.integerInRange(1, 9);
 
-            for(var i = 0; i < 9; i++) {
-                deck[i][1] = 0;
-                deck[i][2] = 0;
-                if(deck[i][0] === random) {
-                    deck[i][2] = 1;
-                }
-            }
+            topleft[2] = 0;
+            if(topleft[0] === random)
+                topleft[2] = 1;
+            topcen[2] = 0;
+            if(topcen[0] === random)
+                topcen[2] = 1;
+            topright[2] = 0;
+            if(topright[0] === random)
+                topright[2] = 1;
+            midleft[2] = 0;
+            if(midleft[0] === random)
+                midleft[2] = 1;
+            midcen[2] = 0;
+            if(midcen[0] === random)
+                midcen[2] = 1;
+            midright[2] = 0;
+            if(midright[0] === random)
+                midright[2] = 1;
+            botleft[2] = 0;
+            if(botleft[0] === random)
+                botleft[2] = 1;
+            botcen[2] = 0;
+            if(botcen[0] === random)
+                botcen[2] = 1;
+            botright[2] = 0;
+            if(botright[0] === random)
+                botright[2] = 1;
 
             startPrint();
 
