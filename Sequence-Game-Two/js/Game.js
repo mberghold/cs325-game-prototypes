@@ -171,8 +171,9 @@ GameStates.makeGame = function( game, shared ) {
     
         update: function () {
             seconds = Math.floor(game.time.time / 1000) % 60;
-            if(seconds = 4)
+            if(seconds = 4){
                 flipCard(midcen);
+            }
             //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
             //
 
