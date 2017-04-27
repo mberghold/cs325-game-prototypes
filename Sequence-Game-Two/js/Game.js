@@ -178,7 +178,7 @@ GameStates.makeGame = function( game, shared ) {
             //
 
             if(spy[4] = 1) {
-                spytext.text = "We're being hacked!";
+                spytext.text = seconds;
             } else {
                 spytext.text = "All clear for now...";
             }
