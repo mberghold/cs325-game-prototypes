@@ -4,6 +4,7 @@ GameStates.makeGame = function( game, shared ) {
     // Create your own variables.
 
     var cards = [];
+    var music = null;
 
     // This will hold the card. I'm thinking [0] will be card value, [1] if it is the spy.
     // Maybe [2] the sprite?
@@ -25,6 +26,7 @@ GameStates.makeGame = function( game, shared ) {
         //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
 
         //  Then let's go back to the main menu.
+        music.stop();
         game.state.start('MainMenu');
 
     }
@@ -46,6 +48,8 @@ GameStates.makeGame = function( game, shared ) {
         create: function () {
 
             game.add.image(0, 0, 'menuBack');
+            game.add.audio('gameMusic');
+            music.play();
 
             for(var i = 0; i < 9; i++) {
                 cards[i] = i + 1;
