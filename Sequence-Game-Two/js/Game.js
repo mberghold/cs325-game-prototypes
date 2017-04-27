@@ -57,7 +57,7 @@ GameStates.makeGame = function( game, shared ) {
         create: function () {
 
             game.add.image(0, 0, 'menuBack');
-            game.add.audio('gameMusic');
+            music = game.add.audio('gameMusic');
             music.play();
 
             for(var i = 0; i < 9; i++) {
