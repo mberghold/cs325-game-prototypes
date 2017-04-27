@@ -170,15 +170,15 @@ GameStates.makeGame = function( game, shared ) {
         },
     
         update: function () {
-            seconds = Math.floor(game.time.time / 1000) % 60;
-            if(seconds = 4){
+            seconds = Math.floor(game.time.time / 1000) % 10;
+            if(seconds === 4){
                 flipCard(midcen);
             }
             //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
             //
 
             if(spy[4] = 1) {
-                spytext.text = seconds;
+                spytext.text = "We're being hacked!";
             } else {
                 spytext.text = "All clear for now...";
             }
