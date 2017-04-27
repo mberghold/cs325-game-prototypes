@@ -75,10 +75,10 @@ GameStates.makeGame = function( game, shared ) {
             random = game.rnd.integerInRange(1, 9);
 
             for(var i = 0; i < 9; i++) {
-                deck[i].[1] = 0;
-                deck[i].[2] = 0;
-                if(deck[i].[0] === random) {
-                    deck[i].[2] = 1;
+                deck[i][1] = 0;
+                deck[i][2] = 0;
+                if(deck[i][0] === random) {
+                    deck[i][2] = 1;
                 }
             }
 
