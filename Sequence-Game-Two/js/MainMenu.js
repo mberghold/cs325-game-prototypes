@@ -4,6 +4,8 @@ GameStates.makeMainMenu = function( game, shared ) {
 
 	var music = null;
 	var playButton = null;
+    var style = null;
+    var text = null;
     
     function startGame(pointer) {
 
@@ -27,10 +29,20 @@ GameStates.makeMainMenu = function( game, shared ) {
             music.play();
     
             game.add.sprite(0, 0, 'preloadback');
+
+            style = { font: "20px Verdana", fill: "#FFFFFF", align: "center" };
+            text = game.add.text(280, 350, "", style);
+
+
+            if(shared[0] === 1000) {
+                text.text = "The game has not been beaten!";
+            } else {
+                text.text = "Game beaten! Least orders: " + shared[0];
+            }
     
             playButton = game.add.button( 303, 400, 'menuPlay', startGame);
 
-            console.log("Update 0.26");
+            console.log("Update 0.3");
     
         },
     

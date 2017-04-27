@@ -31,7 +31,8 @@ GameStates.makePreloader = function( game ) {
             game.load.audio('titleMusic', 'assets/PinkPanther.mp3');
             game.load.audio('gameMusic', 'assets/Rain.mp3');
             game.load.image('menuPlay', 'assets/MenuPlay.png');
-            game.load.image('menuBack', 'assets/PreloadBack.png');
+            game.load.image('menuBack', 'assets/menuBackground.png');
+            game.load.image('gameBack', 'assets/PreloadBack.png');
             game.load.image('ace', 'assets/AceSpade.png');
             game.load.image('two', 'assets/TwoSpade.png');
             game.load.image('three', 'assets/ThreeSpade.png');
@@ -42,6 +43,7 @@ GameStates.makePreloader = function( game ) {
             game.load.image('eight', 'assets/EightSpade.png');
             game.load.image('nine', 'assets/NineSpade.png');
             game.load.image('back', 'assets/CardBack.jpg');
+            game.load.image('button', 'assets/Button.png');
 
 
         },

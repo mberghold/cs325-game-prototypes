@@ -23,19 +23,8 @@ GameStates.makeGame = function( game, shared ) {
     var count = 0;
     var prompt = null;
     var guess = null;
-
     var random;
     
-    function quitGame() {
-
-        //  Here you should destroy anything you no longer need.
-        //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
-
-        //  Then let's go back to the main menu.
-        music.stop();
-        game.state.start('MainMenu');
-
-    }
 
     function startPrint() {
         topleft[3] = game.add.sprite(100, 100, 'back');
@@ -201,12 +190,23 @@ GameStates.makeGame = function( game, shared ) {
             }
         }
     }
+
+    function guessSpy() {
+        prompt = window.prompt("Who is the spy?? (1 - 9)");
+
+        if(prompt === random) {
+            shared[0] = count;
+        }
+
+        music.stop();
+        game.state.start('MainMenu');
+    }
     
     return {
     
         create: function () {
 
-            game.add.image(0, 0, 'menuBack');
+            game.add.image(0, 0, 'gameBack');
             music = game.add.audio('gameMusic');
             music.play();
 
@@ -214,7 +214,10 @@ GameStates.makeGame = function( game, shared ) {
 
             style = { font: "20px Verdana", fill: "#FFFFFF", align: "center" };
             spytext = game.add.text(500, 100, "All clear for now...", style);
-            ordtext = game.add.text(500, 200, "Orders given: " + count, style);
+            ordtext = game.add.text(500, 150, "Orders given: " + count, style);
+            guess = game.add.sprite(500, 200, 'button');
+            guess.inputEnabled = true;
+            guess.events.onInputDown.addOnce(guessSpy, this);
 
             for(var i = 0; i < 9; i++) {
                 cards[i] = i + 1;
@@ -271,7 +274,7 @@ GameStates.makeGame = function( game, shared ) {
 
             startPrint();
 
-            prompt = window.prompt("Who is the spy?? (Input 1 - 9)");
+            // prompt = window.prompt("Who is the spy?? (Input 1 - 9)");
     
             //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
             //
