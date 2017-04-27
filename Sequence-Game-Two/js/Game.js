@@ -271,7 +271,7 @@ GameStates.makeGame = function( game, shared ) {
 
             startPrint();
 
-            prompt = game.prompt("Who is the spy?? (Input 1 - 9)");
+            prompt = window.prompt("Who is the spy?? (Input 1 - 9)");
     
             //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
             //
