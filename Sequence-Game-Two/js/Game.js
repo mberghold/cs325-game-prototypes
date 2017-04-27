@@ -32,24 +32,53 @@ GameStates.makeGame = function( game, shared ) {
     }
 
     function startPrint() {
-        topleft[3] = game.add.sprite(100, 200, 'back');
+        topleft[3] = game.add.sprite(100, 100, 'back');
         topleft[3].scale.setTo(0.5, 0.5);
-        topcen[3] = game.add.sprite(230, 355, 'back');
+        topcen[3] = game.add.sprite(230, 100, 'back');
         topcen[3].scale.setTo(0.5, 0.5);
-        topright[3] = game.add.sprite(360, 510, 'back');
+        topright[3] = game.add.sprite(360, 100, 'back');
         topright[3].scale.setTo(0.5, 0.5);
-        midleft[3] = game.add.sprite(100, 200, 'back');
+        midleft[3] = game.add.sprite(100, 255, 'back');
         midleft[3].scale.setTo(0.5, 0.5);
-        midcen[3] = game.add.sprite(230, 355, 'back');
+        midcen[3] = game.add.sprite(230, 255, 'back');
         midcen[3].scale.setTo(0.5, 0.5);
-        midright[3] = game.add.sprite(360, 510, 'back');
+        midright[3] = game.add.sprite(360, 255, 'back');
         midright[3].scale.setTo(0.5, 0.5);
-        botleft[3] = game.add.sprite(100, 200, 'back');
+        botleft[3] = game.add.sprite(100, 410, 'back');
         botleft[3].scale.setTo(0.5, 0.5);
-        botcen[3] = game.add.sprite(230, 355, 'back');
+        botcen[3] = game.add.sprite(230, 410, 'back');
         botcen[3].scale.setTo(0.5, 0.5);
-        botright[3] = game.add.sprite(360, 510, 'back');
+        botright[3] = game.add.sprite(360, 410, 'back');
         botright[3].scale.setTo(0.5, 0.5);
+    }
+
+    function flipCard(card) {
+        if(card[4] === 1) {
+            card[3].loadTexture('back');
+            card[4] = 0;
+        }
+        else {
+            if(card[0] === 1) {
+                card[3].loadTexture('ace');
+            } else if(card[0] === 2) {
+                card[3].loadTexture('two');
+            } else if(card[0] === 3) {
+                card[3].loadTexture('three');
+            } else if(card[0] === 4) {
+                card[3].loadTexture('four');
+            } else if(card[0] === 5) {
+                card[3].loadTexture('five');
+            } else if(card[0] === 6) {
+                card[3].loadTexture('six');
+            } else if(card[0] === 7) {
+                card[3].loadTexture('seven');
+            } else if(card[0] === 8) {
+                card[3].loadTexture('eight');
+            } else if(card[0] === 9) {
+                card[3].loadTexture('nine');
+            }
+            card[4] = 1;
+        }
     }
     
     return {
@@ -77,36 +106,45 @@ GameStates.makeGame = function( game, shared ) {
             random = game.rnd.integerInRange(1, 9);
 
             topleft[2] = 0;
+            topleft[4] = 0;
             if(topleft[0] === random)
                 topleft[2] = 1;
             topcen[2] = 0;
+            topcen[4] = 0;
             if(topcen[0] === random)
                 topcen[2] = 1;
             topright[2] = 0;
+            topright[4] = 0;
             if(topright[0] === random)
                 topright[2] = 1;
             midleft[2] = 0;
+            midleft[4] = 0;
             if(midleft[0] === random)
                 midleft[2] = 1;
             midcen[2] = 0;
+            midcen[4] = 0;
             if(midcen[0] === random)
                 midcen[2] = 1;
             midright[2] = 0;
+            midright[4] = 0;
             if(midright[0] === random)
                 midright[2] = 1;
             botleft[2] = 0;
+            botleft[4] = 0;
             if(botleft[0] === random)
                 botleft[2] = 1;
             botcen[2] = 0;
+            botcen[4] = 0;
             if(botcen[0] === random)
                 botcen[2] = 1;
             botright[2] = 0;
+            botright[4] = 0;
             if(botright[0] === random)
                 botright[2] = 1;
 
             startPrint();
 
-
+            flipCard(midcen);
     
             //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
             //
