@@ -34,7 +34,7 @@ GameStates.makeMainMenu = function( game, shared ) {
             text = game.add.text(280, 350, "", style);
 
 
-            if(shared === 1000) {
+            if(shared.count === 1000) {
                 text.text = "The game has not been beaten!" + shared[0];
             } else {
                 text.text = "Game beaten! Least orders: " + shared[0];
@@ -42,7 +42,7 @@ GameStates.makeMainMenu = function( game, shared ) {
     
             playButton = game.add.button( 303, 400, 'menuPlay', startGame);
 
-            console.log("Update 0.34");
+            console.log("Update 0.35");
     
         },
     
