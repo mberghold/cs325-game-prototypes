@@ -3,7 +3,6 @@
 GameStates.makeGame = function( game, shared ) {
     // Create your own variables.
 
-    var cards = [];
     var music = null;
     var lamp = null;
     // This will hold the card. I'm thinking [0] will be card value, [1] if it is the spy.
@@ -29,47 +28,47 @@ GameStates.makeGame = function( game, shared ) {
     
 
     function startPrint() {
-        topleft[3] = game.add.sprite(100, 100, 'back');
+        topleft[3] = game.add.sprite(100, 100, 'outone');
         topleft[3].scale.setTo(0.5, 0.5);
         topleft[3].inputEnabled = true;
         topleft[3].events.onInputDown.add(flipTL, this);
 
-        topcen[3] = game.add.sprite(230, 100, 'back');
+        topcen[3] = game.add.sprite(230, 100, 'outtwo');
         topcen[3].scale.setTo(0.5, 0.5);
         topcen[3].inputEnabled = true;
         topcen[3].events.onInputDown.add(flipTC, this);
 
-        topright[3] = game.add.sprite(360, 100, 'back');
+        topright[3] = game.add.sprite(360, 100, 'outthree');
         topright[3].scale.setTo(0.5, 0.5);
         topright[3].inputEnabled = true;
         topright[3].events.onInputDown.add(flipTR, this);
 
-        midleft[3] = game.add.sprite(100, 255, 'back');
+        midleft[3] = game.add.sprite(100, 255, 'outfour');
         midleft[3].scale.setTo(0.5, 0.5);
         midleft[3].inputEnabled = true;
         midleft[3].events.onInputDown.add(flipML, this);
 
-        midcen[3] = game.add.sprite(230, 255, 'back');
+        midcen[3] = game.add.sprite(230, 255, 'outfive');
         midcen[3].scale.setTo(0.5, 0.5);
         midcen[3].inputEnabled = true;
         midcen[3].events.onInputDown.add(flipMC, this);
 
-        midright[3] = game.add.sprite(360, 255, 'back');
+        midright[3] = game.add.sprite(360, 255, 'outsix');
         midright[3].scale.setTo(0.5, 0.5);
         midright[3].inputEnabled = true;
         midright[3].events.onInputDown.add(flipMR, this);
 
-        botleft[3] = game.add.sprite(100, 410, 'back');
+        botleft[3] = game.add.sprite(100, 410, 'outseven');
         botleft[3].scale.setTo(0.5, 0.5);
         botleft[3].inputEnabled = true;
         botleft[3].events.onInputDown.add(flipBL, this);
 
-        botcen[3] = game.add.sprite(230, 410, 'back');
+        botcen[3] = game.add.sprite(230, 410, 'outeight');
         botcen[3].scale.setTo(0.5, 0.5);
         botcen[3].inputEnabled = true;
         botcen[3].events.onInputDown.add(flipBC, this);
 
-        botright[3] = game.add.sprite(360, 410, 'back');
+        botright[3] = game.add.sprite(360, 410, 'outnine');
         botright[3].scale.setTo(0.5, 0.5);
         botright[3].inputEnabled = true;
         botright[3].events.onInputDown.add(flipBR, this);
@@ -268,19 +267,15 @@ GameStates.makeGame = function( game, shared ) {
             guess.inputEnabled = true;
             guess.events.onInputDown.addOnce(guessSpy, this);
 
-            for(var i = 0; i < 9; i++) {
-                cards[i] = i + 1;
-            }
-
-            topleft[0] = Phaser.ArrayUtils.removeRandomItem(cards);
-            topcen[0] = Phaser.ArrayUtils.removeRandomItem(cards);
-            topright[0] = Phaser.ArrayUtils.removeRandomItem(cards);
-            midleft[0] = Phaser.ArrayUtils.removeRandomItem(cards);
-            midcen[0] = Phaser.ArrayUtils.removeRandomItem(cards);
-            midright[0] = Phaser.ArrayUtils.removeRandomItem(cards);
-            botleft[0] = Phaser.ArrayUtils.removeRandomItem(cards);
-            botcen[0] = Phaser.ArrayUtils.removeRandomItem(cards);
-            botright[0] = Phaser.ArrayUtils.removeRandomItem(cards);
+            topleft[0] = 1;
+            topcen[0] = 2;
+            topright[0] = 3;
+            midleft[0] = 4;
+            midcen[0] = 5;
+            midright[0] = 6;
+            botleft[0] = 7;
+            botcen[0] = 8;
+            botright[0] = 9;
 
             random = game.rnd.integerInRange(1, 9);
 
