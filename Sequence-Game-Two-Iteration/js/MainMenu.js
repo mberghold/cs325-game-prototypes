@@ -31,7 +31,7 @@ GameStates.makeMainMenu = function( game, shared ) {
             game.add.sprite(0, 0, 'menuBack');
 
             style = { font: "20px Verdana", fill: "#FFFFFF", align: "center" };
-            text = game.add.text(260, 350, "", style);
+            text = game.add.text(220, 500, "", style);
 
 
             if(shared.count === 1000) {
@@ -42,7 +42,7 @@ GameStates.makeMainMenu = function( game, shared ) {
     
             playButton = game.add.button( 303, 400, 'menuPlay', startGame);
 
-            console.log("Update 0.01");
+            console.log("Update 0.02");
     
         },
     
