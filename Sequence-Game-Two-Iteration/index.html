@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Spy Game</title>
+	<script src="js/phaser.min.js"></script>
+	<!-- Boot.js must come first since it creates the BasicGame object
+	that stores all the states. -->
+	<script src="js/Boot.js"></script>
+	<script src="js/Preloader.js"></script>
+	<script src="js/MainMenu.js"></script>
+	<script src="js/Game.js"></script>
+	<!-- main.js must come last since it references the other ones. -->
+	<script src="js/main.js"></script>
+
+<style>
+body
+{
+    color: #777;
+    font-family: "Avenir", Verdana, sans-serif;
+}
+#readme
+{
+    margin-top: 10px;
+}
+</style>
+
+</head>
+<body>
+<div id="game"></div>
+<div id="readme">
+<h2>Spy Game</h2>
+<ul>
+
+<li><strong>High Concept:</strong>
+Find the spy that has sneaked in. 
+</li>
+
+<li><strong>Theme:</strong>
+Used my own theme. 
+</li>
+
+<li><strong>Mandated Variety:</strong>
+Clicking, completely random, mystery.
+</li>
+
+<li><strong>Player Experience Goals:</strong>
+Players will have fun trying to find the spy.
+</li>
+
+<li><strong>Gameplay:</strong>
+The player manages a base of operations. There are nine agents represented by playing cards. By
+clicking on a playing card, you switch the face of that card and the four adjacent. When a card
+is face up, it is considered in the base. If the enemy spy is in the base, there is a 50% chance
+that he will hack in. Using the switching of cards, the player must deduce who the enemy spy is.
+</li>
+
+<li><strong>Prototype Goal:</strong>
+Random logic puzzle. 
+</li>
+
+<li><strong>Features:</strong>
+Unique game idea. 
+</li>
+
+<li><strong>Setting/Premise:</strong>
+We have agents doing some great work here. However, there is an enemy spy that has been hacking 
+us. We must determine who this spy is. 
+</li>
+
+<li><strong>Story:</strong>
+There is no real story to this. 
+</li>
+
+<li><strong>Target Audience:</strong>
+Everyone.
+</li>
+
+<li><strong>Play Time:</strong>
+About two minutes. 
+</li>
+
+<li><strong>Strategies:</strong>
+You want to keep the spy hacking as long as possible, because that's when you can control whether
+or not you can see him. 
+</li>
+
+<li><strong>Prototype Assets:</strong>
+Did you make your prototype assets from scratch? Did you borrow them? Cite your sources here.
+<ul>
+<li>All artwork is now self-made</li>
+<li>Light Switch Sound from <a href="https://www.youtube.com/watch?v=7wn9m-eeEL8">here</a></li>
+<li>Music: "The Pink Panther Theme Song, from <a href="https://www.youtube.com/watch?v=9OPc7MRm4Y8">PInkPantherChannel1</a></li>
+</ul>
+</li>
+
+<li><strong>Prototype Closest Other Game:</strong>
+Which other game most closely resembles your game? If you are borrowing code from a Phaser Example, you must say so here. If you borrow code from elsewhere, you must say so here.
+<ul>
+<li>The first thing I did was make some original artwork because the cards didn't fit the theme as well as I'd like them to. I also added an endgame screen like you suggested, and I added a lamp sound effect to add to the immersion. Otherwise though I'm pretty happy with how the game looks and plays.</li>
+</ul>
+</li>
+
+</ul>
+</div>
+</body>
+</html>
