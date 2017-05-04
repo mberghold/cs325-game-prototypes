@@ -42,7 +42,7 @@ GameStates.makeMainMenu = function( game, shared ) {
     
             playButton = game.add.button( 303, 400, 'menuPlay', startGame);
 
-            console.log("Update 0.02");
+            console.log("Update 0.03");
     
         },
     

@@ -233,10 +233,10 @@ GameStates.makeGame = function( game, shared ) {
 
     function endScreen() {
         game.add.image(0, 0, 'endscreen');
-        returnbut = game.add.sprite(300, 400, 'return');
+        returnbut = game.add.sprite(330, 400, 'return');
         returnbut.inputEnabled = true;
         returnbut.events.onInputDown.add(goMenu, this);
-        endtext = game.add.text(500, 100, "", style);
+        endtext = game.add.text(100, 100, "", style);
         if(prompt - random === 0) {
             endtext.text = "We've done it! The spy was at house " + random + "! You did it in " + count + " moves.";
         }
