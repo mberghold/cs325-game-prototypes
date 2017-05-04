@@ -232,7 +232,7 @@ GameStates.makeGame = function( game, shared ) {
 
     function endScreen() {
         lamp = null;
-        game.add.image(0, 0, 'endscreen');
+        game.add.sprite(0, 0, 'endscreen');
         returnbut = game.add.sprite(330, 400, 'return');
         returnbut.inputEnabled = true;
         returnbut.events.onInputDown.add(goMenu, this);
