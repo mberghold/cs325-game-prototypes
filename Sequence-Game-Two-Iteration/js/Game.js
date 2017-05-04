@@ -237,10 +237,10 @@ GameStates.makeGame = function( game, shared ) {
         returnbut.events.onInputDown.add(goMenu, this);
         endtext = game.add.text(100, 100, "", style);
         if(prompt - random === 0) {
-            endtext.text = "We've done it! The spy was at house " + random + "! You did it in " + count + " moves.";
+            endtext.text = "We've done it! The spy was at house " + random + "! \nYou did it in " + count + " moves.";
         }
         else {
-            endtext.text = "Dear Neptune! You were wrong! We've witnessed the spy running away from house " + random + "!";
+            endtext.text = "Dear Neptune! You were wrong! \nWe've witnessed the spy running away from house " + random + "!";
         }
     }
 
