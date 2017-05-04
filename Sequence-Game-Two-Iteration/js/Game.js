@@ -28,48 +28,48 @@ GameStates.makeGame = function( game, shared ) {
     
 
     function startPrint() {
-        topleft[3] = game.add.sprite(100, 100, 'outone');
-        topleft[3].scale.setTo(0.5, 0.5);
+        topleft[3] = game.add.sprite(40, 100, 'outone');
+        topleft[3].scale.setTo(0.75, 0.75);
         topleft[3].inputEnabled = true;
         topleft[3].events.onInputDown.add(flipTL, this);
 
-        topcen[3] = game.add.sprite(230, 100, 'outtwo');
-        topcen[3].scale.setTo(0.5, 0.5);
+        topcen[3] = game.add.sprite(190, 100, 'outtwo');
+        topcen[3].scale.setTo(0.75, 0.75);
         topcen[3].inputEnabled = true;
         topcen[3].events.onInputDown.add(flipTC, this);
 
-        topright[3] = game.add.sprite(360, 100, 'outthree');
-        topright[3].scale.setTo(0.5, 0.5);
+        topright[3] = game.add.sprite(340, 100, 'outthree');
+        topright[3].scale.setTo(0.75, 0.75);
         topright[3].inputEnabled = true;
         topright[3].events.onInputDown.add(flipTR, this);
 
-        midleft[3] = game.add.sprite(100, 255, 'outfour');
-        midleft[3].scale.setTo(0.5, 0.5);
+        midleft[3] = game.add.sprite(40, 255, 'outfour');
+        midleft[3].scale.setTo(0.75, 0.75);
         midleft[3].inputEnabled = true;
         midleft[3].events.onInputDown.add(flipML, this);
 
-        midcen[3] = game.add.sprite(230, 255, 'outfive');
-        midcen[3].scale.setTo(0.5, 0.5);
+        midcen[3] = game.add.sprite(190, 255, 'outfive');
+        midcen[3].scale.setTo(0.75, 0.75);
         midcen[3].inputEnabled = true;
         midcen[3].events.onInputDown.add(flipMC, this);
 
-        midright[3] = game.add.sprite(360, 255, 'outsix');
-        midright[3].scale.setTo(0.5, 0.5);
+        midright[3] = game.add.sprite(340, 255, 'outsix');
+        midright[3].scale.setTo(0.75, 0.75);
         midright[3].inputEnabled = true;
         midright[3].events.onInputDown.add(flipMR, this);
 
-        botleft[3] = game.add.sprite(100, 410, 'outseven');
-        botleft[3].scale.setTo(0.5, 0.5);
+        botleft[3] = game.add.sprite(40, 410, 'outseven');
+        botleft[3].scale.setTo(0.75, 0.75);
         botleft[3].inputEnabled = true;
         botleft[3].events.onInputDown.add(flipBL, this);
 
-        botcen[3] = game.add.sprite(230, 410, 'outeight');
-        botcen[3].scale.setTo(0.5, 0.5);
+        botcen[3] = game.add.sprite(190, 410, 'outeight');
+        botcen[3].scale.setTo(0.75, 0.75);
         botcen[3].inputEnabled = true;
         botcen[3].events.onInputDown.add(flipBC, this);
 
-        botright[3] = game.add.sprite(360, 410, 'outnine');
-        botright[3].scale.setTo(0.5, 0.5);
+        botright[3] = game.add.sprite(340, 410, 'outnine');
+        botright[3].scale.setTo(0.75, 0.75);
         botright[3].inputEnabled = true;
         botright[3].events.onInputDown.add(flipBR, this);
     }
